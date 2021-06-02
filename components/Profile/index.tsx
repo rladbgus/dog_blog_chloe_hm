@@ -5,8 +5,8 @@ const Title = styled.div`
   color: #6fb3eb;
 `;
 
-const Home = () => {
-  return <Title>메인페이지</Title>;
+const Profile = () => {
+  return <Title>프로필페이지</Title>;
 };
 
-export default Home;
+export default Profile;

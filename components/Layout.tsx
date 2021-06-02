@@ -1,5 +1,10 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
+import styled from 'styled-components';
+
+const Section = styled.section`
+  margin-top: 20px;
+`;
 
 type Props = {
   children: ReactNode;
@@ -14,15 +19,15 @@ const Layout = ({ children }: Props) => (
             <a>Dog Blog</a>
           </Link>
         </div>
-        <Link href="/detail">
+        <Link href="/app/profile">
           <a>profile</a>
         </Link>{' '}
-        <Link href="/regist">
+        <Link href="/app/register">
           <a>register</a>
         </Link>{' '}
       </nav>
     </header>
-    {children}
+    <Section>{children}</Section>
     {/* <footer>
       <hr />
       <span>Footer</span>
