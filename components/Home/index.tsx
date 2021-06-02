@@ -1,7 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Title = styled.div`
+  color: red;
+`;
 
 const Home = () => {
-  return <>메인페이지</>;
+  return <Title>메인페이지</Title>;
 };
 
 export default Home;
