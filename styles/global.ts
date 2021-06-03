@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     background-color: #ffffff;
-    margin:30px 50px;
+    margin:40px 100px;
   }
   a {
     color: inherit;

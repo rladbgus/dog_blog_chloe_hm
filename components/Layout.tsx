@@ -2,8 +2,16 @@ import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+const Title = styled.div`
+  font-size: 35px;
+  margin-bottom: 20px;
+`;
+const AAA = styled.div`
+  display: inline;
+  float: right;
+`;
 const Section = styled.section`
-  margin-top: 20px;
+  margin-top: 90px;
 `;
 
 type Props = {
@@ -14,17 +22,19 @@ const Layout = ({ children }: Props) => (
   <div>
     <header>
       <nav>
-        <div>
+        <Title>
           <Link href="/">
             <a>Dog Blog</a>
           </Link>
-        </div>
-        <Link href="/app/profile">
-          <a>profile</a>
-        </Link>{' '}
-        <Link href="/app/register">
-          <a>register</a>
-        </Link>{' '}
+        </Title>
+        <AAA>
+          <Link href="/app/profile">
+            <button>profile</button>
+          </Link>
+          <Link href="/app/register">
+            <button>register</button>
+          </Link>
+        </AAA>
       </nav>
     </header>
     <Section>{children}</Section>
