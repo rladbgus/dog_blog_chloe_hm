@@ -1,6 +1,6 @@
 # Dog Blog
 
-# Dog 갤러리 게시판 기능구성
+## Dog 갤러리 게시판 기능구성
 
 [https://docs.thedogapi.com](https://docs.thedogapi.com) API 활용
 
@@ -120,8 +120,8 @@
 
 ## next-redux-wrapper
 
-Next를 사용하면 리덕스 스토어가 여러개가 될 수 있다. Next.js는 유저가 요청할때마다 redux store를 새로 생성한다.
-그리고 Next.js가 제공하는 getInitialProps, getServerSideProps등에서 리덕스 스토어에 접근할 수 있어야 한다. next-redux-wrapper로 가능하게 한다.
+Next.js를 사용하게 되면 유저가 요청할 때 마다 redux store를 새로 생성하게 되므로 redux store가 여러 개가 될 수 있다.
+그리고 Next.js에서 제공하는 getInitialProps, getServerSideProps 등에서 redux store에 접근할 수 있어야 하는데 next-redux-wrapper가 없다면 접근 할 수 없다. 이러한 점 때문에 next-redux-wrapper가 필요하다.
 
 ## styled-component
 
@@ -132,3 +132,21 @@ Next를 사용하면 리덕스 스토어가 여러개가 될 수 있다. Next.js
   -> HTML은 SSR로 미리 렌더링 시키지만 styled-component의 스타일들은 사용자가 접속 시 변환되기 때문
   -> \_document.tsx 파일에 css를 미리 적용시켜야 한다.
   -> SSR 에서도 styled-component를 사용하도록 설정
+
+## Ducks 패턴
+
+action, saga, reducer로 나누어 다른 파일에서 관리했다.
+
+하지만 하나의 기능을 수정하려고 하면, 이 기능과 관련된 여러개의 파일을 수정해야하는 일이 생기고 이러한 불편함을 개선하고자 나온 것이 Ducks 패턴이다.
+
+Ducks 패턴은 구조중심이 아니라 기능중심으로 파일을 나눈다. 그래서 단일기능을 작성할때나 기능을 수정할 때 하나의 파일만 다루면 되므로 직관적인 코드작성이 가능하다.
+
+지켜야할 점
+
+1. reducer는 export default로 내보낸다.
+2. action 함수는 export로 내보낸다.
+3. 액션타입을 정의할 때 reducer/ACTION_TYPE형태로 적어줘야 한다. 이렇게 접두사를 붙여주는 이유는 서로다른 리듀서에서 액션이름이 중첩되는것을 방지하기위해서이다.
+
+## 파일 네이밍 규칙
+
+리액트 컴포넌트 파일은 반드시 tsx 확장자 로 선언.
