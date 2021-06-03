@@ -9,7 +9,7 @@ function* getDogsData() {
     // console.log("🚀 ~ saga response", response)
     yield put(actions.getDogsDataSuccess(response));
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
