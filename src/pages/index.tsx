@@ -1,27 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import axios from 'axios';
 import Home from '../../components/Home';
+import { GetServerSideProps } from 'next';
 
-function HomePage() {
-  const [list, setList] = useState([]);
-  const API = 'https://api.thedogapi.com/v1/breeds';
+// interface Props {
+//   dogs: object;
+// }
 
-  useEffect(() => {
-    axios.get(API).then((res) => {
-      console.log('🚀 ~ res', res);
-      setList(res.data);
-    });
-  }, []);
+function HomePage(props) {
+  console.log('🚀 ~ props', props);
 
   return (
     <>
       <Head>
         <title>Main</title>
       </Head>
-      <Home list={list} />
+      <Home />
     </>
   );
 }
-
 export default HomePage;
+
+// redux + redux saga
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await fetch('https://api.thedogapi.com/v1/breeds');
+  const dogs = await res.json();
+
+  return {
+    props: {
+      dogs
+      // name: dogs.name,
+      // life_span: dogs.life_span,
+      // imageUrl: dogs.image.url
+    }
+  };
+};
