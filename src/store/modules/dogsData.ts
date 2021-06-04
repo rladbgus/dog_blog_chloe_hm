@@ -41,7 +41,7 @@ const reducer = createReducer(initialState, {
     state.isLoading = true;
   },
   [getDogsDataSuccess.type]: (state, action) => {
-    (state.dogsData = action.payload.DogsData), (state.isLoading = false);
+    (state.dogsData = action.payload.DogsData.data), (state.isLoading = false);
   },
   [getDogsDataFailure.type]: (state) => {
     state.isLoading = false;

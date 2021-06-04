@@ -150,3 +150,13 @@ Ducks 패턴은 구조중심이 아니라 기능중심으로 파일을 나눈다
 ## 파일 네이밍 규칙
 
 리액트 컴포넌트 파일은 반드시 tsx 확장자 로 선언.
+
+### HYDRATE
+
+/rootReducer
+import { HYDRATE } from 'next-redux-wrapper';
+
+next.js에서 생성한 redux store와 client에서 생성한 redux store는 다르기 때문에 이 둘을 합쳐야 한다.
+그래서 이렇게 서버에서 생성한 스토어의 상태를 HYDRATE라는 액션을 통해서 클라이언트에 합쳐주는 작업이 필요한것이다.
+
+action.payload에는 서버에서 생성한 스토어의 상태가 담겨있다. 이 둘을 합쳐 새로운 클라이언트의 리덕스 스토어의 상태를 만든다.
