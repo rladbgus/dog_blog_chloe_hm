@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Home from '../../components/Home';
-import { GetServerSideProps } from 'next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getDogsData } from '../store/modules/dogsData';
-import { useStore } from 'react-redux';
+// import { GetServerSideProps } from 'next';
+// import { wrapper } from '../store/store';
+// import { styled } from 'styled-components';
 
 // interface Props {
 //   dogs: object;
 // }
 
 function HomePage(props) {
-  // console.log('🚀 ~ props', props);
-  // const store = useStore((state) => state);
-  // // console.log('🚀 ~ store', store);
-  // const [aaa, setAaa] = useState<string>('');
-  // const counter = useSelector((state) => state);
-  // console.log('🚀 ~ counter', counter);
-
-  // const dispatch = useDispatch();
-  // dispatch(getDogsData('123123'));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDogsData());
+  }, []);
 
   return (
     <>
@@ -30,19 +26,22 @@ function HomePage(props) {
     </>
   );
 }
+
 export default HomePage;
 
-// redux + redux saga
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('https://api.thedogapi.com/v1/breeds');
-  const dogs = await res.json();
+// export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+//   async ({ store }) => {
+//     store.dispatch(getDogsData('aaa'));
+//     // const storeData = store.getState((state) => state);
+//     // console.log('🚀 ~ storeData', storeData);
 
-  return {
-    props: {
-      dogs
-      // name: dogs.name,
-      // life_span: dogs.life_span,
-      // imageUrl: dogs.image.url
-    }
-  };
-};
+//     return {
+//       props: {
+//         // storeData
+//         // name: dogs.name,
+//         // life_span: dogs.life_span,
+//         // imageUrl: dogs.image.url
+//       }
+//     };
+//   }
+// );

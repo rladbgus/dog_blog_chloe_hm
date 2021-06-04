@@ -22,8 +22,8 @@ const GlobalStyle = createGlobalStyle`
   }
   img {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
   }
 
   @media only screen and (max-width: 768px) {
