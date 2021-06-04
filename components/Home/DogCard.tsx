@@ -1,20 +1,17 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import styled from 'styled-components';
 
-const DogCard = () => <div>카드</div>;
-//   <Card>
-//     <Image src="/images/avatar/large/daniel.jpg" wrapped ui={false} />
-//     <Card.Content>
-//       <Card.Header>Daniel</Card.Header>
-//       <Card.Meta>Joined in 2016</Card.Meta>
-//       <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
-//     </Card.Content>
-//     <Card.Content extra>
-//       <a>
-//         <Icon name="user" />
-//         10 Friends
-//       </a>
-//     </Card.Content>
-//   </Card>
+function DogCard(props: any) {
+  const SDogCard = styled.div``;
+
+  const { name, life_span, image } = props;
+  return (
+    <SDogCard>
+      <img src={`${image.url}`} alt="강아지 이미지" />
+      <div>{name}</div>
+      <div>{life_span}</div>
+    </SDogCard>
+  );
+}
 
 export default DogCard;
