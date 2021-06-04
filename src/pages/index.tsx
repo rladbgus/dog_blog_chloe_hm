@@ -3,8 +3,9 @@ import Head from 'next/head';
 import Home from '../../components/Home';
 import { useDispatch } from 'react-redux';
 import { getDogsData } from '../store/modules/dogsData';
-import { GetServerSideProps } from 'next';
-import { wrapper } from '../store/store';
+// import { GetServerSideProps } from 'next';
+// import { wrapper } from '../store/store';
+// import { styled } from 'styled-components';
 
 // interface Props {
 //   dogs: object;

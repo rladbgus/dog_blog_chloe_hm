@@ -7,12 +7,12 @@ export const GET_DOGS_DATA_SUCCESS = 'GET_DOGS_DATA_SUCCESS';
 export const GET_DOGS_DATA_FAILURE = 'GET_DOGS_DATA_FAILURE';
 
 // Action 생성자
-export const getDogsData = createAction(GET_DOGS_DATA);
-
+export const getDogsData = createAction(
+  GET_DOGS_DATA,
+);
 export const getDogsDataSuccess = createAction(
   GET_DOGS_DATA_SUCCESS,
   function prepare(DogsData: any) {
-    console.log("🚀 ~ DogsData", DogsData)
     return {
       payload: {
         DogsData
@@ -25,7 +25,7 @@ export const getDogsDataFailure = createAction(GET_DOGS_DATA_FAILURE);
 // 초기값
 const initialState: DogsDataType = {
   isLoading: false,
-  dogsData: {}
+  dogsData: []
 };
 
 // Reducer

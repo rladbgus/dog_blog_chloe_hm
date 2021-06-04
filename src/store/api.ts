@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 // 강아지 정보
+const DOG_DATA_API_KEY = process.env.DOG_DATA_API_KEY
 const DOG_DATA_API = 'https://api.thedogapi.com/v1/breeds';
 const params = {limit : '50'}
 const headers = {
-  'x-api-key': 'b5b7f00c-d21d-4457-b750-857d73dd4410'
+  'x-api-key': DOG_DATA_API_KEY
 }
 
 export function getDogsDataApi() {
