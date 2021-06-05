@@ -1,5 +1,5 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { DogsDataType } from '../interface';
+import { DogsDataType } from 'store/interface';
 
 // Actions
 export const GET_DOGS_DATA = 'GET_DOGS_DATA';
@@ -9,6 +9,13 @@ export const GET_DOGS_DATA_FAILURE = 'GET_DOGS_DATA_FAILURE';
 // Action 생성자
 export const getDogsData = createAction(
   GET_DOGS_DATA,
+  function prepare(queryData: any) {
+    return {
+      payload: {
+        queryData
+      }
+    };
+  }
 );
 export const getDogsDataSuccess = createAction(
   GET_DOGS_DATA_SUCCESS,

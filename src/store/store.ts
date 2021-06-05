@@ -1,7 +1,7 @@
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
-import rootReducer from './modules/rootReducer';
-import rootSaga from './sagas/index';
+import rootReducer from 'store/modules/rootReducer';
+import rootSaga from 'store/sagas/index';
 import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper, MakeStore } from 'next-redux-wrapper';
 

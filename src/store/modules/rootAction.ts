@@ -1,1 +1,1 @@
-export { getDogsData, getDogsDataSuccess, getDogsDataFailure } from './dogsData';
+export { getDogsData, getDogsDataSuccess, getDogsDataFailure } from 'store/modules/dogsData';

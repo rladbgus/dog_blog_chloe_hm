@@ -1,11 +1,13 @@
 import { put, call, takeEvery, fork } from 'redux-saga/effects';
-import * as actions from '../modules/dogsData';
-import { getDogsDataApi } from '../api';
+import * as actions from 'store/modules/dogsData';
+import { getDogsDataApi } from 'store/api';
 import { AxiosResponse } from 'axios';
 
-function* getDogsData() {
+function* getDogsData(queryData) {
+  const query = queryData.payload.query
+
   try {
-    const response: AxiosResponse = yield call(getDogsDataApi);
+    const response: AxiosResponse = yield call(getDogsDataApi.bind(null,query));
     yield put(actions.getDogsDataSuccess(response));
   } catch (err) {
     console.error(err);

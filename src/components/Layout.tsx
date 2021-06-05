@@ -2,18 +2,6 @@ import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const Title = styled.div`
-  font-size: 35px;
-  margin-bottom: 20px;
-`;
-const AAA = styled.div`
-  display: inline;
-  float: right;
-`;
-const Section = styled.section`
-  margin-top: 90px;
-`;
-
 type Props = {
   children: ReactNode;
 };
@@ -44,5 +32,17 @@ const Layout = ({ children }: Props) => (
     </footer> */}
   </div>
 );
+
+const Title = styled.div`
+  font-size: 35px;
+  margin-bottom: 20px;
+`;
+const AAA = styled.div`
+  display: inline;
+  float: right;
+`;
+const Section = styled.section`
+  margin-top: 90px;
+`;
 
 export default Layout;

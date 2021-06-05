@@ -1,11 +1,11 @@
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from 'components/Layout';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../../styles/global';
-import theme from '../../styles/them';
-import { wrapper } from '../store/store';
+import GlobalStyle from 'styles/global';
+import theme from 'styles/them';
+import { wrapper } from 'store/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
