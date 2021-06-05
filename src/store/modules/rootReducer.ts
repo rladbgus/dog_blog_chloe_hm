@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import dogsData from './dogsData';
+import dogsData from 'store/modules/dogsData';
 import { HYDRATE } from 'next-redux-wrapper';
 
 const rootReducer = (state, action) => {

@@ -1,5 +1,5 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { DogsDataType } from '../interface';
+import { DogsDataType } from 'store/interface';
 
 // Actions
 export const GET_DOGS_DATA = 'GET_DOGS_DATA';

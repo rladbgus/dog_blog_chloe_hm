@@ -32,7 +32,11 @@
   ],
   "paths": {
     "components/*": [
-      "components/*"
+      "components/*",
+      "pages/*",
+      "store/*",
+      "styles/*",
+      "utils/*"
     ]
   }
 }
