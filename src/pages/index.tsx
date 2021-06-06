@@ -6,12 +6,14 @@ import { getDogsData } from 'store/modules/dogsData';
 // import { GetServerSideProps } from 'next';
 // import { wrapper } from '../store/store';
 // import { styled } from 'styled-components';
+// import { useSelector } from 'react-redux';
+// import { END } from 'redux-saga';
 
 // interface Props {
 //   dogs: object;
 // }
 
-function HomePage(props) {
+function HomePage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDogsData());
@@ -31,7 +33,8 @@ export default HomePage;
 
 // export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
 //   async ({ store }) => {
-//     store.dispatch(getDogsData('aaa'));
+//     store.dispatch(getDogsData('sss'));
+//     store.dispatch(END);
 //     // const storeData = store.getState((state) => state);
 //     // console.log('🚀 ~ storeData', storeData);
 

@@ -9,7 +9,7 @@ export const GET_DOGS_DATA_FAILURE = 'GET_DOGS_DATA_FAILURE';
 // Action 생성자
 export const getDogsData = createAction(
   GET_DOGS_DATA,
-  function prepare(queryData: any) {
+  function prepare(queryData) {
     return {
       payload: {
         queryData
@@ -19,7 +19,7 @@ export const getDogsData = createAction(
 );
 export const getDogsDataSuccess = createAction(
   GET_DOGS_DATA_SUCCESS,
-  function prepare(DogsData: any) {
+  function prepare(DogsData) {
     return {
       payload: {
         DogsData

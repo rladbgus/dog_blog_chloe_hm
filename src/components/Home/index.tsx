@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 function Home() {
   const getDogsData = useSelector((state) => state.dogsData);
+  console.log('🚀 ~ 미ㅏ어ㅜㅁ니ㅏㅇㅁ', getDogsData);
 
   return (
     <>
