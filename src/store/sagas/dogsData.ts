@@ -3,11 +3,11 @@ import * as actions from 'store/modules/dogsData';
 import { getDogsDataApi } from 'store/api';
 import { AxiosResponse } from 'axios';
 
-function* getDogsData(queryData) {
-  const query = queryData.payload.query
+function* getDogsData(query) {
+  const queryData = query.payload.queryData
 
   try {
-    const response: AxiosResponse = yield call(getDogsDataApi.bind(null,query));
+    const response: AxiosResponse = yield call(getDogsDataApi.bind(null,queryData));
     yield put(actions.getDogsDataSuccess(response));
   } catch (err) {
     console.error(err);
