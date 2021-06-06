@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function DogCard(props: any) {
+function DogCard(props) {
   const { name, life_span, image } = props;
   return (
     <SDogCard>
