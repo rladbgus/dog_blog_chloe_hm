@@ -18,16 +18,15 @@ function Home() {
   const [limit, setLimit] = useState(100);
 
   // 스크롤시 강아지데이터 호출
-  const moreDogsData = () => {
+  const HandleMoreDogsData = () => {
     const query = {
-      page: page,
-      limit: limit
+      page: page
     };
     console.log('🚀 ~ query', query);
-    dispatch(getDogsData(query));
+    dispatch(moreDogsData(query));
     // setHasMore( === hasMore)
     setPage(page + 1);
-    setLimit(limit + 50);
+    setPage(limit + 50);
   };
 
   return (
@@ -39,7 +38,7 @@ function Home() {
         dataLength={dogsData.length}
         loader={<h4>Loading...</h4>}
         hasMore={true}
-        next={moreDogsData}
+        next={HandleMoreDogsData}
         scrollThreshold="50px"
         style={{ overflowY: 'auto', overflowX: 'hidden' }}>
         <DogCardS>
@@ -53,7 +52,9 @@ function Home() {
             //   height: dogData.height
             // };
             return (
-              <Link href={{ pathname: `/app/detail/${dogData.id}`, query: dogData }}>
+              <Link
+                href={{ pathname: `/app/detail/${dogData.id}`, query: dogData }}
+                key={dogData.id}>
                 <a>
                   <DogCard
                     key={dogData.id}

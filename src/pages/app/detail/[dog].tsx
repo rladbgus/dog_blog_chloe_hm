@@ -3,9 +3,7 @@ import Detail from 'components/Detail';
 
 function DogDetail() {
   const router = useRouter();
-  console.log('🚀 ~ router', router);
   const dogData = router.query;
-  console.log('🚀 ~ ddddddddd', dogData);
 
   return (
     <>
