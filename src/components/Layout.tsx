@@ -9,7 +9,7 @@ type Props = {
 const Layout = ({ children }: Props) => (
   <div>
     <header>
-      <nav>
+      <LayoutS>
         <Title>
           <Link href="/">
             <a>Dog Blog</a>
@@ -23,7 +23,7 @@ const Layout = ({ children }: Props) => (
             <button>register</button>
           </Link>
         </AAA>
-      </nav>
+      </LayoutS>
     </header>
     <Section>{children}</Section>
     {/* <footer>
@@ -32,6 +32,10 @@ const Layout = ({ children }: Props) => (
     </footer> */}
   </div>
 );
+
+const LayoutS = styled.nav`
+  /* width: 900px; */
+`;
 
 const Title = styled.div`
   font-size: 35px;

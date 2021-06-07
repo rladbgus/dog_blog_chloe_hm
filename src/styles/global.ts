@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body{
     background-color: #ffffff;
     margin:40px 100px;
+    width: 990px;
   }
   a {
     color: inherit;
@@ -22,8 +23,9 @@ const GlobalStyle = createGlobalStyle`
   }
   img {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
+    border-radius: 5%
   }
 
   @media only screen and (max-width: 768px) {
