@@ -6,7 +6,7 @@ function Sort() {
   const dispatch = useDispatch();
 
   const handleSort = (type) => {
-    let queryData = { limit: 50, order: type };
+    let queryData = { order: type };
     dispatch(getDogsData(queryData));
   };
 

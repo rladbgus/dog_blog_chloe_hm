@@ -12,7 +12,10 @@ export const getDogsData = createAction(
   function prepare(queryData) {
     return {
       payload: {
-        queryData
+        queryData : {
+          limit: 50, 
+          order: queryData && queryData.order
+        }
       }
     };
   }
