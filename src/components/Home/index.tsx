@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import DogCard from 'components/Home/DogCard';
-import Sort from 'components/Home/Sort';
-import { useSelector } from 'react-redux';
 import Search from 'components/Home/Search';
+import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import Sort from 'components/Home/Sort';
 
 function Home() {
   const getDogsData = useSelector((state) => state.dogsData);
@@ -15,6 +15,14 @@ function Home() {
       <Search />
       <DogCardS>
         {getDogsData.dogsData.map((dogData: any) => {
+          console.log('🚀 ~ dogData', dogData);
+          // const dogDataQuery = {
+          //   id: dogData.id,
+          //   name: dogData.name,
+          //   imageUrl: dogData.image.url,
+          //   life_span: dogData.life_span,
+          //   height: dogData.height
+          // };
           return (
             <Link href={{ pathname: `/app/detail/${dogData.id}`, query: dogData }}>
               <a>
@@ -22,7 +30,7 @@ function Home() {
                   key={dogData.id}
                   name={dogData.name}
                   life_span={dogData.life_span}
-                  image={dogData.image}
+                  imageUrl={dogData.image.url}
                 />
               </a>
             </Link>

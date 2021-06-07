@@ -1,18 +1,18 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 import { DogsDataType } from 'store/interface';
 
-// Actions
+// Actions 
 export const GET_DOGS_DATA = 'GET_DOGS_DATA';
 export const GET_DOGS_DATA_SUCCESS = 'GET_DOGS_DATA_SUCCESS';
 export const GET_DOGS_DATA_FAILURE = 'GET_DOGS_DATA_FAILURE';
 
 // Action 생성자
-export const getDogsData = createAction(GET_DOGS_DATA, function prepare(queryData) {
+   export const getDogsData = createAction(GET_DOGS_DATA, function prepare     (queryData) {
   return {
     payload: {
       queryData: {
         limit: 50,
-        order: queryData && queryData.order
+          order: queryData && queryData.order
       }
     }
   };

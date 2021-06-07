@@ -1,16 +1,18 @@
 import { useRouter } from 'next/router';
 import Detail from 'components/Detail';
-const Dog = () => {
+
+function DogDetail() {
   const router = useRouter();
   console.log('🚀 ~ router', router);
-  const { dog } = router.query;
+  const dogData = router.query;
+  console.log('🚀 ~ ddddddddd', dogData);
 
   return (
     <>
-      <p>Dog Id: {dog}</p>
-      <Detail />
+      <p>Dog Id</p>
+      <Detail dogData={dogData} />
     </>
   );
-};
+}
 
-export default Dog;
+export default DogDetail;

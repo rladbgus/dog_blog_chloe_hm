@@ -16,11 +16,11 @@ const Layout = ({ children }: Props) => (
           </Link>
         </Title>
         <AAA>
-          <Link href="/app/profile">
-            <button>profile</button>
-          </Link>
           <Link href="/app/register">
             <button>register</button>
+          </Link>
+          <Link href="/app/profile">
+            <button>profile</button>
           </Link>
         </AAA>
       </LayoutS>

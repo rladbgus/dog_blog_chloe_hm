@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 function DogCard(props) {
-  const { name, life_span, image } = props;
+  const { name, life_span, imageUrl } = props;
   return (
     <SDogCard>
-      <img src={`${image.url}`} alt="강아지 이미지" />
+      <img src={`${imageUrl}`} alt="강아지 이미지" />
       <div className="name">{name}</div>
       <div className="life">{life_span}</div>
     </SDogCard>
