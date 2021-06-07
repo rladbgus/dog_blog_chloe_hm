@@ -14,8 +14,21 @@ function* getDogsData(query) {
   }
 }
 
+
+// function* moreDogsData(query) {
+//   const queryData = query.payload.queryDataq
+
+//   try {
+//     const response: AxiosResponse = yield call(getDogsDataApi.bind(null,queryData));
+//     yield put(actions.getDogsDataSuccess(response));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
+
 function* watchGetDogsData() {
   yield takeEvery(actions.GET_DOGS_DATA, getDogsData);
+  // yield takeEvery(actions.MORE_DOGS_DATA, moreDogsData);
 }
 
 export default function* watchSaga() {
