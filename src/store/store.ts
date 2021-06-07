@@ -5,11 +5,7 @@ import rootSaga from 'store/sagas/index';
 import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper, MakeStore } from 'next-redux-wrapper';
 
-export interface State{
-  tick: string;
-}
-
-// create reducer
+// create store
 const makeStore: MakeStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [logger, sagaMiddleware];
@@ -20,10 +16,10 @@ const makeStore: MakeStore = () => {
     reducer: rootReducer
   });
 
-  sagaMiddleware.run(rootSaga);
+  store.sagaTask=sagaMiddleware.run(rootSaga);
 
   return store;
 };
 
-export const wrapper = createWrapper<State>(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore, { debug: true });
 

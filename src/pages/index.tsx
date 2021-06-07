@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Home from 'components/Home';
-import { useDispatch } from 'react-redux';
 import { getDogsData } from 'store/modules/dogsData';
 import { GetServerSideProps } from 'next';
 import { wrapper } from '../store/store';
 import { END } from 'redux-saga';
-
-// interface Props {
-//   dogs: object;
-// }
 
 function HomePage() {
   return (
