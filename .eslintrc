@@ -14,13 +14,6 @@
       },
       "sourceType": "module"
     },
-    "globals": {
-      "swal": true,
-      "Kakao": true,
-      "kakao": true,
-      "td": true,
-      "firebase": true
-    },
     "plugins": ["react", "import"],
     "rules": {
       "react/react-in-jsx-scope": 0,
@@ -29,7 +22,7 @@
         "error",
         {
           "groups": ["builtin", "external", "internal"],
-          "pathGroups": [
+             "pathGroups": [
             {
               "pattern": "react",
               "group": "external",

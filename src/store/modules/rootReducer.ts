@@ -2,10 +2,9 @@ import { combineReducers } from '@reduxjs/toolkit';
 import dogsData from 'store/modules/dogsData';
 import { HYDRATE } from 'next-redux-wrapper';
 
-const rootReducer = (state = {tick:'init'}, action) => {
+const rootReducer = (state , action) => {
   switch (action.type) {
     case HYDRATE:
-      console.log('HYDRATE', action);
       return {...state, ...action.payload}
     default: {
       const combineReducer = combineReducers({
