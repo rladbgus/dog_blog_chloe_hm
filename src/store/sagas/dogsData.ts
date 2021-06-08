@@ -17,7 +17,6 @@ function* getDogsData(query) {
 
 // 인피니트 스크롤 데이터 호출
 function* moreDogsData(query) {
-  console.log("🚀 ~ 인피니트인피니트인피니트", query)
   const queryData = query.payload.queryData
 
   try {

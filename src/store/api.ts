@@ -12,7 +12,6 @@ const DOG_DATA_API = 'https://api.thedogapi.com/v1';
 
 // 강아지 정보 호출
 export function getDogsDataApi(query) {
-    console.log("🚀 ~ api에서 받는 쿼리", query)
     const queryData = querystring.stringify(query);
   return axios.get(`${DOG_DATA_API}/breeds?${queryData}`, headers)
 }
@@ -27,6 +26,5 @@ export function getImage(query){
 // 강아지 상세 정보 호출
 export function searchDogDataApi(query){
   const queryData = querystring.stringify(query);
-  console.log("🚀 ~ query", query)
   return axios.get(`${DOG_DATA_API}/breeds/search?${queryData}`, headers)
 }
