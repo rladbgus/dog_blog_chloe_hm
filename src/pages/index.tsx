@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Home from 'components/Home';
 import { getDogsData } from 'store/modules/dogsData';
 import { GetServerSideProps } from 'next';
-import { wrapper } from '../store/store';
+import { wrapper } from 'store/store';
 import { END } from 'redux-saga';
 
 function HomePage() {
@@ -17,8 +17,6 @@ function HomePage() {
   );
 }
 
-export default HomePage;
-
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     store.dispatch(getDogsData());
@@ -30,3 +28,5 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
     };
   }
 );
+
+export default HomePage;

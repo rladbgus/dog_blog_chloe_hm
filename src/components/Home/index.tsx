@@ -11,23 +11,25 @@ import { getDogsData, moreDogsData } from 'store/modules/dogsData';
 function Home() {
   const storeDogsData = useSelector((state) => state.dogsData);
   const dogsData = storeDogsData.dogsData;
+  console.log('🚀 ~ dogsData', dogsData);
   const dispatch = useDispatch();
 
-  const [hasMore, setHasMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
-  const [limit, setLimit] = useState(100);
+  const [limit, setLimit] = useState(25);
 
   // 스크롤시 강아지데이터 호출
   const HandleMoreDogsData = () => {
     const query = {
-      page: page
+      page: page,
+      limit: limit
     };
-    console.log('🚀 ~ query', query);
+    console.log('🚀 ~ 페이지에서 보내는 쿼리', query);
     dispatch(moreDogsData(query));
-    // setHasMore( === hasMore)
     setPage(page + 1);
-    setPage(limit + 50);
   };
+
+  //오픈소스 활용시 더미데이터 필요
 
   return (
     <>
@@ -35,26 +37,16 @@ function Home() {
       <Search />
 
       <InfiniteScroll
-        dataLength={dogsData.length}
+        dataLength={1000000}
         loader={<h4>Loading...</h4>}
-        hasMore={true}
+        hasMore={hasMore}
         next={HandleMoreDogsData}
         scrollThreshold="50px"
         style={{ overflowY: 'auto', overflowX: 'hidden' }}>
         <DogCardS>
           {dogsData.map((dogData: any) => {
-            // console.log('🚀 ~ dogData', dogData);
-            // const dogDataQuery = {
-            //   id: dogData.id,
-            //   name: dogData.name,
-            //   imageUrl: dogData.image.url,
-            //   life_span: dogData.life_span,
-            //   height: dogData.height
-            // };
             return (
-              <Link
-                href={{ pathname: `/app/detail/${dogData.id}`, query: dogData }}
-                key={dogData.id}>
+              <Link href={`/app/detail/${dogData.name}`} key={dogData.id}>
                 <a>
                   <DogCard
                     key={dogData.id}
