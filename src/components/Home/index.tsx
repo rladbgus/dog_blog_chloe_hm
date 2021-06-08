@@ -6,42 +6,36 @@ import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import Sort from 'components/Home/Sort';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { getDogsData, moreDogsData } from 'store/modules/dogsData';
+import { moreDogsData } from 'store/modules/dogsData';
 
 function Home() {
   const storeDogsData = useSelector((state) => state.dogsData);
   const dogsData = storeDogsData.dogsData;
-  console.log('🚀 ~ dogsData', dogsData);
   const dispatch = useDispatch();
 
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
-  const [limit, setLimit] = useState(25);
 
   // 스크롤시 강아지데이터 호출
   const HandleMoreDogsData = () => {
     const query = {
       page: page,
-      limit: limit
+      limit: 50
     };
-    console.log('🚀 ~ 페이지에서 보내는 쿼리', query);
     dispatch(moreDogsData(query));
     setPage(page + 1);
+    setHasMore(page < 4); // 임시ㅠ
   };
-
-  //오픈소스 활용시 더미데이터 필요
 
   return (
     <>
       <Sort />
       <Search />
-
       <InfiniteScroll
-        dataLength={1000000}
-        loader={<h4>Loading...</h4>}
+        dataLength={dogsData.length}
+        loader={<h3>Loading...</h3>}
         hasMore={hasMore}
         next={HandleMoreDogsData}
-        scrollThreshold="50px"
         style={{ overflowY: 'auto', overflowX: 'hidden' }}>
         <DogCardS>
           {dogsData.map((dogData: any) => {
