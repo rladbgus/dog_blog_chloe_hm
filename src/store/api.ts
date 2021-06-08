@@ -10,10 +10,15 @@ const headers  = {
 // 메인 api 주소
 const DOG_DATA_API = 'https://api.thedogapi.com/v1';
 
-// 강아지 정보 호출
+// 강아지들의 정보 호출
 export function getDogsDataApi(query) {
     const queryData = querystring.stringify(query);
   return axios.get(`${DOG_DATA_API}/breeds?${queryData}`, headers)
+}
+
+// 강아지 상세 정보 호출
+export function searchDogDataApi (query){
+  return axios.get(`${DOG_DATA_API}/images/${query}`, headers)
 }
 
 // 이미지 타입에 따른 정보 호출
@@ -23,8 +28,4 @@ export function getImage(query){
   return axios.get(`${DOG_DATA_API}/images/search?${queryData}`, headers)
 }
 
-// 강아지 상세 정보 호출
-export function searchDogDataApi(query){
-  const queryData = querystring.stringify(query);
-  return axios.get(`${DOG_DATA_API}/breeds/search?${queryData}`, headers)
-}
+

@@ -40,7 +40,7 @@ function Home() {
         <DogCardS>
           {dogsData.map((dogData: any) => {
             return (
-              <Link href={`/app/detail/${dogData.name}`} key={dogData.id}>
+              <Link href={`/app/detail/${dogData.reference_image_id}`} key={dogData.id}>
                 <a>
                   <DogCard
                     key={dogData.id}
