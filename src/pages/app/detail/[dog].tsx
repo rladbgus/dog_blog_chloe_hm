@@ -1,33 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Detail from 'components/Detail';
 import { searchDogDataApi } from 'store/api';
-import { GetServerSideProps } from 'next';
-import { wrapper } from 'store/store';
 
 function DogDetail() {
   const router = useRouter();
-  const dogName = router.query.dog;
-  console.log('🚀 ~ dogName', dogName);
-  const query = { q: dogName };
+  const query = router.query.dog;
+  const [dogData, setDogData] = useState([]);
 
+  // 해당 강아지 데이터 호출
   useEffect(() => {
-    const aaa = searchDogDataApi(query);
-    console.log('🚀 ~ aaa', aaa);
-  }, []);
+    if (!router.isReady) return;
+    searchDogDataApi(query)
+      .then((res) => {
+        if (res.status === 200) {
+          return setDogData(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [router.isReady]);
+
   return (
     <>
-      <Detail />
+      <Detail dogData={dogData} />
     </>
   );
 }
 
 export default DogDetail;
-
-// export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-//   async ({ store }) => {
-//     return {
-//       props: {}
-//     };
-//   }
-// );

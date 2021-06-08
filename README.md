@@ -164,3 +164,12 @@ action.payload에는 서버에서 생성한 스토어의 상태가 담겨있다.
 ## .env환경변수 사용하기
 
 npm install dotenv-webpack
+
+이모지
+:books: [패키지 설치]
+:sparkles: [추가]
+:hammer: [수정]
+:broken_heart: [버그]
+:label: [HTML]
+:nail_care: [CSS]
+:guitar: [기타]

@@ -1,14 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { getDogsData } from 'store/modules/dogsData';
+import { sortedDogsData } from 'store/modules/dogsData';
 import styled from 'styled-components';
 
 function Sort() {
   const dispatch = useDispatch();
 
   const handleSort = (type) => {
-    let queryData = { order: type };
-    dispatch(getDogsData(queryData));
+    let queryData = {
+      limit: 50,
+      page: 1,
+      order: type
+    };
+    dispatch(sortedDogsData(queryData));
   };
 
   return (
