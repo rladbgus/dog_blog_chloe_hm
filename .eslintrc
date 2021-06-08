@@ -5,15 +5,16 @@
       "commonjs": true,
       "node": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended", "prettier/@typescript-eslint"],
+    "extends": [ "plugin:prettier/recommended", "prettier/@typescript-eslint","plugin:@typescript-eslint/recommended" ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 9,
+      "ecmaVersion": 2018,
       "ecmaFeatures": {
         "jsx": true
       },
       "sourceType": "module"
     },
+    "project": "tsconfig.json",
     "plugins": ["react", "import", "@typescript-eslint"],
     "rules": {
       "react/react-in-jsx-scope": 0,

@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Detail({ dogData }) {
-  console.log('🚀 ~ dogData', dogData);
+function Detail() {
   return <>상세화면</>;
 }
 

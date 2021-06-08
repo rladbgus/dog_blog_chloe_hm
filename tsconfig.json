@@ -36,7 +36,8 @@
       "pages/*",
       "store/*",
       "styles/*",
-      "utils/*"
+      "utils/*",
+      "server/*"
     ]
   }
 }
