@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -13,6 +13,14 @@ const DogCards = () => {
 
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
+
+  const currentRef = useRef([]);
+
+  // useEffect(() => {
+  //   if (currentRef.current) {
+  //     window.location.assign(currentRef.current.props.to.toString());
+  //   }
+  // }, []);
 
   // 스크롤시 강아지데이터 호출
   const HandleMoreDogsData = () => {
@@ -37,6 +45,7 @@ const DogCards = () => {
         {dogsData.map((dogData: any) => {
           return (
             <Link href={`/app/detail/${dogData.reference_image_id}`} key={dogData.id}>
+              {/* <a ref={currentRef}> */}
               <a>
                 <DogCard
                   key={dogData.id}

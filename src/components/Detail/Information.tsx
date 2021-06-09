@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function Information({ dogData }) {
+  console.log('🚀 ~ dogData', dogData);
   const [isLike, setIsLike] = useState(false);
   const heartImageUrl = '/icons/heart.png';
   const unheartImageUrl = '/icons/unheart.png';

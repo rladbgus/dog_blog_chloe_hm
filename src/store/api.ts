@@ -28,4 +28,6 @@ export function getImage(query){
   return axios.get(`${DOG_DATA_API}/images/search?${queryData}`, headers)
 }
 
-
+export function name(params:type) {
+  
+}
