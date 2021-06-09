@@ -1,7 +1,7 @@
-import { put, call, takeEvery, fork } from 'redux-saga/effects';
-import * as actions from 'store/modules/dogsData';
-import { getDogsDataApi } from 'store/api';
 import { AxiosResponse } from 'axios';
+import { call, fork, put, takeEvery } from 'redux-saga/effects';
+import { getDogsDataApi } from 'store/api';
+import * as actions from 'store/modules/dogsData';
 
 // 강아지 데이터 호출
 function* getDogsData(query) {

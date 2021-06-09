@@ -1,1 +1,6 @@
-export { getDogsData, getDogsDataSuccess, getDogsDataFailure } from 'store/modules/dogsData';
+export {
+  getDogsData,
+  getDogsDataSuccess,
+  moreDogsData,
+  sortedDogsDataSuccess
+} from 'store/modules/dogsData';

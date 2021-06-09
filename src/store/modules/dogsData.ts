@@ -13,15 +13,15 @@ export const getDogsData = createAction(GET_DOGS_DATA, function prepare(queryDat
   return {
     payload: {
       page: 1,
-      limit:50,
+      limit: 50,
       order: queryData ? queryData.order : 'Asc'
     }
   };
 });
 export const getDogsDataSuccess = createAction(GET_DOGS_DATA_SUCCESS, function prepare(DogsData) {
   return {
-       payload: {
-        DogsData
+    payload: {
+      DogsData
     }
   };
 });
@@ -47,7 +47,7 @@ export const sortedDogsDataSuccess = createAction(SORTED_DOGS_DATA_SUCCESS);
 // 초기값
 const initialState: DogsDataType = {
   isLoading: false,
-  dogsData: [],
+  dogsData: []
 };
 
 // Reducer
@@ -56,16 +56,15 @@ const reducer = createReducer(initialState, {
     state.isLoading = true;
   },
   [getDogsDataSuccess.type]: (state, action) => {
-    state.dogsData = state.dogsData.concat(action.payload.DogsData.data),
-    state.isLoading = false
+    (state.dogsData = state.dogsData.concat(action.payload.DogsData.data)),
+      (state.isLoading = false);
   },
   [sortedDogsData.type]: (state) => {
     state.isLoading = true;
-    },
-  [sortedDogsDataSuccess.type]: (state,action) => {
-    state.dogsData = action.payload.data,
-    state.isLoading = false;
   },
+  [sortedDogsDataSuccess.type]: (state, action) => {
+    (state.dogsData = action.payload.data), (state.isLoading = false);
+  }
 });
 
 export default reducer;
