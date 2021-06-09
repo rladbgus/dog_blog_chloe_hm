@@ -82,7 +82,6 @@ const reducer = createReducer(initialState, {
     state.dogsData = action.payload.data;
   },
   [filterDogsDataSuccess.type]: (state, action) => {
-    console.log('🚀 ~ action.payload.data[0]', action.payload.data[0]);
     state.filterData = action.payload.data[0];
   }
 });

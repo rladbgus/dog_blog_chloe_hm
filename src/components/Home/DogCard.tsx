@@ -16,6 +16,7 @@ const SDogCard = styled.div`
   margin: 0px 60px 30px 0;
   color: #454c53;
   width: 130px;
+  flex: 1;
 
   .name {
     overflow: hidden;
