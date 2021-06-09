@@ -20,8 +20,8 @@ export const getDogsData = createAction(GET_DOGS_DATA, function prepare(queryDat
 });
 export const getDogsDataSuccess = createAction(GET_DOGS_DATA_SUCCESS, function prepare(DogsData) {
   return {
-    payload: {
-      DogsData
+       payload: {
+        DogsData
     }
   };
 });
