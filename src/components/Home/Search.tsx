@@ -9,18 +9,20 @@ function Search() {
   const imageTypes = ['gif', 'jpg', 'png'];
   const [searchBreed, setSearchBreed] = useState('');
 
-  const onSearchBreed = (value) => {
-    // breed_ids
+  const onBreedId = (value) => {
     setSearchBreed(value);
-    //엔터나 검색버튼 눌렀을시 dispatch
-    if (value.key === 'Enter') {
-      console.log('검색!!!');
+  };
+  // 품종으로 검색
+  const onSearchBreed = (e) => {
+    const query = { breed_ids: searchBreed };
+    if (e.key === 'Enter') {
+      dispatch(filterDogData(query));
     }
   };
 
+  // 이미지타입으로 검색
   const onSearchImageType = (value) => {
     const query = { mime_types: value };
-
     dispatch(filterDogData(query));
   };
 
@@ -30,8 +32,8 @@ function Search() {
         type="text"
         placeholder="search breed"
         value={searchBreed}
-        onChange={(e) => onSearchBreed(e.target.value)}
-        // onKeyPress={(e) => onSearchBreed(e)}
+        onChange={(e) => onBreedId(e.target.value)}
+        onKeyPress={onSearchBreed}
       />
       <select onChange={(e) => onSearchImageType(e.target.value)}>
         <option value="">image type</option>

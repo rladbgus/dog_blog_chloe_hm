@@ -20,7 +20,7 @@ const DogCards = (props) => {
 
   // 필터링된 데이터 세팅
   useEffect(() => {
-    if (filterData.breeds) {
+    if (filterData?.breeds) {
       const filteredData = [
         {
           name: filterData.breeds[0]?.name,
@@ -85,11 +85,17 @@ const DogCards = (props) => {
   );
 };
 
+// const DogCardS = styled.div`
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: space-between;
+//   margin-top: 20px;
+// `;
 const DogCardS = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 250px 170px;
+  grid-template-rows: 140px 200px;
+  grid-gap: 5px;
 `;
 
 export default DogCards;
