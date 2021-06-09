@@ -44,6 +44,7 @@ const DogCards = (props) => {
 
   // 스크롤시 강아지데이터 호출
   const HandleMoreDogsData = () => {
+    console.log('s');
     const query = {
       page: page,
       limit: 50
@@ -85,17 +86,11 @@ const DogCards = (props) => {
   );
 };
 
-// const DogCardS = styled.div`
-//   display: flex;
-//   flex-flow: row wrap;
-//   justify-content: space-between;
-//   margin-top: 20px;
-// `;
 const DogCardS = styled.div`
-  display: grid;
-  grid-template-columns: 250px 170px;
-  grid-template-rows: 140px 200px;
-  grid-gap: 5px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-top: 20px;
 `;
 
 export default DogCards;

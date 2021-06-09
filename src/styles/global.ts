@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 /**
  * reset 또는 공통적으로 사용하는 css
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     background-color: #ffffff;
-    margin:40px 100px;
+    margin:70px auto;
     width: 990px;
   }
   a {
@@ -23,20 +23,28 @@ const GlobalStyle = createGlobalStyle`
   }
   img {
     display: block;
-    width: 180px;
-    height: 180px;
+    width: 185px;
+    height: 185px;
     border-radius: 5%
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 990px) {
     body {
-      font-size: 17px;
+      font-size: 18px;
+    }
+    img{
+      width:100px;
+      height: 100px;
     }
   }
 
   @media only screen and (max-width: 576px) {
     body {
-      font-size: 14px;
+      font-size: 15px;
+    }
+    img{
+      width: 50px;
+      height: 50px;
     }
   }
 `;
