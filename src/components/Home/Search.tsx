@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function Search() {
   const imageTypes = ['gif', 'jpg,png', 'gif,jpg,png'];
-  const breeds = ['불독', '미니핀', '비글'];
+  const [searchValue, setSearchValue] = useState('');
+
+  const onSearchValue = (target) => {
+    console.log('🚀 ~ target', target);
+    setSearchValue(target);
+  };
+
   return (
     <SearchS>
       <select>
@@ -16,16 +22,12 @@ function Search() {
           );
         })}
       </select>
-      <select>
-        <option value="">breed</option>
-        {breeds.map((data, index) => {
-          return (
-            <option key={index} value={data}>
-              {data}
-            </option>
-          );
-        })}
-      </select>
+      <input
+        type="text"
+        placeholder="search breed"
+        value={searchValue}
+        onChange={(e) => onSearchValue(e.target.value)}
+      />
     </SearchS>
   );
 }
