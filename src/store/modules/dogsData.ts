@@ -7,6 +7,8 @@ export const GET_DOGS_DATA_SUCCESS = 'GET_DOGS_DATA_SUCCESS';
 export const MORE_DOGS_DATA = 'MORE_DOGS_DATA';
 export const SORTED_DOGS_DATA = 'SORTED_DOGS_DATA';
 export const SORTED_DOGS_DATA_SUCCESS = 'SORTED_DOGS_DATA_SUCCESS';
+export const FILTER_DOGS_DATA = 'FILTER_DOGS_DATA';
+export const FILTER_DOGS_DATA_SUCCESS = 'FILTER_DOGS_DATA_SUCCESS';
 
 // Action 생성자
 export const getDogsData = createAction(GET_DOGS_DATA, function prepare(queryData) {
@@ -44,10 +46,21 @@ export const sortedDogsData = createAction(SORTED_DOGS_DATA, function prepare(qu
 
 export const sortedDogsDataSuccess = createAction(SORTED_DOGS_DATA_SUCCESS);
 
+export const filterDogData = createAction(FILTER_DOGS_DATA, function prepare(queryData) {
+  return {
+    payload: {
+      queryData
+    }
+  };
+});
+
+export const filterDogsDataSuccess = createAction(FILTER_DOGS_DATA_SUCCESS);
+
 // 초기값
 const initialState: DogsDataType = {
   isLoading: false,
-  dogsData: []
+  dogsData: [],
+  filterData: []
 };
 
 // Reducer
@@ -64,6 +77,13 @@ const reducer = createReducer(initialState, {
   },
   [sortedDogsDataSuccess.type]: (state, action) => {
     (state.dogsData = action.payload.data), (state.isLoading = false);
+  },
+  [sortedDogsDataSuccess.type]: (state, action) => {
+    state.dogsData = action.payload.data;
+  },
+  [filterDogsDataSuccess.type]: (state, action) => {
+    console.log('🚀 ~ action.payload.data[0]', action.payload.data[0]);
+    state.filterData = action.payload.data[0];
   }
 });
 

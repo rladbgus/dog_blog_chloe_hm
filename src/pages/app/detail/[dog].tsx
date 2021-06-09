@@ -1,7 +1,11 @@
 import Detail from 'components/Detail';
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { END } from 'redux-saga';
 import { searchDogDataApi } from 'store/api';
+import { getDogsData } from 'store/modules/dogsData';
+import { wrapper } from 'store/store';
 
 function DogDetail() {
   const router = useRouter();
@@ -28,5 +32,18 @@ function DogDetail() {
     </>
   );
 }
+
+// 상세페이지에서 새로고침시 store날아갔을시 dispatch
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    store.dispatch(getDogsData());
+    store.dispatch(END);
+    await store.sagaTask.toPromise();
+
+    return {
+      props: {}
+    };
+  }
+);
 
 export default DogDetail;

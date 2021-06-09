@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { call, fork, put, takeEvery } from 'redux-saga/effects';
-import { getDogsDataApi } from 'store/api';
+import { filterDogDataApi, getDogsDataApi } from 'store/api';
 import * as actions from 'store/modules/dogsData';
 
 // 강아지 데이터 호출
@@ -39,10 +39,23 @@ function* getSortedDogsData(query) {
   }
 }
 
+// 필터링된 강아지 데이터 호출
+function* filterDogData(query) {
+  const queryData = query.payload.queryData;
+
+  try {
+    const response: AxiosResponse = yield call(filterDogDataApi.bind(null, queryData));
+    yield put(actions.filterDogsDataSuccess(response));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 function* watchGetDogsData() {
   yield takeEvery(actions.GET_DOGS_DATA, getDogsData);
   yield takeEvery(actions.MORE_DOGS_DATA, moreDogsData);
   yield takeEvery(actions.SORTED_DOGS_DATA, getSortedDogsData);
+  yield takeEvery(actions.FILTER_DOGS_DATA, filterDogData);
 }
 
 export default function* watchSaga() {
