@@ -7,15 +7,33 @@ import { moreDogsData } from 'store/modules/dogsData';
 import styled from 'styled-components';
 
 const DogCards = (props) => {
-  const storeDogsData = useSelector((state) => state.dogsData);
-  const dogsData = storeDogsData.dogsData;
   const dispatch = useDispatch();
+  const storeDogsData = useSelector((state) => state.dogsData);
+  const filterData = storeDogsData.filterData;
 
   const { useDetailPage } = props;
+  const [dogsData, setDogsData] = useState(storeDogsData.dogsData);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
 
   // const currentRef = useRef([]);
+
+  // 필터링된 데이터 세팅
+  useEffect(() => {
+    if (filterData.breeds) {
+      const filteredData = [
+        {
+          name: filterData.breeds[0]?.name,
+          life_span: filterData.breeds[0]?.life_span,
+          id: filterData.id,
+          image: {
+            url: filterData.url
+          }
+        }
+      ];
+      setDogsData(filteredData);
+    }
+  }, [filterData]);
 
   // 상세페이지 인피니티스크롤 사용 X
   useEffect(() => {
