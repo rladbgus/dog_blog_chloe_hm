@@ -1,24 +1,36 @@
-import React from 'react';
+// import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterDogData } from 'store/modules/dogsData';
 import styled from 'styled-components';
 
 function Search() {
+  const dispatch = useDispatch();
   const imageTypes = ['gif', 'jpg,png', 'gif,jpg,png'];
-  const breeds = ['불독', '미니핀', '비글'];
+  const [searchBreed, setSearchBreed] = useState('');
+
+  const onSearchBreed = (value) => {
+    // breed_ids
+    setSearchBreed(value);
+    //엔터나 검색버튼 눌렀을시 dispatch
+  };
+
+  const onSearchImageType = (value) => {
+    const query = { mime_types: value };
+    dispatch(filterDogData(query));
+  };
+
   return (
     <SearchS>
-      <select>
+      <input
+        type="text"
+        placeholder="search breed"
+        value={searchBreed}
+        onChange={(e) => onSearchBreed(e.target.value)}
+      />
+      <select onChange={(e) => onSearchImageType(e.target.value)}>
         <option value="">image type</option>
         {imageTypes.map((data, index) => {
-          return (
-            <option key={index} value={data}>
-              {data}
-            </option>
-          );
-        })}
-      </select>
-      <select>
-        <option value="">breed</option>
-        {breeds.map((data, index) => {
           return (
             <option key={index} value={data}>
               {data}

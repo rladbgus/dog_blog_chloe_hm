@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import Image from 'components/Detail/Image';
-import styled from 'styled-components';
 import Information from 'components/Detail/Information';
 import SimilarList from 'components/Detail/SimilarList';
+import React from 'react';
 
 function Detail({ dogData }) {
   const dogImageUrl = dogData.url;

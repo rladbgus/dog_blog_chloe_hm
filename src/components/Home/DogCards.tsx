@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import DogCard from 'components/Home/DogCard';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useDispatch, useSelector } from 'react-redux';
 import { moreDogsData } from 'store/modules/dogsData';
+import styled from 'styled-components';
 
-const DogCards = () => {
+const DogCards = (props) => {
   const storeDogsData = useSelector((state) => state.dogsData);
   const dogsData = storeDogsData.dogsData;
   const dispatch = useDispatch();
 
+  const { useDetailPage } = props;
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
+
+  // const currentRef = useRef([]);
+
+  // 상세페이지 인피니티스크롤 사용 X
+  useEffect(() => {
+    if (useDetailPage) {
+      setHasMore(false);
+    }
+  }, []);
 
   // 스크롤시 강아지데이터 호출
   const HandleMoreDogsData = () => {
@@ -36,7 +46,11 @@ const DogCards = () => {
       <DogCardS>
         {dogsData.map((dogData: any) => {
           return (
-            <Link href={`/app/detail/${dogData.reference_image_id}`} key={dogData.id}>
+            <Link
+              href={`/app/detail/[id]`}
+              as={`/app/detail/${dogData.reference_image_id}`}
+              key={dogData.id}>
+              {/* <a ref={currentRef}> */}
               <a>
                 <DogCard
                   key={dogData.id}

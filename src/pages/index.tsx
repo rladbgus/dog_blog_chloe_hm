@@ -1,10 +1,10 @@
-import React from 'react';
-import Head from 'next/head';
 import Home from 'components/Home';
-import { getDogsData } from 'store/modules/dogsData';
 import { GetServerSideProps } from 'next';
-import { wrapper } from 'store/store';
+import Head from 'next/head';
+import React from 'react';
 import { END } from 'redux-saga';
+import { getDogsData } from 'store/modules/dogsData';
+import { wrapper } from 'store/store';
 
 function HomePage() {
   return (

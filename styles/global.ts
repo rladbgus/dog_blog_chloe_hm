@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 /**
  * reset 또는 공통적으로 사용하는 css
