@@ -19,7 +19,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const res = await getBookmarkListApi(query);
 
     if (res.status === 200) {
-      console.log('🚀 ~ res', res);
       const bookmarkList = res.data;
       return {
         props: { bookmarkList }

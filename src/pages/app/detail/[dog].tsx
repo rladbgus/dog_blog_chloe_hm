@@ -11,6 +11,7 @@ function DetailPage() {
   const router = useRouter();
   const query = router.query.dog;
   const [dogData, setDogData] = useState([]);
+  console.log('🚀 ~ dogData', dogData);
 
   // 해당 강아지 데이터 호출
   useEffect(() => {

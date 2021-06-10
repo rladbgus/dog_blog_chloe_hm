@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 const Likes = (props) => {
   const { likeList } = props;
-  console.log('🚀 ~ likeList', likeList);
+  // console.log('🚀 ~ likeList', likeList);
   return (
     <DogCardS>
       좋아요 목록
       {likeList.map((likeDog: any) => {
-        console.log('🚀 ~ likeDog', likeDog);
         <div>{likeDog.id}</div>;
         {
           // <DogCard
