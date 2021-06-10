@@ -7,7 +7,7 @@ import { searchDogDataApi } from 'store/api';
 import { getDogsData } from 'store/modules/dogsData';
 import { wrapper } from 'store/store';
 
-function DogDetail() {
+function DetailPage() {
   const router = useRouter();
   const query = router.query.dog;
   const [dogData, setDogData] = useState([]);
@@ -46,4 +46,4 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   }
 );
 
-export default DogDetail;
+export default DetailPage;

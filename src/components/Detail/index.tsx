@@ -4,11 +4,10 @@ import SimilarList from 'components/Detail/SimilarList';
 import React from 'react';
 
 function Detail({ dogData }) {
-  const dogImageUrl = dogData.url;
   const dogDetail = dogData.breeds && dogData.breeds[0];
   return (
     <>
-      <Image dogImageUrl={dogImageUrl} />
+      <Image dogData={dogData} />
       <Information dogData={dogDetail} />
       <SimilarList />
     </>
