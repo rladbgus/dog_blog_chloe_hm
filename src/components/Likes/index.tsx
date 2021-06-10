@@ -6,17 +6,17 @@ const Likes = (props) => {
   console.log('🚀 ~ likeList', likeList);
   return (
     <DogCardS>
-      즐겨찾기 목록
+      좋아요 목록
       {likeList.map((likeDog: any) => {
         console.log('🚀 ~ likeDog', likeDog);
         <div>{likeDog.id}</div>;
         {
-          /* <DogCard
-            key={likeDog.id}
-            // name={likeDog.name}
-            // life_span={likeDog.life_span}
-            imageUrl={likeDog.image.url}
-          /> */
+          // <DogCard
+          //   key={likeDog.id}
+          //   // name={likeDog.name}
+          //   // life_span={likeDog.life_span}
+          //   imageUrl={likeDog.image.url}
+          // />;
         }
       })}
     </DogCardS>

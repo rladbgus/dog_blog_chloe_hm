@@ -1,7 +1,7 @@
 import Likes from 'components/Likes';
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { getLikeList } from 'store/api';
+import { getLikeListApi } from 'store/api';
 
 const LikesPage = (props) => {
   const { likeList } = props;
@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const query = { sub_id: 'chloe' };
 
   try {
-    const res = await getLikeList(query);
+    const res = await getLikeListApi(query);
 
     if (res.status === 200) {
       const likeList = res.data;

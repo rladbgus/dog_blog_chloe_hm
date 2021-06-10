@@ -16,7 +16,6 @@ const Image = ({ dogData }) => {
     };
     postLikeApi(query)
       .then((res) => {
-        console.log('🚀 ~ res', res);
         if (res.status === 200) {
           setLikedId(res.data.id);
           setIsLike(!isLike);

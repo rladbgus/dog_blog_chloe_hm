@@ -12,7 +12,7 @@ const Profile = () => {
         </a>
       </Link>
 
-      <Link href={'/app/bookmarks'}>
+      <Link href={'/app/bookmark'}>
         <a>
           <button>즐겨찾기 목록</button>
         </a>
