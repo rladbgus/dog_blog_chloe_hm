@@ -7,10 +7,11 @@ import { searchDogDataApi } from 'store/api';
 import { getDogsData } from 'store/modules/dogsData';
 import { wrapper } from 'store/store';
 
-function DogDetail() {
+function DetailPage() {
   const router = useRouter();
   const query = router.query.dog;
   const [dogData, setDogData] = useState([]);
+  console.log('🚀 ~ dogData', dogData);
 
   // 해당 강아지 데이터 호출
   useEffect(() => {
@@ -46,4 +47,4 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   }
 );
 
-export default DogDetail;
+export default DetailPage;
