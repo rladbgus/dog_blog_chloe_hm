@@ -32,12 +32,34 @@ export function filterDogDataApi(query) {
   return axios.get(`${DOG_DATA_API}/images/search?${queryData}`);
 }
 
-// 좋아오 기능
+// 좋아요
 export function postLikeApi(query) {
+  return axios.post(`${DOG_DATA_API}/votes`, query, headers);
+}
+
+// 좋아요 취소
+export function deleteLikeApi(query) {
+  return axios.delete(`${DOG_DATA_API}/votes/${query}`, headers);
+}
+
+// 좋이요한 목록 호출
+export function getLikeListApi(query) {
+  const queryData = querystring.stringify(query);
+  return axios.get(`${DOG_DATA_API}/votes?${queryData}`, headers);
+}
+
+// 즐겨찾기
+export function postBookmarkApi(query) {
   return axios.post(`${DOG_DATA_API}/favourites`, query, headers);
 }
 
-// 좋아요한 목록 호출
-export function getLikeList() {
-  return axios.get(`${DOG_DATA_API}`);
+// 즐겨찾기 취소
+export function deleteBookmarkApi(query) {
+  return axios.delete(`${DOG_DATA_API}/favourites/${query}`, headers);
+}
+
+// 즐겨찾기한 목록 호출
+export function getBookmarkListApi(query) {
+  const queryData = querystring.stringify(query);
+  return axios.get(`${DOG_DATA_API}/favourites?${queryData}`, headers);
 }

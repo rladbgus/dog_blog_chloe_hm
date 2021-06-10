@@ -1,28 +1,35 @@
 import Likes from 'components/Likes';
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { END } from 'redux-saga';
 import { getLikeList } from 'store/api';
-import { wrapper } from 'store/store';
 
-const LikesPage = () => {
+const LikesPage = (props) => {
+  const { likeList } = props;
   return (
     <>
-      <Likes />
+      <Likes likeList={likeList} />
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-  async ({ store }) => {
-    store.dispatch(getLikeList());
-    store.dispatch(END);
-    await store.sagaTask.toPromise();
+export const getServerSideProps: GetServerSideProps = async () => {
+  const query = { sub_id: 'chloe' };
 
-    return {
-      props: {}
-    };
+  try {
+    const res = await getLikeList(query);
+
+    if (res.status === 200) {
+      const likeList = res.data;
+      return {
+        props: { likeList }
+      };
+    }
+  } catch (err) {
+    console.error(err);
   }
-);
+  return {
+    props: {}
+  };
+};
 
 export default LikesPage;
