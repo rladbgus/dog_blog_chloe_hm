@@ -1,6 +1,8 @@
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import { deleteLikeApi, postLikeApi } from 'store/api';
 import styled from 'styled-components';
+const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 const Image = ({ dogData }) => {
   const [isLike, setIsLike] = useState(false);
@@ -8,6 +10,15 @@ const Image = ({ dogData }) => {
   const heartImageUrl = '/icons/heart.png';
   const unheartImageUrl = '/icons/unheart.png';
 
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+
+  const handleImageViewer = () => {
+    setIsViewerOpen(!isViewerOpen);
+  };
+
+  const images = [{ src: dogData.url }];
+
+  // 좋아요 기능 호출
   const onLikeApi = () => {
     const query = {
       image_id: dogData.id,
@@ -25,6 +36,7 @@ const Image = ({ dogData }) => {
       .catch((err) => console.error(err));
   };
 
+  // 싫어요 기능 호출
   const onUnLikeApi = () => {
     deleteLikeApi(likedId)
       .then((res) => {
@@ -47,11 +59,20 @@ const Image = ({ dogData }) => {
 
   return (
     <ImgSection>
-      <img src={`${dogData.url}`} alt="강아지 이미지" />
+      <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />
       <img src={heartImageUrl} onClick={() => handleHeart('like')} className="heart" />
+
+      {/* 좋아요 기능 */}
       {isLike && (
         <img src={unheartImageUrl} onClick={() => handleHeart('unLike')} className="heart" />
       )}
+
+      {/* 이미지 뷰어 */}
+      <ReactViewer
+        visible={isViewerOpen}
+        onClose={() => handleImageViewer()}
+        images={[{ src: dogData.url }]}
+      />
     </ImgSection>
   );
 };
