@@ -69,14 +69,11 @@ const reducer = createReducer(initialState, {
     state.isLoading = true;
   },
   [getDogsDataSuccess.type]: (state, action) => {
-    (state.dogsData = state.dogsData.concat(action.payload.DogsData.data)),
-      (state.isLoading = false);
+    console.log('🚀 ~ action', action);
+    state.dogsData = state.dogsData.concat(action.payload.DogsData.data);
   },
   [sortedDogsData.type]: (state) => {
     state.isLoading = true;
-  },
-  [sortedDogsDataSuccess.type]: (state, action) => {
-    (state.dogsData = action.payload.data), (state.isLoading = false);
   },
   [sortedDogsDataSuccess.type]: (state, action) => {
     state.dogsData = action.payload.data;
