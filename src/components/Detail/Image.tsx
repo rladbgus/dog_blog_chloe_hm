@@ -7,16 +7,14 @@ const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 const Image = ({ dogData }) => {
   const [isLike, setIsLike] = useState(false);
   const [likedId, setLikedId] = useState('');
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
   const heartImageUrl = '/icons/heart.png';
   const unheartImageUrl = '/icons/unheart.png';
-
-  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const images = [{ src: dogData.url }];
 
   const handleImageViewer = () => {
     setIsViewerOpen(!isViewerOpen);
   };
-
-  const images = [{ src: dogData.url }];
 
   // 좋아요 기능 호출
   const onLikeApi = () => {
@@ -61,18 +59,12 @@ const Image = ({ dogData }) => {
     <ImgSection>
       <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />
       <img src={heartImageUrl} onClick={() => handleHeart('like')} className="heart" />
-
       {/* 좋아요 기능 */}
       {isLike && (
         <img src={unheartImageUrl} onClick={() => handleHeart('unLike')} className="heart" />
       )}
-
       {/* 이미지 뷰어 */}
-      <ReactViewer
-        visible={isViewerOpen}
-        onClose={() => handleImageViewer()}
-        images={[{ src: dogData.url }]}
-      />
+      <ReactViewer visible={isViewerOpen} onClose={() => handleImageViewer()} images={images} />
     </ImgSection>
   );
 };

@@ -12,8 +12,8 @@ function ProfilePage(props) {
       <Head>
         <title>Profile</title>
       </Head>
-      <Profile />
-      <Likes likeList={likeList} />
+      <Profile likeList={likeList} />
+      <Likes />
     </>
   );
 }

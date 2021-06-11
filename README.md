@@ -173,3 +173,10 @@ npm install dotenv-webpack
 :label: [HTML]
 :nail_care: [CSS]
 :guitar: [기타]
+
+## 동적 코드 분할 Dynamic Imports
+
+대부분의 코드들은 사용자가 보는 첫 페이지에는 필요하지 않다.
+첫 페이지 진입시에 필요한 최소한의 코드만 다운 받고, 사용자가 특정 페이지나 위치에 도달할 때마다 코드를 로드 한다면, 첫 페이지의 초기 성능을 올릴 수 있다.
+이런 방식을 lazy-load 게으른 로딩이라고 한다.
+Dynamic Import 를 사용하면, 런타임시에 필요한 module 을 import 할 수 있다.
