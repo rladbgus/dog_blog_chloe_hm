@@ -34,7 +34,6 @@ const BookMarks = (props) => {
               <a>
                 <DogCard
                   key={dogData.id}
-                  name={dogData.name}
                   life_span={dogData.created_at}
                   imageUrl={dogData.image.url}
                 />
