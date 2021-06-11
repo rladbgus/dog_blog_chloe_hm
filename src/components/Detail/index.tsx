@@ -4,7 +4,6 @@ import SimilarList from 'components/Detail/SimilarList';
 import React from 'react';
 
 function Detail({ dogData }) {
-  console.log('🚀 ~ dogData', dogData);
   const dogDetail = dogData.breeds && dogData.breeds[0];
   return (
     <>

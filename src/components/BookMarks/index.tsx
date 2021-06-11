@@ -6,22 +6,6 @@ import styled from 'styled-components';
 const BookMarks = (props) => {
   const { bookmarkList } = props;
 
-  // const [aaa, sss] = useState([]);
-
-  // 각 강아지의 세부정보 조회 및 저장
-  // const getDetailData = (dogData) => {
-  //   searchDogDataApi(dogData.image_id)
-  //     .then((res) => {
-  //       return res.data.breeds[0];
-  //       // console.log('🚀 ~ data', data);
-  //       // sss(...aaa);
-  //       // console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // };
-
   return (
     <>
       Bookmark <br />
@@ -34,7 +18,6 @@ const BookMarks = (props) => {
               <a>
                 <DogCard
                   key={dogData.id}
-                  name={dogData.name}
                   life_span={dogData.created_at}
                   imageUrl={dogData.image.url}
                 />

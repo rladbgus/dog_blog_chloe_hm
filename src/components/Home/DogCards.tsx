@@ -8,15 +8,20 @@ import styled from 'styled-components';
 
 const DogCards = (props) => {
   const dispatch = useDispatch();
-  const storeDogsData = useSelector((state) => state.dogsData);
-  const filterData = storeDogsData.filterData;
+  const storeData = useSelector((state) => state.dogsData);
+  const filterData = storeData.filterData;
+  const storeDogsData = storeData.dogsData;
 
   const { useDetailPage } = props;
-  const [dogsData, setDogsData] = useState(storeDogsData.dogsData);
+  const [dogsData, setDogsData] = useState(storeDogsData);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
 
   // const currentRef = useRef([]);
+
+  useEffect(() => {
+    setDogsData(storeData.dogsData);
+  }, [storeDogsData]);
 
   // 필터링된 데이터 세팅
   useEffect(() => {
