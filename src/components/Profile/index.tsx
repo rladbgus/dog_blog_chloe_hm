@@ -1,4 +1,4 @@
-import ModalLayout from 'common/modal';
+import ModalLayout from 'common/modal/modal';
 import Likes from 'components/Profile/LikeList';
 import Link from 'next/link';
 import React from 'react';

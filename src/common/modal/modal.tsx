@@ -1,4 +1,4 @@
-import { modalStyles } from 'common/modal.style';
+import { modalStyles } from 'common/modal/modal.style';
 import React, { ReactNode, useState } from 'react';
 import Modal from 'react-modal';
 
