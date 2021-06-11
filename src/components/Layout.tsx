@@ -20,7 +20,7 @@ const Layout = ({ children }: Props) => (
 );
 
 const Section = styled.section`
-  margin-top: 90px;
+  margin-top: 100px;
 `;
 
 export default Layout;

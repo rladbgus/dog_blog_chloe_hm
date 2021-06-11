@@ -49,6 +49,19 @@ function Search() {
   );
 }
 
-const SearchS = styled.div``;
+const SearchS = styled.div`
+  margin-top: 20px;
+  input,
+  select {
+    font-size: 15px;
+    width: 180px;
+    height: 35px;
+    border-radius: 3px;
+    padding: 0 10px;
+    border: 1px solid #c9cdd2;
+    color: #454c53;
+    margin-right: 10px;
+  }
+`;
 
 export default Search;

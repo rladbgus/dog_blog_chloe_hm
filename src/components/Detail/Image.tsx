@@ -5,11 +5,12 @@ import styled from 'styled-components';
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 const Image = ({ dogData }) => {
+  console.log('🚀 ~ dogData', dogData);
   const [isLike, setIsLike] = useState(false);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const heartImageUrl = '/icons/heart.png';
-  const unheartImageUrl = '/icons/unheart.png';
+  const likeImageUrl = '/icons/like.png';
+  const dislikeImageUrl = '/icons/dislike.png';
   const images = [{ src: dogData.url }];
 
   const handleImageViewer = () => {
@@ -28,7 +29,6 @@ const Image = ({ dogData }) => {
         if (res.status === 200) {
           setLikedId(res.data.id);
           setIsLike(!isLike);
-          return alert('좋아요 완료!');
         }
       })
       .catch((err) => console.error(err));
@@ -40,7 +40,6 @@ const Image = ({ dogData }) => {
       .then((res) => {
         if (res.status === 200) {
           setIsLike(!isLike);
-          return alert('싫어요 완료!');
         }
       })
       .catch((err) => {
@@ -58,11 +57,13 @@ const Image = ({ dogData }) => {
   return (
     <ImgSection>
       <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />
-      <img src={heartImageUrl} onClick={() => handleHeart('like')} className="heart" />
-      {/* 좋아요 기능 */}
-      {isLike && (
-        <img src={unheartImageUrl} onClick={() => handleHeart('unLike')} className="heart" />
-      )}
+      <LikeSection>
+        <img src={likeImageUrl} onClick={() => handleHeart('like')} className="like" />
+        {/* 좋아요 기능 */}
+        {isLike && (
+          <img src={dislikeImageUrl} onClick={() => handleHeart('unLike')} className="like" />
+        )}
+      </LikeSection>
       {/* 이미지 뷰어 */}
       <ReactViewer visible={isViewerOpen} onClose={() => handleImageViewer()} images={images} />
     </ImgSection>
@@ -70,9 +71,19 @@ const Image = ({ dogData }) => {
 };
 
 const ImgSection = styled.div`
-  .heart {
-    width: 23px;
-    height: 23px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  .like {
+    width: 30px;
+    height: 30px;
+  }
+`;
+const LikeSection = styled.div`
+  margin-top: 10px;
+  .img {
+    display: inline-flex;
   }
 `;
 

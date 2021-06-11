@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 const Likes = (props) => {
   const { likeList } = props;
+  console.log('🚀 ~ likeList', likeList);
   const [likeDogs, setLikeDogs] = useState([]);
-  console.log('🚀 ~ likeDogs', likeDogs);
 
   // 강아지의 세부정보 조회 및 저장
   const getDetailData = () => {
@@ -22,6 +22,7 @@ const Likes = (props) => {
         });
     });
   };
+  console.log(likeDogs);
 
   // likeDogs 추가시 무한루프;;
   useEffect(() => {
@@ -32,12 +33,15 @@ const Likes = (props) => {
     <DogCardS>
       {likeDogs.map((likeDog: any) => {
         return (
-          <DogCard
-            key={likeDog.breeds[0].id}
-            name={likeDog.breeds[0].name}
-            life_span={likeDog.breeds[0].life_span}
-            imageUrl={likeDog.url}
-          />
+          <>
+            <DogCard
+              key={likeDog.breeds[0].id}
+              name={likeDog.breeds[0].name}
+              life_span={likeDog.breeds[0].life_span}
+              imageUrl={likeDog.url}
+              // isLikeList
+            />
+          </>
         );
       })}
     </DogCardS>
