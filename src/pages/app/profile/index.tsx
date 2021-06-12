@@ -3,7 +3,7 @@ import Likes from 'components/Profile/LikeList';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { getLikeListApi } from 'store/api';
+import { getLikeListApi } from 'api/api';
 
 function ProfilePage(props) {
   const { likeList } = props;

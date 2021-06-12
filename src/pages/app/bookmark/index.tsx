@@ -1,7 +1,7 @@
 import Bookmarks from 'components/Bookmarks';
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { getBookmarkListApi } from 'store/api';
+import { getBookmarkListApi } from 'api/api';
 
 const BookmarksPage = (props) => {
   const { bookmarkList } = props;
