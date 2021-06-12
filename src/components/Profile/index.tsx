@@ -12,6 +12,8 @@ const Profile = (props) => {
   return (
     <>
       <Title>내 정보 section</Title>
+      <div>User Agent: </div>
+      <div>IP: </div>
 
       {/* 좋아요 목록 모달 */}
       <ModalLayout>
