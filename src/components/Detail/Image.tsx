@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-import { deleteLikeApi, postLikeApi } from 'store/api';
+import { deleteLikeApi, postLikeApi } from 'api/api';
 import styled from 'styled-components';
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 

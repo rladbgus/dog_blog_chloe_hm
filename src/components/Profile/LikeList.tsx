@@ -1,6 +1,6 @@
 import DogCard from 'components/Home/DogCard';
 import React, { useEffect, useState } from 'react';
-import { searchDogDataApi } from 'store/api';
+import { searchDogDataApi } from 'api/api';
 import styled from 'styled-components';
 
 const Likes = (props) => {

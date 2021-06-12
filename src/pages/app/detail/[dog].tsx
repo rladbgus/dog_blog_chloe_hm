@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { END } from 'redux-saga';
-import { searchDogDataApi } from 'store/api';
+import { searchDogDataApi } from 'api/api';
 import { getDogsData } from 'store/modules/dogsData';
 import { wrapper } from 'store/store';
 
