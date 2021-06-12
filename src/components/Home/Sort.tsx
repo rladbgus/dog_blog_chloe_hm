@@ -1,12 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sortedDogsData } from 'store/modules/dogsData';
-import styled from 'styled-components';
 
 function Sort() {
   const dispatch = useDispatch();
 
-  const handleSort = (type) => {
+  const handleSort = (type: string) => {
     let queryData = {
       limit: 50,
       page: 1,
@@ -17,29 +16,10 @@ function Sort() {
 
   return (
     <>
-      <AscButton onClick={() => handleSort('Asc')}>asc</AscButton>
-      <DescButton onClick={() => handleSort('Desc')}>desc</DescButton>
+      <button onClick={() => handleSort('Asc')}>asc</button>
+      <button onClick={() => handleSort('Desc')}>desc</button>
     </>
   );
 }
-
-const AscButton = styled.button`
-  padding: 6px 12px;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #74b9ff;
-  :hover {
-    background-color: #99c6f5;
-  }
-`;
-
-const DescButton = styled(AscButton)`
-  background-color: #ecc65b;
-  :hover {
-    background-color: #f5d787;
-  }
-`;
 
 export default Sort;

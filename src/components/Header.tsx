@@ -15,10 +15,10 @@ const Header = () => {
       </Title>
       <Section>
         <Link href="/app/register">
-          <button>register</button>
+          <RegisterButton>register</RegisterButton>
         </Link>
         <Link href="/app/profile">
-          <button>profile</button>
+          <ProfileButton>profile</ProfileButton>
         </Link>
       </Section>
     </>
@@ -40,6 +40,28 @@ const Title = styled.div`
 const Section = styled.div`
   display: inline;
   float: right;
+`;
+
+const RegisterButton = styled.button`
+  width: 95px;
+  height: 35px;
+  padding: 6px 12px;
+  color: white;
+  font-size: 17px;
+  border: none;
+  border-radius: 4px;
+  background-color: #74b9ff;
+  margin-right: 3px;
+  :hover {
+    opacity: 0.7;
+  }
+`;
+
+const ProfileButton = styled(RegisterButton)`
+  background-color: #ecc65b;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 export default Header;
