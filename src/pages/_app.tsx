@@ -1,13 +1,31 @@
 import Layout from 'components/Layout';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React from 'react';
+import { useRouter } from 'next/router';
+import Loading from 'pages/Loading';
+import React, { useState } from 'react';
 import { wrapper } from 'store/store';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'styles/global';
 import theme from 'styles/them';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  // 로딩기능
+  React.useEffect(() => {
+    const handleStart = () => {
+      setIsLoading(true);
+    };
+    const handleComplete = () => {
+      setIsLoading(false);
+    };
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
+  }, [router]);
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -16,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/public/favicon.ico" key="shortcutIcon" />s
       </Head>
       <Layout>
-        <Component {...pageProps} />
+        {isLoading ? <Loading /> : <Component {...pageProps} />}
         <GlobalStyle />
       </Layout>
     </ThemeProvider>

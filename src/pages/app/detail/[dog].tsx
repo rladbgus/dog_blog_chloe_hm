@@ -2,7 +2,6 @@ import { searchDogDataApi } from 'api/api';
 import Detail from 'components/Detail';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import Loading from 'pages/Loading';
 import React, { useEffect, useState } from 'react';
 import { END } from 'redux-saga';
 import { getDogsData } from 'store/modules/dogsData';
@@ -12,7 +11,6 @@ function DetailPage() {
   const router = useRouter();
   const query = router.query.dog;
   const [dogData, setDogData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   // 해당 강아지 데이터 호출
   useEffect(() => {
@@ -21,7 +19,6 @@ function DetailPage() {
       .then((res) => {
         if (res.status === 200) {
           setDogData(res.data);
-          setIsLoading(false);
         }
       })
       .catch((err) => {
@@ -29,10 +26,10 @@ function DetailPage() {
       });
   }, [router.isReady]);
 
-  return <>{isLoading ? <Loading /> : <Detail dogData={dogData} />} </>;
+  return <Detail dogData={dogData} />;
 }
 
-// 상세페이지에서 새로고침시 store날아갔을시 dispatch
+// 상세페이지에서 새로고침시 store날아갔을시 새로 dispatch
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     store.dispatch(getDogsData());
