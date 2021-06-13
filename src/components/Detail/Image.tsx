@@ -26,7 +26,6 @@ const Image = ({ dogData }) => {
     postLikeApi(query)
       .then((res) => {
         if (res.status === 200) {
-          console.log('좋아요', isLike);
           setLikedId(res.data.id);
           setIsLike(false);
         }
@@ -39,8 +38,6 @@ const Image = ({ dogData }) => {
     deleteLikeApi(likedId)
       .then((res) => {
         if (res.status === 200) {
-          console.log('싫어요', isLike);
-
           setIsLike(true);
         }
       })
@@ -56,7 +53,6 @@ const Image = ({ dogData }) => {
     onUnLikeApi();
   };
 
-  console.log(' 🚀 ~ isLike', isLike);
   return (
     <ImgSection>
       <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />

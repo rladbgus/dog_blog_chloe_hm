@@ -28,8 +28,7 @@ const Likes = (props) => {
         return (
           <DogCard
             key={likeDogDetail.id}
-            name={likeDogDetail.name}
-            life_span={likeDogDetail.life_span}
+            dogData={likeDogDetail}
             imageUrl={likeDog.url}
             // isLikeList
           />

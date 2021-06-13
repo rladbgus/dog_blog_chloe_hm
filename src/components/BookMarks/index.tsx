@@ -16,11 +16,7 @@ const BookMarks = (props) => {
           return (
             <Link href={`/app/detail/[id]`} as={`/app/detail/${dogData.image_id}`} key={dogData.id}>
               <a>
-                <DogCard
-                  key={dogData.id}
-                  life_span={dogData.created_at}
-                  imageUrl={dogData.image.url}
-                />
+                <DogCard dogData={dogData} imageUrl={dogData.image.url} />
               </a>
             </Link>
           );
