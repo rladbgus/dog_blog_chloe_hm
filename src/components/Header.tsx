@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
+import * as S from 'styles/styled';
+import them from 'styles/them';
 
 const Header = () => {
   return (
@@ -15,10 +17,10 @@ const Header = () => {
       </Title>
       <Section>
         <Link href="/app/register">
-          <RegisterButton>register</RegisterButton>
+          <S.Button color={them.color.blue}>register</S.Button>
         </Link>
         <Link href="/app/profile">
-          <ProfileButton>profile</ProfileButton>
+          <S.Button color={them.color.yellow}>profile</S.Button>
         </Link>
       </Section>
     </>

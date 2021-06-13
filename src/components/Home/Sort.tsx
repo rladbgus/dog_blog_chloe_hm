@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sortedDogsData } from 'store/modules/dogsData';
+import * as S from 'styles/styled';
+import them from 'styles/them';
 
 function Sort() {
   const dispatch = useDispatch();
@@ -16,8 +18,12 @@ function Sort() {
 
   return (
     <>
-      <button onClick={() => handleSort('Asc')}>asc</button>
-      <button onClick={() => handleSort('Desc')}>desc</button>
+      <S.Button color={them.color.yellowGreen} onClick={() => handleSort('Asc')}>
+        asc
+      </S.Button>
+      <S.Button color={them.color.yellowGreen} onClick={() => handleSort('Desc')}>
+        desc
+      </S.Button>
     </>
   );
 }

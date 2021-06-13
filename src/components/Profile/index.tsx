@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
+import * as S from 'styles/styled';
+import them from 'styles/them';
 
 const Profile = (props) => {
   Modal.setAppElement('*');
@@ -24,7 +26,7 @@ const Profile = (props) => {
       {/* 즐겨찾기 목록 라우팅 */}
       <Link href={'/app/bookmark'}>
         <a>
-          <button>Bookmark List</button>
+          <S.Button color={them.color.yellowGreen}>Bookmark</S.Button>
         </a>
       </Link>
     </>

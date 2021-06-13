@@ -18,9 +18,6 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-  input, button {
-
-  }
   img {
     display: block;
     width: 185px;

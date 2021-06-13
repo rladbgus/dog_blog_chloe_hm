@@ -1,11 +1,10 @@
+import { deleteLikeApi, postLikeApi } from 'api/api';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-import { deleteLikeApi, postLikeApi } from 'api/api';
 import styled from 'styled-components';
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 const Image = ({ dogData }) => {
-  console.log('🚀 ~ dogData', dogData);
   const [isLike, setIsLike] = useState(false);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
