@@ -13,13 +13,15 @@ const Profile = (props) => {
 
   return (
     <>
-      <Title>내 정보 section</Title>
+      <div>내 정보 section</div>
       <div>User Agent: </div>
       <div>IP: </div>
 
       {/* 좋아요 목록 모달 */}
       <ModalLayout>
-        <div>Like Dog List</div>
+        <ModalTitle>
+          {'< '}Like Dog List{' >'}
+        </ModalTitle>
         <Likes likeList={likeList} />
       </ModalLayout>
 
@@ -32,8 +34,11 @@ const Profile = (props) => {
     </>
   );
 };
-const Title = styled.div`
-  color: #6fb3eb;
+const ModalTitle = styled.div`
+  font-size: 22px;
+  color: #454c53;
+  text-align: center;
+  margin: 50px 0 25px;
 `;
 
 export default Profile;

@@ -1,4 +1,5 @@
 // import { useRouter } from 'next/router';
+import { imageTypes } from 'common/utils/dummy_data';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterDogData } from 'store/modules/dogsData';
@@ -6,7 +7,6 @@ import styled from 'styled-components';
 
 function Search() {
   const dispatch = useDispatch();
-  const imageTypes = ['gif', 'jpg', 'png'];
   const [searchBreed, setSearchBreed] = useState('');
 
   const onBreedId = (value) => {

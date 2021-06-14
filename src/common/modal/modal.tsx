@@ -1,4 +1,4 @@
-import { modalStyles } from 'common/modal/modal.style';
+import { CloseButton, modalStyles } from 'common/modal/modal.style';
 import React, { ReactNode, useState } from 'react';
 import Modal from 'react-modal';
 import * as S from 'styles/styled';
@@ -29,7 +29,7 @@ const ModalLayout = ({ children }: Props) => {
         onRequestClose={closeModal}
         style={modalStyles}
         contentLabel="Example Modal">
-        <S.Button onClick={closeModal}>X</S.Button>
+        <CloseButton onClick={closeModal}>X</CloseButton>
         {children}
       </Modal>
     </>
