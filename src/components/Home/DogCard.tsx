@@ -6,8 +6,8 @@ function DogCard(props) {
   const { isHome, isLikeList, dogData, imageUrl } = props;
   const [isLike, setIsLike] = useState(false);
   const [likedId, setLikedId] = useState('');
-  const fullHeartImageUrl = '/icons/heart.png';
-  const heartImageUrl = '/icons/disHeart.png';
+  const fullHeartIconUrl = '/icons/heart.png';
+  const heartIconUrl = '/icons/disHeart.png';
 
   // 즐겨찾기
   const onLikeApi = () => {
@@ -40,6 +40,7 @@ function DogCard(props) {
 
   const handleHeart = (e) => {
     e.preventDefault();
+    console.log('클릭!');
     if (isLike) {
       // 즐겨찾기 취소
       onUnLikeApi();
@@ -52,12 +53,13 @@ function DogCard(props) {
     <SDogCard>
       <img src={`${imageUrl}`} alt="강아지 이미지" />
       <div className="name">{dogData.name}</div>
-      <div className="life">{dogData.life_span}</div>
+      <div>{dogData.life_span}</div>
       {isHome && (
         <LikeSection>
           <img
-            src={`${isLike ? fullHeartImageUrl : heartImageUrl}`}
+            src={`${isLike ? fullHeartIconUrl : heartIconUrl}`}
             onClick={handleHeart}
+            className="like_icon"
             alt="좋아요"
           />
         </LikeSection>
@@ -71,19 +73,21 @@ const SDogCard = styled.div`
   margin: 0px 60px 30px 0;
   color: #454c53;
   width: 130px;
-  flex: 1;
+  font-size: 14px;
   .name {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 19px;
+    font-size: 20px;
+    margin: 5px 0 3px;
   }
-  .life {
-    font-size: 15px;
+  .like_icon {
+    display: none;
   }
-
   &:hover {
-    width: 100px;
+    .like_icon {
+      display: inline;
+    }
   }
 `;
 
