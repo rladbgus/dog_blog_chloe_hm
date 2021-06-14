@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { moreDogsData } from 'store/modules/dogsData';
 import * as S from 'styles/styled';
 
-const DogCards = (props) => {
+const DogCardList = (props) => {
   const dispatch = useDispatch();
   const storeData = useSelector((state) => state.dogsData);
   const filterData = storeData.filterData;
@@ -54,7 +54,7 @@ const DogCards = (props) => {
     };
     dispatch(moreDogsData(query));
     setPage(page + 1);
-    setHasMore(page < 4); // 임시ㅠ
+    setHasMore(page < 4); // 임시
   };
 
   return (
@@ -69,7 +69,7 @@ const DogCards = (props) => {
         {dogsData.map((dogData: any) => {
           return (
             <Link
-              href={`/app/detail/[id]`}
+              href={`/app/detail/${dogData.reference_image_id}`}
               as={`/app/detail/${dogData.reference_image_id}`}
               key={dogData.id}>
               <a>
@@ -83,4 +83,4 @@ const DogCards = (props) => {
   );
 };
 
-export default DogCards;
+export default DogCardList;

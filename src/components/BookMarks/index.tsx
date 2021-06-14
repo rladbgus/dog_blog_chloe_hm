@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 
-const BookMarks = (props) => {
+const BookMarks = (props: any) => {
   const { bookmarkList } = props;
 
   return (

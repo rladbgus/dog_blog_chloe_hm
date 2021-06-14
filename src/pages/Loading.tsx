@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Loading = () => {
+const LoadingPage = () => {
   return (
     <LoadingBox>
       <div id="loading">
@@ -212,4 +212,4 @@ const LoadingBox = styled.div`
   }
 `;
 
-export default Loading;
+export default LoadingPage;
