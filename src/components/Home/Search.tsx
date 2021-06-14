@@ -61,6 +61,7 @@ const SearchS = styled.div`
     border: 1px solid #c9cdd2;
     color: #454c53;
     margin-right: 10px;
+    outline: none;
   }
 `;
 

@@ -17,8 +17,6 @@ const DogCards = (props) => {
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
 
-  // const currentRef = useRef([]);
-
   useEffect(() => {
     setDogsData(storeData.dogsData);
   }, [storeDogsData]);
@@ -74,14 +72,8 @@ const DogCards = (props) => {
               href={`/app/detail/[id]`}
               as={`/app/detail/${dogData.reference_image_id}`}
               key={dogData.id}>
-              {/* <a ref={currentRef}> */}
               <a>
-                <DogCard
-                  key={dogData.id}
-                  name={dogData.name}
-                  life_span={dogData.life_span}
-                  imageUrl={dogData.image.url}
-                />
+                <DogCard key={dogData.id} dogData={dogData} imageUrl={dogData.image.url} isHome />
               </a>
             </Link>
           );

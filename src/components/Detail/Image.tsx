@@ -1,12 +1,11 @@
+import { deleteLikeApi, postLikeApi } from 'api/api';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-import { deleteLikeApi, postLikeApi } from 'api/api';
 import styled from 'styled-components';
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 const Image = ({ dogData }) => {
-  console.log('🚀 ~ dogData', dogData);
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(true);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const likeImageUrl = '/icons/like.png';
@@ -28,7 +27,7 @@ const Image = ({ dogData }) => {
       .then((res) => {
         if (res.status === 200) {
           setLikedId(res.data.id);
-          setIsLike(!isLike);
+          setIsLike(false);
         }
       })
       .catch((err) => console.error(err));
@@ -39,7 +38,7 @@ const Image = ({ dogData }) => {
     deleteLikeApi(likedId)
       .then((res) => {
         if (res.status === 200) {
-          setIsLike(!isLike);
+          setIsLike(true);
         }
       })
       .catch((err) => {
@@ -49,7 +48,7 @@ const Image = ({ dogData }) => {
 
   const handleHeart = (type) => {
     if (type === 'like') {
-      return onLikeApi();
+      onLikeApi();
     }
     onUnLikeApi();
   };
@@ -57,10 +56,10 @@ const Image = ({ dogData }) => {
   return (
     <ImgSection>
       <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />
+      {/* 좋아요 기능 */}
       <LikeSection>
         <img src={likeImageUrl} onClick={() => handleHeart('like')} className="like" />
-        {/* 좋아요 기능 */}
-        {isLike && (
+        {!isLike && (
           <img src={dislikeImageUrl} onClick={() => handleHeart('unLike')} className="like" />
         )}
       </LikeSection>
@@ -78,13 +77,12 @@ const ImgSection = styled.div`
   .like {
     width: 30px;
     height: 30px;
+    margin-right: 15px;
   }
 `;
 const LikeSection = styled.div`
   margin-top: 10px;
-  .img {
-    display: inline-flex;
-  }
+  display: flex;
 `;
 
 export default Image;
