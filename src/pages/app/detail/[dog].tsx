@@ -1,4 +1,4 @@
-import { searchDogDataApi } from 'api/api';
+import * as Api from 'api';
 import Detail from 'components/Detail';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
@@ -15,7 +15,7 @@ function DetailPage() {
   // 해당 강아지 데이터 호출
   useEffect(() => {
     if (!router.isReady) return;
-    searchDogDataApi(query)
+    Api.searchDogData(query)
       .then((res) => {
         if (res.status === 200) {
           setDogData(res.data);

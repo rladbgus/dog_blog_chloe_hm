@@ -1,25 +1,46 @@
+import * as Api from 'api/user';
 import ModalLayout from 'common/modal/modal';
 import Likes from 'components/Profile/LikeList';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
+Modal.setAppElement('*');
 const Profile = (props) => {
-  Modal.setAppElement('*');
   const { likeList } = props;
+  const [userAgent, setUserAgent] = useState('');
+  const [userIp, setUserIp] = useState('');
+
+  useEffect(() => {
+    // Agent저장
+    const UserAgent = navigator.userAgent;
+    setUserAgent(UserAgent);
+
+    // Ip저장
+    Api.getUserIp()
+      .then((res) => {
+        setUserIp(res.data.ip);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
-    <>
-      <Title>내 정보 section</Title>
-      <div>User Agent: </div>
-      <div>IP: </div>
+    <ProfileLayout>
+      {/* 내 프로필 정보 */}
+      <MyInformation>
+        <h1>My Information</h1>
+        <div>User Agent: {userAgent} </div>
+        <div>IP: {userIp}</div>
+      </MyInformation>
 
       {/* 좋아요 목록 모달 */}
       <ModalLayout>
-        <div>Like Dog List</div>
+        <S.ModalTitle>&lt; Like Dog List &gt;</S.ModalTitle>
         <Likes likeList={likeList} />
       </ModalLayout>
 
@@ -29,11 +50,24 @@ const Profile = (props) => {
           <S.Button color={them.color.yellowGreen}>Bookmark</S.Button>
         </a>
       </Link>
-    </>
+    </ProfileLayout>
   );
 };
-const Title = styled.div`
-  color: #6fb3eb;
+
+const ProfileLayout = styled.div`
+  text-align: center;
+  margin: 170px 320px;
+`;
+
+const MyInformation = styled.div`
+  font-size: 22px;
+  margin-bottom: 35px;
+  color: #454c53;
+  div {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: left;
+  }
 `;
 
 export default Profile;

@@ -1,8 +1,8 @@
-import DogCards from 'components/Home/DogCards';
+import DogCardList from 'components/Home/DogCardList';
 import React from 'react';
 
 const SimilarList = () => {
-  return <DogCards useDetailPage />;
+  return <DogCardList unUseInfinite />;
 };
 
 export default SimilarList;

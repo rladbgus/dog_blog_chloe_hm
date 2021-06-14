@@ -180,3 +180,23 @@ npm install dotenv-webpack
 첫 페이지 진입시에 필요한 최소한의 코드만 다운 받고, 사용자가 특정 페이지나 위치에 도달할 때마다 코드를 로드 한다면, 첫 페이지의 초기 성능을 올릴 수 있다.
 이런 방식을 lazy-load 게으른 로딩이라고 한다.
 Dynamic Import 를 사용하면, 런타임시에 필요한 module 을 import 할 수 있다.
+
+그런데 간혹, 특정 Component 에 한해서, 서버사이드에서는 렌더링 하지 않았으면 하는 마음이 있다.
+그 '특정 컴포넌트' 라 함은, 특별히 SSR 이 중요하지도 않은데, 매우 무거워서, 최초 로딩 performance 에 악영향을 미치는 경우라 할 수 있겠다.
+
+Next.js 에서 3.0부터 제공하는 'dynamic' 기능을 이용해서, 이런 문제를 해결할 수 있다.
+
+```js
+import dynamic from 'next/dynamic';
+const HeavyComponent = dynamic(import('/components/HeavyComponent'), {
+  loading: () => <div>서버사이드에서 대체되는 영역</div>,
+  ssr: fals
+});
+```
+
+이렇게 해두면, 서버사이드에서 렌더링을 하다가,
+HeavyComponent 를 만나면,
+
+<div>서버사이드에서 대체되는 영역</div>
+요렇게 지정해둔 컴포넌트로 대체해서 렌더링해서, 응답을 내려준 후,
+클라이언트 단에서 자동으로 원래 컴포넌트였던 HeavyComponent 를 렌더링 해 주는 것이다.

@@ -1,3 +1,4 @@
+import * as ImagePath from 'common/utils/imagePath';
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
@@ -10,7 +11,7 @@ const Header = () => {
       <Title>
         <Link href="/">
           <a>
-            <img src={'/favicon.ico'} />
+            <img src={ImagePath.Logo} />
             <span>Dog Blog</span>
           </a>
         </Link>
@@ -30,7 +31,6 @@ const Header = () => {
 const Title = styled.div`
   font-size: 35px;
   margin-bottom: 20px;
-
   img {
     display: inline;
     width: 70px;
@@ -39,6 +39,7 @@ const Title = styled.div`
     vertical-align: -5px;
   }
 `;
+
 const Section = styled.div`
   display: inline;
   float: right;

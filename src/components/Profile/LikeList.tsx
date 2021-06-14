@@ -1,17 +1,16 @@
-import { searchDogDataApi } from 'api/api';
+import * as Api from 'api';
 import DogCard from 'components/Home/DogCard';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import * as S from 'styles/styled';
 
-const Likes = (props) => {
+const Likes = (props: any) => {
   const { likeList } = props;
   const [likeDogs, setLikeDogs] = useState([]);
-
   // 강아지의 세부정보 조회 및 저장
   const getDetailData = async () => {
     let totalLikeDogs: any = [];
     const dogsInfo = likeList?.map(async (likeDog: any) => {
-      return await searchDogDataApi(likeDog.image_id).then((data) => data.data);
+      return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
     });
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);
@@ -22,25 +21,13 @@ const Likes = (props) => {
   }, []);
 
   return (
-    <DogCardS>
+    <S.DogCardList>
       {likeDogs?.map((likeDog: any) => {
         const likeDogDetail = likeDog.breeds[0];
-        return (
-          <DogCard
-            key={likeDogDetail.id}
-            dogData={likeDogDetail}
-            imageUrl={likeDog.url}
-            // isLikeList
-          />
-        );
+        return <DogCard key={likeDogDetail.id} dogData={likeDogDetail} imageUrl={likeDog.url} />;
       })}
-    </DogCardS>
+    </S.DogCardList>
   );
 };
-const DogCardS = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-`;
+
 export default Likes;

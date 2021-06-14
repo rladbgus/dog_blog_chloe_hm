@@ -1,13 +1,12 @@
-import { deleteBookmarkApi, postBookmarkApi } from 'api/api';
+import * as Api from 'api';
+import * as ImagePath from 'common/utils/imagePath';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function DogCard(props) {
-  const { isHome, isLikeList, dogData, imageUrl } = props;
+  const { isHome, dogData, imageUrl } = props;
   const [isLike, setIsLike] = useState(false);
   const [likedId, setLikedId] = useState('');
-  const fullHeartIconUrl = '/icons/heart.png';
-  const heartIconUrl = '/icons/disHeart.png';
 
   // 즐겨찾기
   const onLikeApi = () => {
@@ -15,7 +14,7 @@ function DogCard(props) {
       image_id: dogData.image.id,
       sub_id: 'chloe'
     };
-    postBookmarkApi(query)
+    Api.postBookmark(query)
       .then((res) => {
         if (res.status === 200) {
           setLikedId(res.data.id);
@@ -27,7 +26,7 @@ function DogCard(props) {
 
   // 즐겨찾기 취소
   const onUnLikeApi = () => {
-    deleteBookmarkApi(likedId)
+    Api.deleteBookmark(likedId)
       .then((res) => {
         if (res.status === 200) {
           setIsLike(false);
@@ -38,9 +37,8 @@ function DogCard(props) {
       });
   };
 
-  const handleHeart = (e) => {
+  const handleLike = (e) => {
     e.preventDefault();
-    console.log('클릭!');
     if (isLike) {
       // 즐겨찾기 취소
       onUnLikeApi();
@@ -50,25 +48,26 @@ function DogCard(props) {
   };
 
   return (
-    <SDogCard>
+    <DogCardS>
       <img src={`${imageUrl}`} alt="강아지 이미지" />
       <div className="name">{dogData.name}</div>
       <div>{dogData.life_span}</div>
+      {/* isHome(boolen) image태그 안에서 관리 */}
       {isHome && (
         <LikeSection>
           <img
-            src={`${isLike ? fullHeartIconUrl : heartIconUrl}`}
-            onClick={handleHeart}
+            src={`${isLike ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
+            onClick={handleLike}
             className="like_icon"
             alt="좋아요"
           />
         </LikeSection>
       )}
-    </SDogCard>
+    </DogCardS>
   );
 }
 
-const SDogCard = styled.div`
+const DogCardS = styled.div`
   position: relative;
   margin: 0px 60px 30px 0;
   color: #454c53;

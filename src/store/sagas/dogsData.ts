@@ -1,15 +1,15 @@
+import * as Api from 'api';
 import { AxiosResponse } from 'axios';
 import { call, fork, put, takeEvery } from 'redux-saga/effects';
-import { filterDogDataApi, getDogsDataApi } from 'api/api';
-import * as actions from 'store/modules/dogsData';
+import * as Action from 'store/modules/dogsData';
 
 // 강아지 데이터 호출
 function* getDogsData(query) {
   const queryData = query.payload;
 
   try {
-    const response: AxiosResponse = yield call(getDogsDataApi.bind(null, queryData));
-    yield put(actions.getDogsDataSuccess(response));
+    const response: AxiosResponse = yield call(Api.getDogsData.bind(null, queryData));
+    yield put(Action.getDogsDataSuccess(response));
   } catch (err) {
     console.error(err);
   }
@@ -20,8 +20,8 @@ function* moreDogsData(query) {
   const queryData = query.payload.queryData;
 
   try {
-    const response: AxiosResponse = yield call(getDogsDataApi.bind(null, queryData));
-    yield put(actions.getDogsDataSuccess(response));
+    const response: AxiosResponse = yield call(Api.getDogsData.bind(null, queryData));
+    yield put(Action.getDogsDataSuccess(response));
   } catch (err) {
     console.error(err);
   }
@@ -32,8 +32,8 @@ function* getSortedDogsData(query) {
   const queryData = query.payload.queryData;
 
   try {
-    const response: AxiosResponse = yield call(getDogsDataApi.bind(null, queryData));
-    yield put(actions.sortedDogsDataSuccess(response));
+    const response: AxiosResponse = yield call(Api.getDogsData.bind(null, queryData));
+    yield put(Action.sortedDogsDataSuccess(response));
   } catch (err) {
     console.error(err);
   }
@@ -44,18 +44,18 @@ function* filterDogData(query) {
   const queryData = query.payload.queryData;
 
   try {
-    const response: AxiosResponse = yield call(filterDogDataApi.bind(null, queryData));
-    yield put(actions.filterDogsDataSuccess(response));
+    const response: AxiosResponse = yield call(Api.filterDogData.bind(null, queryData));
+    yield put(Action.filterDogsDataSuccess(response));
   } catch (err) {
     console.error(err);
   }
 }
 
 function* watchGetDogsData() {
-  yield takeEvery(actions.GET_DOGS_DATA, getDogsData);
-  yield takeEvery(actions.MORE_DOGS_DATA, moreDogsData);
-  yield takeEvery(actions.SORTED_DOGS_DATA, getSortedDogsData);
-  yield takeEvery(actions.FILTER_DOGS_DATA, filterDogData);
+  yield takeEvery(Action.GET_DOGS_DATA, getDogsData);
+  yield takeEvery(Action.MORE_DOGS_DATA, moreDogsData);
+  yield takeEvery(Action.SORTED_DOGS_DATA, getSortedDogsData);
+  yield takeEvery(Action.FILTER_DOGS_DATA, filterDogData);
 }
 
 export default function* watchSaga() {

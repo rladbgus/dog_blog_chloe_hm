@@ -1,14 +1,14 @@
-import React from 'react';
+import DogCardList from 'components/Home/DogCardList';
 import Search from 'components/Home/Search';
 import Sort from 'components/Home/Sort';
-import DogCards from 'components/Home/DogCards';
+import React from 'react';
 
 function Home() {
   return (
     <>
       <Sort />
       <Search />
-      <DogCards />
+      <DogCardList />
     </>
   );
 }

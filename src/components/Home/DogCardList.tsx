@@ -4,17 +4,17 @@ import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { moreDogsData } from 'store/modules/dogsData';
-import styled from 'styled-components';
+import * as S from 'styles/styled';
 
-const DogCards = (props) => {
+const DogCardList = (props) => {
   const dispatch = useDispatch();
+  const { unUseInfinite } = props;
   const storeData = useSelector((state) => state.dogsData);
   const filterData = storeData.filterData;
   const storeDogsData = storeData.dogsData;
 
-  const { useDetailPage } = props;
   const [dogsData, setDogsData] = useState(storeDogsData);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(!unUseInfinite);
   const [page, setPage] = useState(2);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const DogCards = (props) => {
   }, [storeDogsData]);
 
   // 필터링된 데이터 세팅
+  // ++리듀서에서 마이그레이션
   useEffect(() => {
     if (filterData?.breeds) {
       const filteredData = [
@@ -38,23 +39,15 @@ const DogCards = (props) => {
     }
   }, [filterData]);
 
-  // 상세페이지 인피니티스크롤 사용 X
-  useEffect(() => {
-    if (useDetailPage) {
-      setHasMore(false);
-    }
-  }, []);
-
   // 스크롤시 강아지데이터 호출
-  const HandleMoreDogsData = () => {
-    console.log('s');
+  const handleMoreDogsData = () => {
     const query = {
       page: page,
       limit: 50
     };
     dispatch(moreDogsData(query));
     setPage(page + 1);
-    setHasMore(page < 4); // 임시ㅠ
+    setHasMore(page < 4);
   };
 
   return (
@@ -62,14 +55,14 @@ const DogCards = (props) => {
       dataLength={dogsData.length}
       loader={<h3>Loading...</h3>}
       hasMore={hasMore}
-      next={HandleMoreDogsData}
+      next={handleMoreDogsData}
       scrollThreshold="50px"
       style={{ overflowY: 'auto', overflowX: 'hidden' }}>
-      <DogCardS>
+      <S.DogCardList>
         {dogsData.map((dogData: any) => {
           return (
             <Link
-              href={`/app/detail/[id]`}
+              href={`/app/detail/${dogData.reference_image_id}`}
               as={`/app/detail/${dogData.reference_image_id}`}
               key={dogData.id}>
               <a>
@@ -78,16 +71,9 @@ const DogCards = (props) => {
             </Link>
           );
         })}
-      </DogCardS>
+      </S.DogCardList>
     </InfiniteScroll>
   );
 };
 
-const DogCardS = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-`;
-
-export default DogCards;
+export default DogCardList;
