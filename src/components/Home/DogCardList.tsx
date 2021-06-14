@@ -22,6 +22,7 @@ const DogCardList = (props) => {
   }, [storeDogsData]);
 
   // 필터링된 데이터 세팅
+  // ++리듀서에서
   useEffect(() => {
     if (filterData?.breeds) {
       const filteredData = [
@@ -39,6 +40,7 @@ const DogCardList = (props) => {
   }, [filterData]);
 
   // 상세페이지 인피니티스크롤 사용 X
+  // ++
   useEffect(() => {
     if (useDetailPage) {
       setHasMore(false);
@@ -46,15 +48,14 @@ const DogCardList = (props) => {
   }, []);
 
   // 스크롤시 강아지데이터 호출
-  const HandleMoreDogsData = () => {
-    console.log('s');
+  const handleMoreDogsData = () => {
     const query = {
       page: page,
       limit: 50
     };
     dispatch(moreDogsData(query));
     setPage(page + 1);
-    setHasMore(page < 4); // 임시
+    setHasMore(page < 4);
   };
 
   return (
@@ -62,9 +63,10 @@ const DogCardList = (props) => {
       dataLength={dogsData.length}
       loader={<h3>Loading...</h3>}
       hasMore={hasMore}
-      next={HandleMoreDogsData}
+      next={handleMoreDogsData}
       scrollThreshold="50px"
       style={{ overflowY: 'auto', overflowX: 'hidden' }}>
+      {/* ++종속적인 네이밍 */}
       <S.DogCardList>
         {dogsData.map((dogData: any) => {
           return (

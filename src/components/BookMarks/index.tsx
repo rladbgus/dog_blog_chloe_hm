@@ -16,7 +16,10 @@ const BookMarks = (props: any) => {
       <S.DogCardList>
         {bookmarkList.map((dogData: any) => {
           return (
-            <Link href={`/app/detail/[id]`} as={`/app/detail/${dogData.image_id}`} key={dogData.id}>
+            <Link
+              href={`/app/detail/${dogData.image_id}`}
+              as={`/app/detail/${dogData.image_id}`}
+              key={dogData.id}>
               <a>
                 <DogCard dogData={dogData} imageUrl={dogData.image.url} />
               </a>

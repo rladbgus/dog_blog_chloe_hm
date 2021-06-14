@@ -30,7 +30,6 @@ const Header = () => {
 const Title = styled.div`
   font-size: 35px;
   margin-bottom: 20px;
-
   img {
     display: inline;
     width: 70px;
@@ -39,6 +38,7 @@ const Title = styled.div`
     vertical-align: -5px;
   }
 `;
+
 const Section = styled.div`
   display: inline;
   float: right;

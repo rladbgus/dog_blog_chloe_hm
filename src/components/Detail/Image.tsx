@@ -1,10 +1,12 @@
-import { deleteLikeApi, postLikeApi } from 'api/api';
+import * as Api from 'api';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
-const Image = ({ dogData }) => {
+const Image = (props) => {
+  const { dogData } = props;
   const [isLike, setIsLike] = useState(true);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
@@ -23,7 +25,8 @@ const Image = ({ dogData }) => {
       sub_id: 'chloe',
       value: 1
     };
-    postLikeApi(query)
+
+    Api.postLike(query)
       .then((res) => {
         if (res.status === 200) {
           setLikedId(res.data.id);
@@ -35,7 +38,7 @@ const Image = ({ dogData }) => {
 
   // 싫어요 기능 호출
   const onUnLikeApi = () => {
-    deleteLikeApi(likedId)
+    Api.deleteLike(likedId)
       .then((res) => {
         if (res.status === 200) {
           setIsLike(true);
@@ -54,7 +57,7 @@ const Image = ({ dogData }) => {
   };
 
   return (
-    <ImgSection>
+    <ImgSectionS>
       <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />
       {/* 좋아요 기능 */}
       <LikeSection>
@@ -65,11 +68,11 @@ const Image = ({ dogData }) => {
       </LikeSection>
       {/* 이미지 뷰어 */}
       <ReactViewer visible={isViewerOpen} onClose={() => handleImageViewer()} images={images} />
-    </ImgSection>
+    </ImgSectionS>
   );
 };
 
-const ImgSection = styled.div`
+const ImgSectionS = styled.div`
   margin-bottom: 25px;
   display: flex;
   flex-flow: column;
