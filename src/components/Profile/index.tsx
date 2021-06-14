@@ -1,3 +1,4 @@
+import * as Api from 'api/user';
 import ModalLayout from 'common/modal/modal';
 import Likes from 'components/Profile/LikeList';
 import Link from 'next/link';
@@ -11,10 +12,21 @@ Modal.setAppElement('*');
 const Profile = (props) => {
   const { likeList } = props;
   const [userAgent, setUserAgent] = useState('');
+  const [userIp, setUserIp] = useState('');
 
   useEffect(() => {
+    // Agent저장
     const UserAgent = navigator.userAgent;
     setUserAgent(UserAgent);
+
+    // Ip저장
+    Api.getUserIp()
+      .then((res) => {
+        setUserIp(res.data.ip);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   return (
@@ -23,7 +35,7 @@ const Profile = (props) => {
       <MyInformation>
         <div>My Information</div>
         <div>User Agent: {userAgent} </div>
-        <div>IP: </div>
+        <div>IP: {userIp}</div>
       </MyInformation>
 
       {/* 좋아요 목록 모달 */}

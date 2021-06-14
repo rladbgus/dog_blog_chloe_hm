@@ -6,12 +6,11 @@ import * as S from 'styles/styled';
 const Likes = (props: any) => {
   const { likeList } = props;
   const [likeDogs, setLikeDogs] = useState([]);
-
   // 강아지의 세부정보 조회 및 저장
   const getDetailData = async () => {
     let totalLikeDogs: any = [];
     const dogsInfo = likeList?.map(async (likeDog: any) => {
-      return await Api.searchDogData(likeDog.image_id).then((data) => data.data);
+      return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
     });
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);

@@ -52,7 +52,7 @@ function DogCard(props) {
       <img src={`${imageUrl}`} alt="강아지 이미지" />
       <div className="name">{dogData.name}</div>
       <div>{dogData.life_span}</div>
-      {/* //안으로~! */}
+      {/* isHome(boolen) image태그 안에서 관리 */}
       {isHome && (
         <LikeSection>
           <img

@@ -78,6 +78,10 @@ const reducer = createReducer(initialState, {
     state.dogsData = action.payload.data;
   },
   [filterDogsDataSuccess.type]: (state, action) => {
+    // console.log('🚀 ~ filter Action', action.payload.data);
+    // state.dogsData.name = action.payload.data[0].breeds.name;
+    // state.dogsData.life_span = action.payload.data[0].breeds.life_span;
+    // state.dogsData.id = action.payload.data[0].id;
     state.filterData = action.payload.data[0];
   }
 });
