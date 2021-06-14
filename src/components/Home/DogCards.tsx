@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { moreDogsData } from 'store/modules/dogsData';
-import styled from 'styled-components';
+import * as S from 'styles/styled';
 
 const DogCards = (props) => {
   const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const DogCards = (props) => {
       next={HandleMoreDogsData}
       scrollThreshold="50px"
       style={{ overflowY: 'auto', overflowX: 'hidden' }}>
-      <DogCardS>
+      <S.DogCardList>
         {dogsData.map((dogData: any) => {
           return (
             <Link
@@ -78,16 +78,9 @@ const DogCards = (props) => {
             </Link>
           );
         })}
-      </DogCardS>
+      </S.DogCardList>
     </InfiniteScroll>
   );
 };
-
-const DogCardS = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-`;
 
 export default DogCards;

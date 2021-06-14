@@ -40,7 +40,6 @@ function DogCard(props) {
 
   const handleHeart = (e) => {
     e.preventDefault();
-    console.log('클릭!');
     if (isLike) {
       // 즐겨찾기 취소
       onUnLikeApi();

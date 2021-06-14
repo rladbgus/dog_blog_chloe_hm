@@ -1,7 +1,7 @@
 import { searchDogDataApi } from 'api/api';
 import DogCard from 'components/Home/DogCard';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import * as S from 'styles/styled';
 
 const Likes = (props) => {
   const { likeList } = props;
@@ -22,7 +22,7 @@ const Likes = (props) => {
   }, []);
 
   return (
-    <DogCardS>
+    <S.DogCardList>
       {likeDogs?.map((likeDog: any) => {
         const likeDogDetail = likeDog.breeds[0];
         return (
@@ -34,13 +34,8 @@ const Likes = (props) => {
           />
         );
       })}
-    </DogCardS>
+    </S.DogCardList>
   );
 };
-const DogCardS = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-`;
+
 export default Likes;
