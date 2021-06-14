@@ -8,13 +8,13 @@ import * as S from 'styles/styled';
 
 const DogCardList = (props) => {
   const dispatch = useDispatch();
+  const { unUseInfinite } = props;
   const storeData = useSelector((state) => state.dogsData);
   const filterData = storeData.filterData;
   const storeDogsData = storeData.dogsData;
 
-  const { useDetailPage } = props;
   const [dogsData, setDogsData] = useState(storeDogsData);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(!unUseInfinite);
   const [page, setPage] = useState(2);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const DogCardList = (props) => {
   }, [storeDogsData]);
 
   // 필터링된 데이터 세팅
-  // ++리듀서에서
+  // ++리듀서에서 마이그레이션
   useEffect(() => {
     if (filterData?.breeds) {
       const filteredData = [
@@ -38,14 +38,6 @@ const DogCardList = (props) => {
       setDogsData(filteredData);
     }
   }, [filterData]);
-
-  // 상세페이지 인피니티스크롤 사용 X
-  // ++
-  useEffect(() => {
-    if (useDetailPage) {
-      setHasMore(false);
-    }
-  }, []);
 
   // 스크롤시 강아지데이터 호출
   const handleMoreDogsData = () => {
@@ -66,7 +58,6 @@ const DogCardList = (props) => {
       next={handleMoreDogsData}
       scrollThreshold="50px"
       style={{ overflowY: 'auto', overflowX: 'hidden' }}>
-      {/* ++종속적인 네이밍 */}
       <S.DogCardList>
         {dogsData.map((dogData: any) => {
           return (

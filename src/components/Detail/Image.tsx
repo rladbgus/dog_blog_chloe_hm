@@ -1,4 +1,5 @@
 import * as Api from 'api';
+import * as ImagePath from 'common/utils/imagePath';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -10,8 +11,6 @@ const Image = (props) => {
   const [isLike, setIsLike] = useState(true);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const likeImageUrl = '/icons/like.png';
-  const dislikeImageUrl = '/icons/dislike.png';
   const images = [{ src: dogData.url }];
 
   const handleImageViewer = () => {
@@ -61,9 +60,9 @@ const Image = (props) => {
       <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />
       {/* 좋아요 기능 */}
       <LikeSection>
-        <img src={likeImageUrl} onClick={() => handleHeart('like')} className="like" />
+        <img src={ImagePath.like} onClick={() => handleHeart('like')} className="like" />
         {!isLike && (
-          <img src={dislikeImageUrl} onClick={() => handleHeart('unLike')} className="like" />
+          <img src={ImagePath.disLike} onClick={() => handleHeart('unLike')} className="like" />
         )}
       </LikeSection>
       {/* 이미지 뷰어 */}

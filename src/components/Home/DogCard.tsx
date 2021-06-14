@@ -1,4 +1,5 @@
 import * as Api from 'api';
+import * as ImagePath from 'common/utils/imagePath';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -6,8 +7,6 @@ function DogCard(props) {
   const { isHome, dogData, imageUrl } = props;
   const [isLike, setIsLike] = useState(false);
   const [likedId, setLikedId] = useState('');
-  const fullHeartIconUrl = '/icons/heart.png';
-  const heartIconUrl = '/icons/disHeart.png';
 
   // 즐겨찾기
   const onLikeApi = () => {
@@ -57,7 +56,7 @@ function DogCard(props) {
       {isHome && (
         <LikeSection>
           <img
-            src={`${isLike ? fullHeartIconUrl : heartIconUrl}`}
+            src={`${isLike ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
             onClick={handleLike}
             className="like_icon"
             alt="좋아요"

@@ -1,3 +1,4 @@
+import * as ImagePath from 'common/utils/imagePath';
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
@@ -10,7 +11,7 @@ const Header = () => {
       <Title>
         <Link href="/">
           <a>
-            <img src={'/favicon.ico'} />
+            <img src={ImagePath.Logo} />
             <span>Dog Blog</span>
           </a>
         </Link>
