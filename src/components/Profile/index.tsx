@@ -33,7 +33,7 @@ const Profile = (props) => {
     <ProfileLayout>
       {/* 내 프로필 정보 */}
       <MyInformation>
-        <div>My Information</div>
+        <h1>My Information</h1>
         <div>User Agent: {userAgent} </div>
         <div>IP: {userIp}</div>
       </MyInformation>
@@ -56,13 +56,18 @@ const Profile = (props) => {
 
 const ProfileLayout = styled.div`
   text-align: center;
-  margin: 170px 230px;
+  margin: 170px 320px;
 `;
 
 const MyInformation = styled.div`
-  font-size: 20px;
-  margin-bottom: 40px;
+  font-size: 22px;
+  margin-bottom: 35px;
   color: #454c53;
+  div {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: left;
+  }
 `;
 
 export default Profile;
