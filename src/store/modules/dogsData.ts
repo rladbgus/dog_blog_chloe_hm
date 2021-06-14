@@ -69,7 +69,6 @@ const reducer = createReducer(initialState, {
     state.isLoading = true;
   },
   [getDogsDataSuccess.type]: (state, action) => {
-    console.log('🚀 ~ action', action);
     state.dogsData = state.dogsData.concat(action.payload.DogsData.data);
   },
   [sortedDogsData.type]: (state) => {
