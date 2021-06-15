@@ -1,5 +1,5 @@
 import Home from 'components/Home';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { END } from 'redux-saga';
@@ -17,7 +17,7 @@ function HomePage() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
   async ({ store }) => {
     store.dispatch(getDogsData());
     store.dispatch(END);

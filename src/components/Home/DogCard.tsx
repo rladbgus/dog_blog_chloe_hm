@@ -1,15 +1,15 @@
 import * as Api from 'api';
 import * as ImagePath from 'common/utils/imagePath';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 function DogCard(props) {
   const { isHome, dogData, imageUrl } = props;
-  const [isLike, setIsLike] = useState(false);
-  const [likedId, setLikedId] = useState('');
+  const [isBookmark, setIsBookmark] = useState(false);
+  const [bookmarkId, setBookmarkId] = useState('');
 
   // 즐겨찾기
-  const onLikeApi = () => {
+  const onBookmarkApi = () => {
     const query = {
       image_id: dogData.image.id,
       sub_id: 'chloe'
@@ -17,19 +17,19 @@ function DogCard(props) {
     Api.postBookmark(query)
       .then((res) => {
         if (res.status === 200) {
-          setLikedId(res.data.id);
-          setIsLike(true);
+          setBookmarkId(res.data.id);
+          setIsBookmark(true);
         }
       })
       .catch((err) => console.error(err));
   };
 
   // 즐겨찾기 취소
-  const onUnLikeApi = () => {
-    Api.deleteBookmark(likedId)
+  const cancelBookmarkApi = () => {
+    Api.deleteBookmark(bookmarkId)
       .then((res) => {
         if (res.status === 200) {
-          setIsLike(false);
+          setIsBookmark(false);
         }
       })
       .catch((err) => {
@@ -37,15 +37,16 @@ function DogCard(props) {
       });
   };
 
-  const handleLike = (e) => {
+  const handleBookmark = (e) => {
     e.preventDefault();
-    if (isLike) {
+    if (isBookmark) {
       // 즐겨찾기 취소
-      onUnLikeApi();
+      return cancelBookmarkApi();
     }
     // 즐겨찾기
-    onLikeApi();
+    return onBookmarkApi();
   };
+  const focusTarget = useRef();
 
   return (
     <DogCardS>
@@ -54,14 +55,15 @@ function DogCard(props) {
       <div>{dogData.life_span}</div>
       {/* isHome(boolen) image태그 안에서 관리 */}
       {isHome && (
-        <LikeSection>
+        <BookmarkSectionS>
           <img
-            src={`${isLike ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
-            onClick={handleLike}
+            ref={focusTarget}
+            src={`${isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
+            onClick={handleBookmark}
             className="like_icon"
             alt="좋아요"
           />
-        </LikeSection>
+        </BookmarkSectionS>
       )}
     </DogCardS>
   );
@@ -90,7 +92,7 @@ const DogCardS = styled.div`
   }
 `;
 
-const LikeSection = styled.div`
+const BookmarkSectionS = styled.div`
   position: absolute;
   top: 8px;
   right: -43px;

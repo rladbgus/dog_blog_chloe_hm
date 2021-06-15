@@ -1,6 +1,6 @@
 import DogCard from 'components/Home/DogCard';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { moreDogsData } from 'store/modules/dogsData';
@@ -9,7 +9,7 @@ import * as S from 'styles/styled';
 const DogCardList = (props) => {
   const dispatch = useDispatch();
   const { unUseInfinite } = props;
-  const storeData = useSelector((state) => state.dogsData);
+  const storeData = useSelector((state: any) => state.dogsData);
   const filterData = storeData.filterData;
   const storeDogsData = storeData.dogsData;
 
@@ -20,6 +20,14 @@ const DogCardList = (props) => {
   useEffect(() => {
     setDogsData(storeData.dogsData);
   }, [storeDogsData]);
+
+  // const { history } = useRouter();
+  // const { scrollOnceMove } = useScrollMove();
+
+  const focusTarget = useRef();
+  useEffect(() => {
+    focusTarget.current;
+  }, []);
 
   // 필터링된 데이터 세팅
   // ++리듀서에서 마이그레이션
@@ -45,28 +53,35 @@ const DogCardList = (props) => {
       page: page,
       limit: 50
     };
-    dispatch(moreDogsData(query));
+    setTimeout(() => {
+      dispatch(moreDogsData(query));
+    }, 700);
     setPage(page + 1);
     setHasMore(page < 4);
   };
 
   return (
     <InfiniteScroll
-      dataLength={dogsData.length}
-      loader={<h3>Loading...</h3>}
       hasMore={hasMore}
       next={handleMoreDogsData}
-      scrollThreshold="50px"
+      dataLength={dogsData.length}
+      loader={<h3>Loading...</h3>}
       style={{ overflowY: 'auto', overflowX: 'hidden' }}>
-      <S.DogCardList>
+      <S.DogCardList ref={focusTarget}>
         {dogsData.map((dogData: any) => {
           return (
             <Link
               href={`/app/detail/${dogData.reference_image_id}`}
               as={`/app/detail/${dogData.reference_image_id}`}
-              key={dogData.id}>
+              key={dogData.id}
+              scroll={false}>
               <a>
-                <DogCard key={dogData.id} dogData={dogData} imageUrl={dogData.image.url} isHome />
+                <DogCard
+                  key={dogData.id}
+                  dogData={dogData}
+                  imageUrl={dogData.image.url}
+                  isHome
+                />
               </a>
             </Link>
           );

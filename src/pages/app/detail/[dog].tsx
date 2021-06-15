@@ -1,6 +1,6 @@
 import * as Api from 'api';
 import Detail from 'components/Detail';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { END } from 'redux-saga';
@@ -26,11 +26,16 @@ function DetailPage() {
       });
   }, [router.isReady]);
 
-  return <Detail dogData={dogData} />;
+  return (
+    <>
+      <button onClick={() => router.back()}>버튼</button>
+      <Detail dogData={dogData} />;
+    </>
+  );
 }
 
 // 상세페이지에서 새로고침시 store날아갔을시 새로 dispatch
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
   async ({ store }) => {
     store.dispatch(getDogsData());
     store.dispatch(END);
