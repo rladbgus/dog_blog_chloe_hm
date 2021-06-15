@@ -24,7 +24,13 @@ const Likes = (props: any) => {
     <S.DogCardList>
       {likeDogs?.map((likeDog: any) => {
         const likeDogDetail = likeDog.breeds[0];
-        return <DogCard key={likeDogDetail.id} dogData={likeDogDetail} imageUrl={likeDog.url} />;
+        return (
+          <DogCard
+            key={likeDogDetail.id}
+            dogData={likeDogDetail}
+            imageUrl={likeDog.url}
+          />
+        );
       })}
     </S.DogCardList>
   );

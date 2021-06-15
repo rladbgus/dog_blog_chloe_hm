@@ -16,55 +16,55 @@ const headers = {
 const DOG_DATA_API = 'https://api.thedogapi.com/v1';
 
 // 강아지들의 데이터 호출
-export function getDogsData(query) {
+export function getDogsData(query: any) {
   const queryData = querystring.stringify(query);
   return axios.get(`${DOG_DATA_API}/breeds?${queryData}`);
 }
 
 // 강아지 상세 데이터 호출
-export function searchDogData(query) {
+export function searchDogData(query: any) {
   return axios.get(`${DOG_DATA_API}/images/${query}`);
 }
 
 // 필터링된 데이터 호출
-export function filterDogData(query) {
+export function filterDogData(query: any) {
   const queryData = querystring.stringify(query);
   return axios.get(`${DOG_DATA_API}/images/search?${queryData}`);
 }
 
 // 좋아요
-export function postLike(query) {
+export function postLike(query: any) {
   return axios.post(`${DOG_DATA_API}/votes`, query, headers);
 }
 
 // 좋아요 취소
-export function deleteLike(query) {
+export function deleteLike(query: any) {
   return axios.delete(`${DOG_DATA_API}/votes/${query}`, headers);
 }
 
 // 좋이요한 목록 호출
-export function getLikeList(query) {
+export function getLikeList(query: any) {
   const queryData = querystring.stringify(query);
   return axios.get(`${DOG_DATA_API}/votes?${queryData}`, headers);
 }
 
 // 즐겨찾기
-export function postBookmark(query) {
+export function postBookmark(query: any) {
   return axios.post(`${DOG_DATA_API}/favourites`, query, headers);
 }
 
 // 즐겨찾기 취소
-export function deleteBookmark(query) {
+export function deleteBookmark(query: any) {
   return axios.delete(`${DOG_DATA_API}/favourites/${query}`, headers);
 }
 
 // 즐겨찾기한 목록 호출
-export function getBookmarkList(query) {
+export function getBookmarkList(query: any) {
   const queryData = querystring.stringify(query);
   return axios.get(`${DOG_DATA_API}/favourites?${queryData}`, headers);
 }
 
 // 이미지 등록
-export function postImage(query) {
+export function postImage() {
   return axios.post(`${DOG_DATA_API}/images/upload`);
 }

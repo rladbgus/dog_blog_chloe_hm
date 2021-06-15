@@ -23,7 +23,7 @@ const Register = () => {
     formData.append('file', selectedFile);
     Api.postImage(formData)
       .then((res) => {
-        console.log('🚀 ~ res', res);
+        // console.log('🚀 ~ res', res);
       })
       .catch((err) => {
         console.error(err);
@@ -37,7 +37,10 @@ const Register = () => {
       <div className="image_area">
         <img src={detailImageUrl} alt={selectedFile.name} />
       </div>
-      <S.Button type="button" onClick={() => handlePost()} color={them.color.yellowGreen}>
+      <S.Button
+        type="button"
+        onClick={() => handlePost()}
+        color={them.color.yellowGreen}>
         Register
       </S.Button>
     </div>
