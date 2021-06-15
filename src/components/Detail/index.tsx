@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 function Detail({ dogData }) {
   const dogDetail = dogData.breeds && dogData.breeds[0];
+
   return (
     <>
       <DetailSection>

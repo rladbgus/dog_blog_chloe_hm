@@ -28,7 +28,7 @@ const ModalLayout = ({ children }: Props) => {
         isOpen={isOpen}
         onRequestClose={closeModal}
         style={modalStyles}
-        contentLabel="Example Modal">
+        contentLabel="Modal">
         <CloseButton onClick={closeModal}>X</CloseButton>
         {children}
       </Modal>
