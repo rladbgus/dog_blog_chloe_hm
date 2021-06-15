@@ -57,10 +57,10 @@ const Profile = (props) => {
 const ProfileLayout = styled.div`
   text-align: center;
   margin: 170px 320px;
+  font-size: 22px;
 `;
 
 const MyInformation = styled.div`
-  font-size: 22px;
   margin-bottom: 35px;
   color: #454c53;
   div {
