@@ -47,6 +47,8 @@ function DogCard(props) {
     onLikeApi();
   };
 
+  const aaa = isHome ? 'inline' : 'none';
+
   return (
     <DogCardS>
       <img src={`${imageUrl}`} alt="강아지 이미지" />
@@ -60,6 +62,7 @@ function DogCard(props) {
             onClick={handleLike}
             className="like_icon"
             alt="좋아요"
+            style={{ display: aaa }}
           />
         </LikeSection>
       )}

@@ -63,3 +63,8 @@ export function getBookmarkList(query) {
   const queryData = querystring.stringify(query);
   return axios.get(`${DOG_DATA_API}/favourites?${queryData}`, headers);
 }
+
+// 이미지 등록
+export function postImage(query) {
+  return axios.post(`${DOG_DATA_API}/images/upload`);
+}
