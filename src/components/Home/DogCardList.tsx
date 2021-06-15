@@ -23,12 +23,11 @@ const DogCardList = (props) => {
 
   // const { history } = useRouter();
   // const { scrollOnceMove } = useScrollMove();
-  // let ref = useRef();
-  // useEffect(() => {
-  //   scrollOnceMove();
-  // }, [scrollOnceMove]);
 
-  const focusTarget = useRef([]);
+  const focusTarget = useRef();
+  useEffect(() => {
+    focusTarget.current;
+  }, []);
 
   // 필터링된 데이터 세팅
   // ++리듀서에서 마이그레이션
@@ -68,13 +67,14 @@ const DogCardList = (props) => {
       dataLength={dogsData.length}
       loader={<h3>Loading...</h3>}
       style={{ overflowY: 'auto', overflowX: 'hidden' }}>
-      <S.DogCardList>
+      <S.DogCardList ref={focusTarget}>
         {dogsData.map((dogData: any) => {
           return (
             <Link
               href={`/app/detail/${dogData.reference_image_id}`}
               as={`/app/detail/${dogData.reference_image_id}`}
-              key={dogData.id}>
+              key={dogData.id}
+              scroll={false}>
               <a>
                 <DogCard
                   key={dogData.id}

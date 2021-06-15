@@ -1,6 +1,6 @@
 import * as Api from 'api';
 import * as ImagePath from 'common/utils/imagePath';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 function DogCard(props) {
@@ -46,6 +46,7 @@ function DogCard(props) {
     // 즐겨찾기
     return onBookmarkApi();
   };
+  const focusTarget = useRef();
 
   return (
     <DogCardS>
@@ -56,6 +57,7 @@ function DogCard(props) {
       {isHome && (
         <BookmarkSectionS>
           <img
+            ref={focusTarget}
             src={`${isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
             onClick={handleBookmark}
             className="like_icon"
