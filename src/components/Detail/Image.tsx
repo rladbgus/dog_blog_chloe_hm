@@ -50,23 +50,39 @@ const Image = (props) => {
 
   const handleHeart = (type) => {
     if (type === 'like') {
-      onLikeApi();
+      return onLikeApi();
     }
-    onUnLikeApi();
+    return onUnLikeApi();
   };
 
   return (
     <ImgSectionS>
-      <img src={`${dogData.url}`} onClick={handleImageViewer} alt="강아지 이미지" />
+      <img
+        src={`${dogData.url}`}
+        onClick={handleImageViewer}
+        alt="강아지 이미지"
+      />
       {/* 좋아요 기능 */}
       <LikeSection>
-        <img src={ImagePath.like} onClick={() => handleHeart('like')} className="like" />
+        <img
+          src={ImagePath.like}
+          onClick={() => handleHeart('like')}
+          className="like"
+        />
         {!isLike && (
-          <img src={ImagePath.disLike} onClick={() => handleHeart('unLike')} className="like" />
+          <img
+            src={ImagePath.disLike}
+            onClick={() => handleHeart('unLike')}
+            className="like"
+          />
         )}
       </LikeSection>
       {/* 이미지 뷰어 */}
-      <ReactViewer visible={isViewerOpen} onClose={() => handleImageViewer()} images={images} />
+      <ReactViewer
+        visible={isViewerOpen}
+        onClose={() => handleImageViewer()}
+        images={images}
+      />
     </ImgSectionS>
   );
 };
