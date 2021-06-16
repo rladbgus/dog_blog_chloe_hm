@@ -1,5 +1,5 @@
 import * as Api from 'api/user';
-import ModalLayout from 'common/modal/modal';
+import ModalLayout from 'common/modal';
 import Likes from 'components/Profile/LikeList';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';

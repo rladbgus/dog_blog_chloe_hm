@@ -61,7 +61,7 @@ function DogCard(props) {
             src={`${isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
             onClick={handleBookmark}
             className="like_icon"
-            alt="좋아요"
+            alt="즐겨찾기"
           />
         </BookmarkSectionS>
       )}

@@ -15,10 +15,10 @@ const Register = () => {
     setSelectedFile(e.target.files[0]);
     setSelectedImageUrl(URL.createObjectURL(e.target.files[0]));
 
-    // if (selectedFile[0].size > 1000000) {
-    //   alert('이미지의 최대 크기는 1MB입니다.');
-    //   return;
-    // }
+    if (selectedFile.size > 1000000) {
+      alert('이미지의 최대 크기는 1MB입니다.');
+      return;
+    }
   };
 
   const handlePost = () => {
@@ -28,12 +28,20 @@ const Register = () => {
     Api.postImage(formData)
       .then((res) => {
         console.log('🚀 ~ res', res);
-        Api.analysisImage(res.data.id); //image_id보내기
+        // Api.analysisImage(res.data.id); //image_id보내기
       })
       .catch((err) => {
         console.error(err);
         setIsLoading(false);
       });
+    // for (let key of formData.keys()) {
+    //   console.log('ㅇㅇㅇㅇㅇ', key);
+    // }
+
+    // // FormData의 value 확인
+    // for (let value of formData.values()) {
+    //   console.log('ㅋㅋㅋㅋㅋ', value);
+    // }
   };
 
   return (
@@ -49,22 +57,30 @@ const Register = () => {
       <ImageSection>
         <img src={previewImage} alt={selectedFile.name} />
       </ImageSection>
-      <S.Button onClick={() => handlePost()} color={them.color.yellowGreen}>
+      <SubmitButton onClick={() => handlePost()} color={them.color.yellowGreen}>
         Submit
-      </S.Button>
+      </SubmitButton>
     </RegisterLayout>
   );
 };
 
 const RegisterLayout = styled.div`
-  /* text-align: center;
-  margin: 170px 320px; */
+  text-align: center;
+  margin: 140px 410px;
   font-size: 22px;
+  color: #454c53;
+  input {
+    margin: 35px 0 3px;
+  }
 `;
 
 const ImageSection = styled.div`
   border: 1px solid gray;
-  /* width: 187px; */
+  width: 187px;
+`;
+
+export const SubmitButton = styled(S.Button)`
+  margin-top: 30px;
 `;
 
 export default Register;

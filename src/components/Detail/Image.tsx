@@ -1,4 +1,5 @@
 import * as Api from 'api';
+import Icon from 'common/icon';
 import * as ImagePath from 'common/utils/imagePath';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
@@ -8,7 +9,7 @@ const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 const Image = (props) => {
   const { dogData } = props;
-  const [isLike, setIsLike] = useState(true);
+  const [isUnlike, setIsUnlike] = useState(false);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const images = [{ src: dogData.url }];
@@ -29,7 +30,7 @@ const Image = (props) => {
       .then((res) => {
         if (res.status === 200) {
           setLikedId(res.data.id);
-          setIsLike(false);
+          setIsUnlike(true);
         }
       })
       .catch((err) => console.error(err));
@@ -40,7 +41,7 @@ const Image = (props) => {
     Api.deleteLike(likedId)
       .then((res) => {
         if (res.status === 200) {
-          setIsLike(true);
+          setIsUnlike(false);
         }
       })
       .catch((err) => {
@@ -64,18 +65,18 @@ const Image = (props) => {
       />
       {/* 좋아요 기능 */}
       <LikeSection>
-        <img
-          src={ImagePath.like}
+        <Icon
+          ImageUrl={ImagePath.like}
           onClick={() => handleHeart('like')}
-          className="like"
+          isVisible
+          alt="좋아요 아이콘"
         />
-        {!isLike && (
-          <img
-            src={ImagePath.disLike}
-            onClick={() => handleHeart('unLike')}
-            className="like"
-          />
-        )}
+        <Icon
+          ImageUrl={ImagePath.unLike}
+          onClick={() => handleHeart('unLike')}
+          isVisible={isUnlike}
+          alt="싫어요 아이콘"
+        />
       </LikeSection>
       {/* 이미지 뷰어 */}
       <ReactViewer
@@ -92,11 +93,6 @@ const ImgSectionS = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
-  .like {
-    width: 30px;
-    height: 30px;
-    margin-right: 15px;
-  }
 `;
 const LikeSection = styled.div`
   margin-top: 10px;
