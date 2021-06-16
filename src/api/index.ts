@@ -8,7 +8,8 @@ import querystring from 'querystring';
 const DOG_DATA_API_KEY = 'b5b7f00c-d21d-4457-b750-857d73dd4410';
 const headers = {
   headers: {
-    'x-api-key': DOG_DATA_API_KEY
+    'x-api-key': DOG_DATA_API_KEY,
+    'Content-Type': 'multipart/form-data' //application/json
   }
 };
 
@@ -65,6 +66,11 @@ export function getBookmarkList(query: any) {
 }
 
 // 이미지 등록
-export function postImage() {
-  return axios.post(`${DOG_DATA_API}/images/upload`);
+export function postImage(formData: any) {
+  return axios.post(`${DOG_DATA_API}/images/upload`, formData, headers);
+}
+
+// 이미지 분석
+export function analysisImage(query: any) {
+  return axios.get(`${DOG_DATA_API}/images/${query}/analysis`);
 }
