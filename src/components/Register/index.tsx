@@ -35,12 +35,12 @@ const Register = () => {
         setIsLoading(false);
       });
     // for (let key of formData.keys()) {
-    //   console.log('ㅇㅇㅇㅇㅇ', key);
+    //   console.log('keykeykey', key);
     // }
 
     // // FormData의 value 확인
     // for (let value of formData.values()) {
-    //   console.log('ㅋㅋㅋㅋㅋ', value);
+    //   console.log('valuevalue', value);
     // }
   };
 

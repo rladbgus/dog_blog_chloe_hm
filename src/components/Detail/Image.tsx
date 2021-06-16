@@ -97,6 +97,8 @@ const ImgSectionS = styled.div`
 const LikeSection = styled.div`
   margin-top: 10px;
   display: flex;
+  width: 100px;
+  justify-content: space-around;
 `;
 
 export default Image;
