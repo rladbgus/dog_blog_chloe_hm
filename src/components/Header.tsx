@@ -45,26 +45,4 @@ const Section = styled.div`
   float: right;
 `;
 
-const RegisterButton = styled.button`
-  width: 95px;
-  height: 35px;
-  padding: 6px 12px;
-  color: white;
-  font-size: 17px;
-  border: none;
-  border-radius: 4px;
-  background-color: #74b9ff;
-  margin-right: 3px;
-  :hover {
-    opacity: 0.7;
-  }
-`;
-
-const ProfileButton = styled(RegisterButton)`
-  background-color: #ecc65b;
-  :hover {
-    opacity: 0.7;
-  }
-`;
-
 export default Header;

@@ -65,6 +65,18 @@ export function getBookmarkList(query: any) {
 }
 
 // 이미지 등록
-export function postImage() {
-  return axios.post(`${DOG_DATA_API}/images/upload`);
+export function postImage(formData: any) {
+  console.log('🚀 ~ formData', formData);
+  console.log('🚀 ~ headers', headers);
+  const queryData = querystring.stringify({ sub_id: 'chloe' });
+  return axios.post(
+    `${DOG_DATA_API}/images/upload?${queryData}`,
+    formData,
+    headers
+  );
+}
+
+// 이미지 분석
+export function analysisImage(query: any) {
+  return axios.get(`${DOG_DATA_API}/images/${query}/analysis`);
 }

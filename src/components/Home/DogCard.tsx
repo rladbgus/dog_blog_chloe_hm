@@ -53,16 +53,23 @@ function DogCard(props) {
       <img src={`${imageUrl}`} alt="강아지 이미지" />
       <div className="name">{dogData.name}</div>
       <div>{dogData.life_span}</div>
-      {/* isHome(boolen) image태그 안에서 관리 */}
       {isHome && (
         <BookmarkSectionS>
           <img
-            ref={focusTarget}
             src={`${isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
             onClick={handleBookmark}
             className="like_icon"
-            alt="좋아요"
+            alt="즐겨찾기 아이콘"
           />
+          {/* className적용하기?? */}
+          {/* <Icon
+            ImageUrl={`${
+              isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart
+            }`}
+            onClick={handleBookmark}
+            isVisible={isHome}
+            alt="즐겨찾기 아이콘"
+          /> */}
         </BookmarkSectionS>
       )}
     </DogCardS>

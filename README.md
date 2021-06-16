@@ -230,3 +230,26 @@ FireBase는 이 모든 플랫폼을 프로젝트 구축 시, 자동적으로 만
 FireBase는 백엔드 기능을 클라우드 서비스 형태로 제공하기 때문에 서버리스 애플리케이션 개발이 가능하다.
 
 FireBase 플랫폼으로 프론트엔드 개발자와 백엔드 개발의 경계가 모호해질 것이며, 적은 비용으로 매우 좋은 앱을 만들 수 있을 것이라 기대된다.
+
+## FormData
+
+FormData 객체에 대한 설명은 MDN에 위와 같이 안내되어 있다. 단순한 객체가 아닌 XMLHttpRequest 전송을 위해 설계된 특수한 객체 형태라고 볼 수 있다.
+
+따라서 문자열화할 수 없는 객체이기 때문에 console.log를 사용해서 프린트할 수 없다.
+
+만약 전송 전에 FormData의 값을 확인하고 싶다면, 아래와 같이 FormData의 메소드를 사용해야 한다.
+
+// FormData의 key 확인
+
+```js
+for (let key of formData.keys()) {
+  console.log(key);
+}
+```
+
+```js
+// FormData의 value 확인
+for (let value of formData.values()) {
+  console.log(value);
+}
+```

@@ -7,7 +7,7 @@ export const emptyHeart = '/icons/disHeart.png';
 
 // 손가락 좋아요
 export const like = '/icons/like.png';
-export const disLike = '/icons/dislike.png';
+export const unLike = '/icons/dislike.png';
 
 // 이미지 등록 (default)
 export const register = '/register.png';
