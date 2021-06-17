@@ -6,6 +6,7 @@ import * as S from 'styles/styled';
 const LikeList = (props: any) => {
   const { likeList } = props;
   const [likeDogs, setLikeDogs] = useState([]);
+
   // 강아지의 세부정보 조회 및 저장
   const getDetailData = async () => {
     let totalLikeDogs: any = [];

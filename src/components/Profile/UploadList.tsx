@@ -1,37 +1,41 @@
 import * as Api from 'api';
 import DogCard from 'components/Home/DogCard';
+import { useRouter } from 'next/router';
 import React from 'react';
 import * as S from 'styles/styled';
 
 const UploadList = (props) => {
   const { uploadList } = props;
 
-  const deleteImage = () => {
-    Api.deleteUploadImage(uploadList[0].id)
+  const router = useRouter();
+
+  const deleteImage = (id) => {
+    Api.deleteUploadImage(id)
       .then((res) => {
-        console.log(res);
+        if (res.status === 204) {
+          alert('삭제되었습니다');
+          router.push('/app/profile');
+        }
       })
       .catch((err) => {
         console.error(err);
       });
   };
-
   return (
-    <>
-      {/* <button onClick={() => deleteImage()}>delete</button> */}
-
-      <S.DogCardList>
-        {uploadList?.map((likeDog: any) => {
-          return (
-            <DogCard
-              key={likeDog.id}
-              dogData={likeDog}
-              imageUrl={likeDog.url}
-            />
-          );
-        })}
-      </S.DogCardList>
-    </>
+    <S.DogCardList>
+      {uploadList?.map((likeDog: any) => {
+        return (
+          <DogCard
+            key={likeDog.id}
+            dogData={likeDog}
+            imageUrl={likeDog.url}
+            isButton
+            onClickButton={deleteImage}
+            buttonName="delete"
+          />
+        );
+      })}
+    </S.DogCardList>
   );
 };
 

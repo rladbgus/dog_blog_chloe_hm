@@ -28,7 +28,6 @@ const Register = () => {
     formData.append('file', selectedFile);
     Api.postImage(formData)
       .then((res) => {
-        console.log('🚀 ~ res.data', res);
         if (res.status === 201) {
           setIsLoading(false);
           router.push('/app/profile');
