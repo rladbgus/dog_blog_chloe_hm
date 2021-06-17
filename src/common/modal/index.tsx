@@ -6,9 +6,11 @@ import them from 'styles/them';
 
 type Props = {
   children: ReactNode;
+  buttonName: string;
 };
 
-const ModalLayout = ({ children }: Props) => {
+const ModalLayout = (props: Props) => {
+  const { children, buttonName } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -22,7 +24,7 @@ const ModalLayout = ({ children }: Props) => {
   return (
     <>
       <S.Button color={them.color.yellowGreen} onClick={openModal}>
-        Like List
+        {buttonName}
       </S.Button>
       <Modal
         isOpen={isOpen}

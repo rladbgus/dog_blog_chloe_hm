@@ -1,10 +1,12 @@
 import * as Api from 'api';
 import * as ImagePath from 'common/utils/imagePath';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import * as S from 'styles/styled';
 
 function DogCard(props) {
-  const { isHome, dogData, imageUrl } = props;
+  const { isHome, dogData, imageUrl, isButton, onClickButton, buttonName } =
+    props;
   const [isBookmark, setIsBookmark] = useState(false);
   const [bookmarkId, setBookmarkId] = useState('');
 
@@ -46,7 +48,7 @@ function DogCard(props) {
     // 즐겨찾기
     return onBookmarkApi();
   };
-  const focusTarget = useRef();
+  // const focusTarget = useRef();
 
   return (
     <DogCardS>
@@ -71,6 +73,11 @@ function DogCard(props) {
             alt="즐겨찾기 아이콘"
           /> */}
         </BookmarkSectionS>
+      )}
+      {isButton && (
+        <S.Button onClick={() => onClickButton(dogData.id)}>
+          {buttonName}
+        </S.Button>
       )}
     </DogCardS>
   );
