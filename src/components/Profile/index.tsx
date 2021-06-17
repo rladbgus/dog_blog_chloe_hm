@@ -38,6 +38,12 @@ const Profile = (props) => {
         <div>IP: {userIp}</div>
       </MyInformation>
 
+      {/* 업로드한 파일 목록 */}
+      <ModalLayout>
+        <S.ModalTitle>&lt; Upload Dog List &gt;</S.ModalTitle>
+        <Likes likeList={likeList} />
+      </ModalLayout>
+
       {/* 좋아요 목록 모달 */}
       <ModalLayout>
         <S.ModalTitle>&lt; Like Dog List &gt;</S.ModalTitle>

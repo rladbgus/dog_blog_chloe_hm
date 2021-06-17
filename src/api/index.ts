@@ -66,14 +66,23 @@ export function getBookmarkList(query: any) {
 
 // 이미지 등록
 export function postImage(formData: any) {
-  console.log('🚀 ~ formData', formData);
-  console.log('🚀 ~ headers', headers);
-  const queryData = querystring.stringify({ sub_id: 'chloe' });
+  const queryData = querystring.stringify({ sub_id: 'chloe2' });
   return axios.post(
     `${DOG_DATA_API}/images/upload?${queryData}`,
     formData,
     headers
   );
+}
+
+// 등록한 이미지 호출
+export function getUploadImage() {
+  return axios.get(`${DOG_DATA_API}/images`, headers);
+}
+
+// 이미지 삭제
+export function deleteUploadImage(query: any) {
+  console.log('🚀 ~ query', query);
+  return axios.delete(`${DOG_DATA_API}/images/${query}`, headers);
 }
 
 // 이미지 분석

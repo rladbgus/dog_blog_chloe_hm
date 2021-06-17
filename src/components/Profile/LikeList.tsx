@@ -3,7 +3,7 @@ import DogCard from 'components/Home/DogCard';
 import React, { useEffect, useState } from 'react';
 import * as S from 'styles/styled';
 
-const Likes = (props: any) => {
+const LikeList = (props: any) => {
   const { likeList } = props;
   const [likeDogs, setLikeDogs] = useState([]);
   // 강아지의 세부정보 조회 및 저장
@@ -36,4 +36,4 @@ const Likes = (props: any) => {
   );
 };
 
-export default Likes;
+export default LikeList;
