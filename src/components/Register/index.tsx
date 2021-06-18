@@ -12,6 +12,7 @@ const Register = () => {
   const [selectedFile, setSelectedFile] = useState('');
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
+  const [isProgress, setIsProgress] = useState(false);
 
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
   const router = useRouter();
@@ -28,6 +29,7 @@ const Register = () => {
 
   // 파일 등록
   const onFileSubmit = () => {
+    setIsProgress(true);
     const formData = new FormData();
     formData.append('file', selectedFile);
     Api.postImage(formData, progressOptions)
@@ -74,29 +76,31 @@ const Register = () => {
         />
       </PreviewImageS>
 
-      <SubmitButtonS
-        onClick={() => onFileSubmit()}
-        color={them.color.yellowGreen}>
-        Submit
-      </SubmitButtonS>
-
-      <CircularProgressbar
-        value={progressBar}
-        text={`${progressBar}%`}
-        styles={buildStyles({
-          textSize: '17px',
-          pathTransitionDuration: 1.5,
-          pathColor: `rgba(255, 136, 136, ${progressBar / 100})`,
-          textColor: '#f39393'
-        })}
-      />
+      {isProgress ? (
+        <ProgressBarS>
+          <CircularProgressbar
+            value={progressBar}
+            text={`${progressBar}%`}
+            styles={buildStyles({
+              textSize: '17px',
+              pathTransitionDuration: 1.6,
+              pathColor: `rgba(255, 136, 136, ${progressBar / 100})`,
+              textColor: '#f39393'
+            })}
+          />
+        </ProgressBarS>
+      ) : (
+        <S.Button onClick={() => onFileSubmit()} color={them.color.yellowGreen}>
+          Submit
+        </S.Button>
+      )}
     </RegisterLayoutS>
   );
 };
 
 const RegisterLayoutS = styled.div`
   text-align: center;
-  margin: 140px 410px;
+  margin: 140px 400px;
   font-size: 22px;
   color: #454c53;
   input {
@@ -107,10 +111,13 @@ const RegisterLayoutS = styled.div`
 const PreviewImageS = styled.div`
   border: 1px solid gray;
   width: 187px;
+  margin-bottom: 30px;
 `;
 
-export const SubmitButtonS = styled(S.Button)`
-  margin-top: 30px;
+const ProgressBarS = styled.div`
+  width: 100px;
+  height: 100px;
+  margin-left: 45px;
 `;
 
 export default Register;
