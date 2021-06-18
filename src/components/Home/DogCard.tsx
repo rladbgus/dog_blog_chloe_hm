@@ -1,4 +1,5 @@
 import * as Api from 'api';
+import Icon from 'common/icon';
 import * as ImagePath from 'common/utils/imagePath';
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -57,21 +58,15 @@ function DogCard(props) {
       <div>{dogData.life_span}</div>
       {isHome && (
         <BookmarkSectionS>
-          <img
-            src={`${isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart}`}
-            onClick={handleBookmark}
-            className="like_icon"
-            alt="즐겨찾기 아이콘"
-          />
-          {/* className적용하기?? */}
-          {/* <Icon
+          <Icon
             ImageUrl={`${
               isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart
             }`}
             onClick={handleBookmark}
             isVisible={isHome}
             alt="즐겨찾기 아이콘"
-          /> */}
+            className="bookmark_icon"
+          />
         </BookmarkSectionS>
       )}
       {isButton && (
@@ -96,11 +91,11 @@ const DogCardS = styled.div`
     font-size: 20px;
     margin: 5px 0 3px;
   }
-  .like_icon {
+  .bookmark_icon {
     display: none;
   }
   &:hover {
-    .like_icon {
+    .bookmark_icon {
       display: inline;
     }
   }

@@ -5,10 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
-    "test": "jest",
-    "ts-node": "ts-node -r tsconfig-paths/register ./src/index.ts",
-    "prettier": "prettier --write --config ./.prettierrc './src/**/*.{ts,tsx}'"
+    "test": "jest"
   },
   "dependencies": {
     "@babel/core": "^7.14.3",

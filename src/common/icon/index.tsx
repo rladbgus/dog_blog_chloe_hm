@@ -2,10 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const IconLayout = (props) => {
-  const { ImageUrl, isVisible, alt, onClick } = props;
+  const { ImageUrl, isVisible, alt, onClick, className } = props;
 
   return (
-    <>{isVisible && <IconS src={ImageUrl} alt={alt} onClick={onClick} />}</>
+    <>
+      {isVisible && (
+        <IconS
+          src={ImageUrl}
+          alt={alt}
+          onClick={onClick}
+          className={className}
+        />
+      )}
+    </>
   );
 };
 
