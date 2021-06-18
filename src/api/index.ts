@@ -1,87 +1,73 @@
-import axios from 'axios';
+import axios from 'api/axios';
 import querystring from 'querystring';
-
-// Header 데이터
-
-//환경변수 처리하기 (브라우저와 노드 환경 다름)
-// const DOG_DATA_API_KEY = process.env.NEXT_PUBLIC_DOG_DATA_API_KEY;
-const DOG_DATA_API_KEY = 'b5b7f00c-d21d-4457-b750-857d73dd4410';
-const headers = {
-  headers: {
-    'x-api-key': DOG_DATA_API_KEY
-  }
-};
-
-// 메인 api 주소
-const DOG_DATA_API = 'https://api.thedogapi.com/v1';
 
 // 강아지들의 데이터 호출
 export function getDogsData(query: any) {
   const queryData = querystring.stringify(query);
-  return axios.get(`${DOG_DATA_API}/breeds?${queryData}`);
+  return axios.get(`/breeds?${queryData}`);
 }
 
 // 강아지 상세 데이터 호출
 export function searchDogData(query: any) {
-  return axios.get(`${DOG_DATA_API}/images/${query}`);
+  return axios.get(`/images/${query}`);
 }
 
 // 필터링된 데이터 호출
 export function filterDogData(query: any) {
   const queryData = querystring.stringify(query);
-  return axios.get(`${DOG_DATA_API}/images/search?${queryData}`);
+  return axios.get(`/images/search?${queryData}`);
 }
 
 // 좋아요
 export function postLike(query: any) {
-  return axios.post(`${DOG_DATA_API}/votes`, query, headers);
+  return axios.post(`/votes`, query);
 }
 
 // 좋아요 취소
 export function deleteLike(query: any) {
-  return axios.delete(`${DOG_DATA_API}/votes/${query}`, headers);
+  return axios.delete(`/votes/${query}`);
 }
 
 // 좋이요한 목록 호출
 export function getLikeList(query: any) {
   const queryData = querystring.stringify(query);
-  return axios.get(`${DOG_DATA_API}/votes?${queryData}`, headers);
+  return axios.get(`/votes?${queryData}`);
 }
 
 // 즐겨찾기
 export function postBookmark(query: any) {
-  return axios.post(`${DOG_DATA_API}/favourites`, query, headers);
+  return axios.post(`/favourites`, query);
 }
 
 // 즐겨찾기 취소
 export function deleteBookmark(query: any) {
-  return axios.delete(`${DOG_DATA_API}/favourites/${query}`, headers);
+  return axios.delete(`/favourites/${query}`);
 }
 
 // 즐겨찾기한 목록 호출
 export function getBookmarkList(query: any) {
   const queryData = querystring.stringify(query);
-  return axios.get(`${DOG_DATA_API}/favourites?${queryData}`, headers);
+  return axios.get(`/favourites?${queryData}`);
 }
 
 // 이미지 등록
-export function postImage(formData: any) {
-  return axios.post(`${DOG_DATA_API}/images/upload`, formData, headers);
+export function postImage(formData: any, options: any) {
+  return axios.post(`/images/upload`, formData, options);
 }
 
 // 등록한 이미지 호출
 export function getUploadImage() {
   const query = { limit: 50 };
   const queryData = querystring.stringify(query);
-  return axios.get(`${DOG_DATA_API}/images?${queryData}`, headers);
+  return axios.get(`/images?${queryData}`);
 }
 
 // 이미지 삭제
 export function deleteUploadImage(query: any) {
-  return axios.delete(`${DOG_DATA_API}/images/${query}`, headers);
+  return axios.delete(`/images/${query}`);
 }
 
 // 이미지 분석
 export function analysisImage(query: any) {
-  return axios.get(`${DOG_DATA_API}/images/${query}/analysis`);
+  return axios.get(`/images/${query}/analysis`);
 }

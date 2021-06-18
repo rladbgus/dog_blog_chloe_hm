@@ -12,11 +12,11 @@ const Layout = ({ children }: Props) => {
       <header>
         <Header />
       </header>
-      <Component>{children}</Component>
+      <ComponentS>{children}</ComponentS>
     </div>
   );
 };
-const Component = styled.section`
+const ComponentS = styled.section`
   margin-top: 100px;
 `;
 

@@ -3,16 +3,16 @@ import styled from 'styled-components';
 
 const LoadingPage = () => {
   return (
-    <LoadingBox>
+    <LoadingBoxS>
       <div id="loading">
         <div className="loading_text">Loading...</div>
         <div className="loading_icon"></div>
       </div>
-    </LoadingBox>
+    </LoadingBoxS>
   );
 };
 
-const LoadingBox = styled.div`
+const LoadingBoxS = styled.div`
   #loading {
     height: 100%;
     width: 100%;
