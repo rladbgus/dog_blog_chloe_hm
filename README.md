@@ -239,9 +239,8 @@ FormData 객체에 대한 설명은 MDN에 위와 같이 안내되어 있다. �
 
 만약 전송 전에 FormData의 값을 확인하고 싶다면, 아래와 같이 FormData의 메소드를 사용해야 한다.
 
-// FormData의 key 확인
-
 ```js
+// FormData의 key 확인
 for (let key of formData.keys()) {
   console.log(key);
 }
@@ -257,3 +256,17 @@ for (let value of formData.values()) {
 ## progress Bar
 
 <!-- https://www.npmjs.com/package/react-circular-progressbar -->
+
+## 환경변수
+
+```.env.local
+  DOG_DATA_API_KEY=b5b7f00c-d21d-4457-b750-857d73dd4410
+```
+
+- 서버 사이드에서 환경 변수 접근
+  기본적으로 node.js 환경에서 접근하는 방식은 process.env.{환경변수}로 접근한다.
+  process.env.DOG_DATA_API_KEY
+
+- 클라이언트에서 환경변수 접근
+  브라우저에서 필요로 할 때는 NEXT_PUBLIC 을 붙인 후 선언을 해주어야 동작한다.
+  process.env.NEXT_PUBLIC_DOG_DATA_API_KEY
