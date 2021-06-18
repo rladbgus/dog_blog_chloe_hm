@@ -9,16 +9,16 @@ function Detail({ dogData }) {
 
   return (
     <>
-      <DetailSection>
+      <DetailSectionS>
         <Image dogData={dogData} />
         <Information dogData={dogDetail} />
-      </DetailSection>
+      </DetailSectionS>
       <SimilarList />
     </>
   );
 }
 
-const DetailSection = styled.div`
+const DetailSectionS = styled.div`
   display: flex;
   margin: 0 250px;
 `;

@@ -64,7 +64,7 @@ const Image = (props) => {
         alt="강아지 이미지"
       />
       {/* 좋아요 기능 */}
-      <LikeSection>
+      <LikeSectionS>
         <Icon
           ImageUrl={ImagePath.like}
           onClick={() => handleHeart('like')}
@@ -77,7 +77,7 @@ const Image = (props) => {
           isVisible={isUnlike}
           alt="싫어요 아이콘"
         />
-      </LikeSection>
+      </LikeSectionS>
       {/* 이미지 뷰어 */}
       <ReactViewer
         visible={isViewerOpen}
@@ -94,7 +94,7 @@ const ImgSectionS = styled.div`
   flex-flow: column;
   align-items: center;
 `;
-const LikeSection = styled.div`
+const LikeSectionS = styled.div`
   margin-top: 10px;
   display: flex;
   width: 100px;

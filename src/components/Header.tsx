@@ -8,27 +8,27 @@ import them from 'styles/them';
 const Header = () => {
   return (
     <>
-      <Title>
+      <TitleS>
         <Link href="/">
           <a>
             <img src={ImagePath.Logo} />
             <span>Dog Blog</span>
           </a>
         </Link>
-      </Title>
-      <Section>
+      </TitleS>
+      <SectionS>
         <Link href="/app/register">
           <S.Button color={them.color.blue}>register</S.Button>
         </Link>
         <Link href="/app/profile">
           <S.Button color={them.color.yellow}>profile</S.Button>
         </Link>
-      </Section>
+      </SectionS>
     </>
   );
 };
 
-const Title = styled.div`
+const TitleS = styled.div`
   font-size: 35px;
   margin-bottom: 20px;
   img {
@@ -40,7 +40,7 @@ const Title = styled.div`
   }
 `;
 
-const Section = styled.div`
+const SectionS = styled.div`
   display: inline;
   float: right;
 `;

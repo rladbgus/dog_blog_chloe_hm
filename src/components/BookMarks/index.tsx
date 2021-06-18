@@ -9,10 +9,10 @@ const BookMarks = (props: any) => {
 
   return (
     <>
-      <Title>
+      <TitleS>
         <div>&lt; Bookmark List &gt;</div>
         <div className="info"> 클릭시 자세한 정보를 알 수 있습니다.</div>
-      </Title>
+      </TitleS>
       <S.DogCardList>
         {bookmarkList.map((dogData: any) => {
           return (
@@ -31,7 +31,7 @@ const BookMarks = (props: any) => {
   );
 };
 
-const Title = styled.div`
+const TitleS = styled.div`
   text-align: center;
   font-size: 23px;
   color: #454c53;

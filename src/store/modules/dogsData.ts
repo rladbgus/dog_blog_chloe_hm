@@ -11,48 +11,63 @@ export const FILTER_DOGS_DATA = 'FILTER_DOGS_DATA';
 export const FILTER_DOGS_DATA_SUCCESS = 'FILTER_DOGS_DATA_SUCCESS';
 
 // Action 생성자
-export const getDogsData = createAction(GET_DOGS_DATA, function prepare(queryData) {
-  return {
-    payload: {
-      page: 1,
-      limit: 50,
-      order: queryData ? queryData.order : 'Asc'
-    }
-  };
-});
-export const getDogsDataSuccess = createAction(GET_DOGS_DATA_SUCCESS, function prepare(DogsData) {
-  return {
-    payload: {
-      DogsData
-    }
-  };
-});
+export const getDogsData = createAction(
+  GET_DOGS_DATA,
+  function prepare(queryData) {
+    return {
+      payload: {
+        page: 1,
+        limit: 50,
+        order: queryData ? queryData.order : 'Asc'
+      }
+    };
+  }
+);
+export const getDogsDataSuccess = createAction(
+  GET_DOGS_DATA_SUCCESS,
+  function prepare(DogsData) {
+    return {
+      payload: {
+        DogsData
+      }
+    };
+  }
+);
 
-export const moreDogsData = createAction(MORE_DOGS_DATA, function prepare(queryData) {
-  return {
-    payload: {
-      queryData
-    }
-  };
-});
+export const moreDogsData = createAction(
+  MORE_DOGS_DATA,
+  function prepare(queryData) {
+    return {
+      payload: {
+        queryData
+      }
+    };
+  }
+);
 
-export const sortedDogsData = createAction(SORTED_DOGS_DATA, function prepare(queryData) {
-  return {
-    payload: {
-      queryData
-    }
-  };
-});
+export const sortedDogsData = createAction(
+  SORTED_DOGS_DATA,
+  function prepare(queryData) {
+    return {
+      payload: {
+        queryData
+      }
+    };
+  }
+);
 
 export const sortedDogsDataSuccess = createAction(SORTED_DOGS_DATA_SUCCESS);
 
-export const filterDogData = createAction(FILTER_DOGS_DATA, function prepare(queryData) {
-  return {
-    payload: {
-      queryData
-    }
-  };
-});
+export const filterDogData = createAction(
+  FILTER_DOGS_DATA,
+  function prepare(queryData) {
+    return {
+      payload: {
+        queryData
+      }
+    };
+  }
+);
 
 export const filterDogsDataSuccess = createAction(FILTER_DOGS_DATA_SUCCESS);
 

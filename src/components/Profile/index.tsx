@@ -31,13 +31,13 @@ const Profile = (props) => {
   }, []);
 
   return (
-    <ProfileLayout>
+    <ProfileLayoutS>
       {/* 내 프로필 정보 */}
-      <MyInformation>
+      <MyInformationSs>
         <h1>My Information</h1>
         <div>User Agent: {userAgent} </div>
         <div>IP: {userIp}</div>
-      </MyInformation>
+      </MyInformationSs>
 
       {/* 즐겨찾기 목록 라우팅 */}
       <Link href={'/app/bookmark'}>
@@ -57,17 +57,17 @@ const Profile = (props) => {
         <S.ModalTitle>&lt; Upload Dog List &gt;</S.ModalTitle>
         <UploadList uploadList={uploadList} />
       </ModalLayout>
-    </ProfileLayout>
+    </ProfileLayoutS>
   );
 };
 
-const ProfileLayout = styled.div`
+const ProfileLayoutS = styled.div`
   text-align: center;
   margin: 170px 320px;
   font-size: 22px;
 `;
 
-const MyInformation = styled.div`
+const MyInformationSs = styled.div`
   margin-bottom: 35px;
   color: #454c53;
   div {
