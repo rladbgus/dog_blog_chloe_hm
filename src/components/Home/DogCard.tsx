@@ -6,8 +6,15 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 function DogCard(props) {
-  const { isHome, dogData, imageUrl, isButton, onClickButton, buttonName } =
-    props;
+  const {
+    isHome,
+    dogData,
+    imageUrl,
+    isButton,
+    onClickButton,
+    buttonName,
+    index
+  } = props;
   const [isBookmark, setIsBookmark] = useState(false);
   const [bookmarkId, setBookmarkId] = useState('');
 
@@ -70,7 +77,7 @@ function DogCard(props) {
         </BookmarkSectionS>
       )}
       {isButton && (
-        <S.Button onClick={() => onClickButton(dogData.id)}>
+        <S.Button onClick={() => onClickButton(dogData.id, index)}>
           {buttonName}
         </S.Button>
       )}
