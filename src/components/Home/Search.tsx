@@ -17,6 +17,7 @@ function Search() {
     const query = { breed_ids: searchBreed };
     if (e.key === 'Enter') {
       dispatch(filterDogData(query));
+      setSearchBreed('');
     }
   };
 
