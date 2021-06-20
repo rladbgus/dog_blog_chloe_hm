@@ -75,7 +75,7 @@ export const filterDogsDataSuccess = createAction(FILTER_DOGS_DATA_SUCCESS);
 const initialState: DogsDataType = {
   isLoading: false,
   dogsData: [],
-  filterData: []
+  filterData: { name: '', life_span: '', id: -1, image: { url: '' } }
 };
 
 // Reducer
@@ -93,11 +93,11 @@ const reducer = createReducer(initialState, {
     state.dogsData = action.payload.data;
   },
   [filterDogsDataSuccess.type]: (state, action) => {
-    // console.log('🚀 ~ filter Action', action.payload.data);
-    // state.dogsData.name = action.payload.data[0].breeds.name;
-    // state.dogsData.life_span = action.payload.data[0].breeds.life_span;
-    // state.dogsData.id = action.payload.data[0].id;
-    state.filterData = action.payload.data[0];
+    state.filterData.name = action.payload.data[0].breeds[0].name;
+    state.filterData.life_span = action.payload.data[0].breeds[0].life_span;
+    state.filterData.id = action.payload.data[0].id;
+    state.filterData.image.url = action.payload.data[0].url;
+    state.dogsData = [state.filterData];
   }
 });
 
