@@ -5,15 +5,15 @@ import * as S from 'styles/styled';
 
 const UploadList = (props) => {
   const { uploadList } = props;
-  const [temp, setTemp] = useState([...uploadList]);
+  const [uploadedList, setUploadedList] = useState([...uploadList]);
 
   const deleteImage = (id, index) => {
     Api.deleteUploadImage(id)
       .then((res) => {
         if (res.status === 204) {
-          alert('삭제되었습니다');
+          alert('삭제되었습니다.');
           uploadList.splice(index, 1);
-          setTemp(temp.filter((data, idx) => idx !== index));
+          setUploadedList(uploadedList.filter((data, idx) => idx !== index));
         }
       })
       .catch((err) => {
@@ -23,7 +23,7 @@ const UploadList = (props) => {
 
   return (
     <S.DogCardList>
-      {temp?.map((likeDog: any, index: any) => {
+      {uploadedList?.map((likeDog: any, index: any) => {
         return (
           <DogCard
             key={likeDog.id}
