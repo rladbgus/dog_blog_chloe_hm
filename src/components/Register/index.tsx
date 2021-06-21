@@ -3,7 +3,6 @@ import * as ImagePath from 'common/utils/imagePath';
 import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-// import { CircleProgress } from 'react-gradient-progress';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
@@ -55,16 +54,6 @@ const Register = () => {
   };
 
   // 프로그래스바 설정
-  // const progressOptions = {
-  //   onUploadProgress: (progressEvent) => {
-  //     const { loaded, total } = progressEvent;
-  //     const percentage = Math.floor(((loaded / 1000) * 100) / (total / 1000));
-  //     console.log(`${loaded}kb of ${total}kb | ${percentage}%`);
-  //     setProgressBar(percentage);
-  //   }
-  // };
-
-  // 프로그래스바 설정
   const progressOptions = {
     onUploadProgress: (progressEvent) => {
       const { loaded, total } = progressEvent;
@@ -114,7 +103,6 @@ const Register = () => {
           Submit
         </S.Button>
       )}
-      {/* <CircleProgress percentage={progressBar} strokeWidth={8} /> */}
     </RegisterLayoutS>
   );
 };
