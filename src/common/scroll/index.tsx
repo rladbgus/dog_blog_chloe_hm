@@ -1,26 +1,20 @@
 import { useEffect } from 'react';
 
-export default function useScrollMove(
-  sessionStorageKey: string,
-  setCondition: boolean
-): void {
-  // const [scrollYStorage, setScrollYStorage] = useState<number>(0);
-
+function useScrollMove(sessionStorageKey: string, isScroll: boolean): void {
   useEffect(() => {
-    const scrollPosition = sessionStorage.getItem(sessionStorageKey);
-    console.log('🚀 ~ scrollPosition', scrollPosition);
-    // setScrollYStorage(scrollPosition);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      console.log('🚀 ~ currentScrollY', currentScrollY);
+      sessionStorage.setItem(sessionStorageKey, currentScrollY);
+    };
 
-    if (setCondition) {
+    const scrollPosition = Number(sessionStorage.getItem(sessionStorageKey));
+    if (isScroll) {
+      window.addEventListener('scroll', handleScroll);
       window.scrollTo(0, scrollPosition);
     }
-  }, [setCondition]);
-
-  useEffect(() => {
-    return () => {
-      console.log('🚀 ~ scrollY', window.scrollY);
-      console.log('🚀 ~ pageYOffset', window.pageYOffset);
-      sessionStorage.setItem(sessionStorageKey, window.pageYOffset);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 }
+
+export default useScrollMove;

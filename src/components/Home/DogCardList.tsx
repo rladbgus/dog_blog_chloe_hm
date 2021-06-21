@@ -16,13 +16,9 @@ const DogCardList = (props) => {
   const [dogsData, setDogsData] = useState<object>(storeDogsData);
   const [hasMore, setHasMore] = useState<boolean>(!unUseInfinite);
   const [page, setPage] = useState<number>(2);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // 메인페이지에서만 스크롤유지기능
-  if (isHome) {
-    console.log('isHome', isHome);
-    useScrollMove('scroll_pos', isLoading);
-  }
+  useScrollMove('home_scroll_pos', isHome);
 
   useEffect(() => {
     setDogsData(storeDogsData);
