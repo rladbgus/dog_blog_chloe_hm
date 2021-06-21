@@ -8,7 +8,7 @@ function Home() {
     <>
       <Sort />
       <Search />
-      <DogCardList />
+      <DogCardList isHome />
     </>
   );
 }

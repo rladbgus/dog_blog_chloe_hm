@@ -270,3 +270,5 @@ for (let value of formData.values()) {
 - 클라이언트에서 환경변수 접근
   브라우저에서 필요로 할 때는 NEXT_PUBLIC 을 붙인 후 선언을 해주어야 동작한다.
   process.env.NEXT_PUBLIC_DOG_DATA_API_KEY
+
+처음 window.scrollY를 쓰려고 했는데 MDN을 확인해보니, scrollY의 다른 이름의 속성이지만, 브라우저 호환성을 위해 window.pageYOffset을 제안하고 있었다. 그러나 IE 9 미만의 올드 브라우저에서는 두 속성 모두 지원이 안 된다.
