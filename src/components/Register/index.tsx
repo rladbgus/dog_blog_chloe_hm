@@ -1,9 +1,9 @@
 import * as Api from 'api/index';
 import * as ImagePath from 'common/utils/imagePath';
-import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+// import { CircleProgress } from 'react-gradient-progress';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
@@ -15,7 +15,6 @@ const Register = () => {
   const [isProgress, setIsProgress] = useState(false);
 
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
-  const router = useRouter();
 
   // 파일 선택
   const onFileSelected = (e) => {
@@ -35,7 +34,13 @@ const Register = () => {
     Api.postImage(formData, progressOptions)
       .then((res) => {
         if (res.status === 201) {
-          router.push('/app/profile');
+          setProgressBar(100);
+          setTimeout(() => {
+            alert('업로드 완료!');
+            setProgressBar(0);
+            setIsProgress(false);
+            setSelectedImageUrl('');
+          }, 1000);
         }
       })
       .catch((err) => {
@@ -50,11 +55,26 @@ const Register = () => {
   };
 
   // 프로그래스바 설정
+  // const progressOptions = {
+  //   onUploadProgress: (progressEvent) => {
+  //     const { loaded, total } = progressEvent;
+  //     const percentage = Math.floor(((loaded / 1000) * 100) / (total / 1000));
+  //     console.log(`${loaded}kb of ${total}kb | ${percentage}%`);
+  //     setProgressBar(percentage);
+  //   }
+  // };
+
+  // 프로그래스바 설정
   const progressOptions = {
     onUploadProgress: (progressEvent) => {
       const { loaded, total } = progressEvent;
-      const percentage = Math.floor(((loaded / 1000) * 100) / (total / 1000));
-      setProgressBar(percentage);
+      let percentage = Math.floor((loaded * 100) / total);
+
+      console.log(`${loaded}kb of ${total}kb | ${percentage}%`);
+
+      if (percentage < 100) {
+        setProgressBar(percentage);
+      }
     }
   };
 
@@ -83,7 +103,7 @@ const Register = () => {
             text={`${progressBar}%`}
             styles={buildStyles({
               textSize: '17px',
-              pathTransitionDuration: 1.6,
+              pathTransitionDuration: 1,
               pathColor: `rgba(255, 136, 136, ${progressBar / 100})`,
               textColor: '#f39393'
             })}
@@ -94,6 +114,7 @@ const Register = () => {
           Submit
         </S.Button>
       )}
+      {/* <CircleProgress percentage={progressBar} strokeWidth={8} /> */}
     </RegisterLayoutS>
   );
 };
