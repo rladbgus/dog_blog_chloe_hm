@@ -30,6 +30,19 @@ const Profile = (props) => {
       });
   }, []);
 
+  // useEffect(() => {
+  //   if (typeof window !== undefined) {
+  //     var top = window.pageYOffset || document.documentElement.scrollTop;
+  //     console.log('🚀 ~ top', top);
+  //   }
+
+  //   return () => {
+  //     const scrollPosition =
+  //       window.pageYOffset || document.documentElement.scrollTop;
+  //     console.log('🚀 ~ scrollPosition', scrollPosition);
+  //   };
+  // }, []);
+
   return (
     <ProfileLayoutS>
       {/* 내 프로필 정보 */}
@@ -38,25 +51,280 @@ const Profile = (props) => {
         <div>User Agent: {userAgent} </div>
         <div>IP: {userIp}</div>
       </MyInformationSs>
-
       {/* 즐겨찾기 목록 라우팅 */}
       <Link href={'/app/bookmark'}>
         <a>
           <S.Button color={them.color.yellowGreen}>Bookmark</S.Button>
         </a>
       </Link>
-
       {/* 좋아요 목록 모달 */}
       <ModalLayout buttonName="Like List">
         <S.ModalTitle>&lt; Like Dog List &gt;</S.ModalTitle>
         <LikeList likeList={likeList} />
       </ModalLayout>
-
       {/* 업로드한 파일 목록 모달*/}
       <ModalLayout buttonName="Uploaded">
         <S.ModalTitle>&lt; Upload Dog List &gt;</S.ModalTitle>
         <UploadList uploadList={uploadList} />
       </ModalLayout>
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
+      <Link href={`/`} as={`/`}>
+        <a>
+          <div>dddd</div>
+        </a>
+      </Link>
+      <br />
     </ProfileLayoutS>
   );
 };
