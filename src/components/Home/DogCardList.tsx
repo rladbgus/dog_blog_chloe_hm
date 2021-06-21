@@ -1,4 +1,3 @@
-import useScrollMove from 'common/scroll';
 import DogCard from 'components/Home/DogCard';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -8,7 +7,7 @@ import { moreDogsData } from 'store/modules/dogsData';
 import * as S from 'styles/styled';
 
 const DogCardList = (props) => {
-  const { unUseInfinite, isHome } = props;
+  const { unUseInfinite } = props;
   const dispatch = useDispatch();
   const storeData = useSelector((state: any) => state.dogsData);
   const storeDogsData = storeData.dogsData;
@@ -16,13 +15,6 @@ const DogCardList = (props) => {
   const [dogsData, setDogsData] = useState<object>(storeDogsData);
   const [hasMore, setHasMore] = useState<boolean>(!unUseInfinite);
   const [page, setPage] = useState<number>(2);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  // 메인페이지에서만 스크롤유지기능
-  if (isHome) {
-    console.log('isHome', isHome);
-    useScrollMove('scroll_pos', isLoading);
-  }
 
   useEffect(() => {
     setDogsData(storeDogsData);
