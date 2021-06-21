@@ -1,5 +1,6 @@
 import * as Api from 'api/user';
 import ModalLayout from 'common/modal';
+import useScrollMove from 'common/scroll';
 import LikeList from 'components/Profile/LikeList';
 import UploadList from 'components/Profile/UploadList';
 import Link from 'next/link';
@@ -15,6 +16,8 @@ const Profile = (props) => {
   const [userAgent, setUserAgent] = useState('');
   const [userIp, setUserIp] = useState('');
 
+  useScrollMove('scroll_poss', true);
+
   useEffect(() => {
     // Agent저장
     const UserAgent = navigator.userAgent;
@@ -29,19 +32,6 @@ const Profile = (props) => {
         console.error(err);
       });
   }, []);
-
-  // useEffect(() => {
-  //   if (typeof window !== undefined) {
-  //     var top = window.pageYOffset || document.documentElement.scrollTop;
-  //     console.log('🚀 ~ top', top);
-  //   }
-
-  //   return () => {
-  //     const scrollPosition =
-  //       window.pageYOffset || document.documentElement.scrollTop;
-  //     console.log('🚀 ~ scrollPosition', scrollPosition);
-  //   };
-  // }, []);
 
   return (
     <ProfileLayoutS>

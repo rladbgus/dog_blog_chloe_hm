@@ -1,7 +1,7 @@
 import useScrollMove from 'common/scroll';
 import DogCard from 'components/Home/DogCard';
 import Link from 'next/link';
-import React, { /*useCallback,*/ useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { moreDogsData } from 'store/modules/dogsData';
