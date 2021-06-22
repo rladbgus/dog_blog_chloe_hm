@@ -56,26 +56,23 @@ function DogCard(props) {
     // 즐겨찾기
     return onBookmarkApi();
   };
-  // const focusTarget = useRef();
 
   return (
     <DogCardS>
       <img src={`${imageUrl}`} alt="강아지 이미지" />
       <div className="name">{dogData.name}</div>
       <div>{dogData.life_span}</div>
-      {isHome && (
-        <BookmarkSectionS>
-          <Icon
-            ImageUrl={`${
-              isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart
-            }`}
-            onClick={handleBookmark}
-            isVisible={isHome}
-            alt="즐겨찾기 아이콘"
-            className="bookmark_icon"
-          />
-        </BookmarkSectionS>
-      )}
+      <BookmarkSectionS>
+        <Icon
+          ImageUrl={`${
+            isBookmark ? ImagePath.fullHeart : ImagePath.emptyHeart
+          }`}
+          onClick={handleBookmark}
+          isVisible={isHome}
+          alt="즐겨찾기 아이콘"
+          className="bookmark_icon"
+        />
+      </BookmarkSectionS>
       {isButton && (
         <S.Button onClick={() => onClickButton(dogData.id, index)}>
           {buttonName}

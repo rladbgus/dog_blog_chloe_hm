@@ -2,8 +2,7 @@
 // const path = require('path');
 
 // module.exports = withTypescript({
-//   webpack(config, options) {
-//     // config.resolve.modules.push(path.resolve('./'));
-//     return config;
+//   env: {
+//     EXP: process.env.EXP
 //   }
 // });

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
+// *usecallback
 const Register = () => {
   const [selectedFile, setSelectedFile] = useState('');
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
@@ -30,6 +31,7 @@ const Register = () => {
     setIsProgress(true);
     const formData = new FormData();
     formData.append('file', selectedFile);
+    //api
     Api.postImage(formData, progressOptions)
       .then((res) => {
         if (res.status === 201) {
@@ -43,6 +45,7 @@ const Register = () => {
         }
       })
       .catch((err) => {
+        //*에러처리
         console.error(err);
       });
   };
@@ -66,6 +69,7 @@ const Register = () => {
       }
     }
   };
+  console.log('dssdsssss');
 
   return (
     <RegisterLayoutS>
