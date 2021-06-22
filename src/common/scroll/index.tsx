@@ -4,7 +4,6 @@ function useScrollMove(sessionStorageKey: string, isScroll: boolean): void {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      console.log('🚀 ~ currentScrollY', currentScrollY);
       sessionStorage.setItem(sessionStorageKey, currentScrollY);
     };
 
