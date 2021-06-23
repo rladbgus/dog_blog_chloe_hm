@@ -8,7 +8,7 @@ import { getDogsData } from 'store/modules/dogsData';
 import { wrapper } from 'store/store';
 
 function HomePage() {
-  // 메인페이지에서만 스크롤유지기능
+  // 스크롤유지기능
   useScrollMove('home_scroll_pos', true);
 
   return (

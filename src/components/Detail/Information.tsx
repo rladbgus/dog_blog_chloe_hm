@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Information({ dogData }) {
+interface InformationProps {
+  dogData: object;
+}
+
+function Information({ dogData }: InformationProps) {
   return (
     <>
       {dogData && (

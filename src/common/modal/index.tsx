@@ -4,12 +4,12 @@ import Modal from 'react-modal';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
-interface Props {
+interface ModalLayoutProps {
   children: ReactNode;
   buttonName: string;
 }
 
-function ModalLayout(props: Props) {
+function ModalLayout(props: ModalLayoutProps) {
   const { children, buttonName } = props;
   const [isOpen, setIsOpen] = useState(false);
 

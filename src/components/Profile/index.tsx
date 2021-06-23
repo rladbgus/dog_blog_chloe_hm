@@ -9,8 +9,13 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
+interface ProfileProps {
+  likeList: object;
+  uploadList: object;
+}
+
 Modal.setAppElement('*');
-function Profile(props) {
+function Profile(props: ProfileProps) {
   const { likeList, uploadList } = props;
   const [userAgent, setUserAgent] = useState('');
   const [userIp, setUserIp] = useState('');

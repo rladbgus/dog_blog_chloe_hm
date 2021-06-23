@@ -7,7 +7,11 @@ import styled from 'styled-components';
 
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
-function Image(props) {
+interface ImageProps {
+  dogData: object;
+}
+
+function Image(props: ImageProps) {
   const { dogData } = props;
   const [isUnlike, setIsUnlike] = useState(false);
   const [likedId, setLikedId] = useState('');

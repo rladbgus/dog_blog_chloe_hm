@@ -5,7 +5,17 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 
-function DogCard(props) {
+interface DogCardProps {
+  dogData: object;
+  imageUrl: string;
+  isHome?: boolean;
+  isButton?: boolean;
+  onClickButton?: Function;
+  buttonName?: string;
+  index?: number;
+}
+
+function DogCard(props: DogCardProps) {
   const {
     isHome,
     dogData,

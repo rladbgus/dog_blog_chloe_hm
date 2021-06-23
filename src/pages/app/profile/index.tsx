@@ -5,7 +5,12 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 
-function ProfilePage(props) {
+interface ProfileProps {
+  likeList: object;
+  uploadList: object;
+}
+
+function ProfilePage(props: ProfileProps) {
   const { likeList, uploadList } = props;
   return (
     <>

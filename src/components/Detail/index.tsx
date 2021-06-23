@@ -4,7 +4,11 @@ import SimilarList from 'components/Detail/SimilarList';
 import React from 'react';
 import styled from 'styled-components';
 
-function Detail({ dogData }) {
+interface DetailProps {
+  dogData: object;
+}
+
+function Detail({ dogData }: DetailProps) {
   const dogDetail = dogData.breeds && dogData.breeds[0];
 
   return (

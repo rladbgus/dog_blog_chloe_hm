@@ -3,11 +3,15 @@ import DogCard from 'components/Home/DogCard';
 import React, { useState } from 'react';
 import * as S from 'styles/styled';
 
-function UploadList(props) {
+interface UploadListProps {
+  uploadList: [];
+}
+
+function UploadList(props: UploadListProps) {
   const { uploadList } = props;
   const [uploadedList, setUploadedList] = useState([...uploadList]);
 
-  const deleteImage = (id, index) => {
+  const deleteImage = (id: any, index: any) => {
     Api.deleteUploadImage(id)
       .then((res) => {
         if (res.status === 204) {

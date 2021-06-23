@@ -9,7 +9,7 @@ import them from 'styles/them';
 
 // *usecallback
 function Register() {
-  const [selectedFile, setSelectedFile] = useState('');
+  const [selectedFile, setSelectedFile] = useState({});
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
   const [isProgress, setIsProgress] = useState(false);
@@ -58,7 +58,7 @@ function Register() {
 
   // 프로그래스바 설정
   const progressOptions = {
-    onUploadProgress: (progressEvent) => {
+    onUploadProgress: (progressEvent: ProgressEvent) => {
       const { loaded, total } = progressEvent;
       let percentage = Math.floor((loaded * 100) / total);
 

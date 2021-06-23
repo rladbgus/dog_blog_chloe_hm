@@ -4,7 +4,11 @@ import React from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 
-function BookMarks(props: any) {
+interface BookMarksProps {
+  bookmarkList: object;
+}
+
+function BookMarks(props: BookMarksProps) {
   const { bookmarkList } = props;
 
   return (
