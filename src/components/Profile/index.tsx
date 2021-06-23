@@ -1,5 +1,6 @@
 import * as Api from 'api/user';
 import ModalLayout from 'common/modal';
+import { DogData } from 'components/Home/DogCard';
 import LikeList from 'components/Profile/LikeList';
 import UploadList from 'components/Profile/UploadList';
 import Link from 'next/link';
@@ -11,7 +12,7 @@ import them from 'styles/them';
 
 interface ProfileProps {
   likeList: object[];
-  uploadList: object[];
+  uploadList: DogData[];
 }
 
 Modal.setAppElement('*');

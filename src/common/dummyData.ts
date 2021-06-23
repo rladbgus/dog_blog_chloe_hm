@@ -1,2 +1,2 @@
 // image Types
-export const imageTypes: any = ['gif', 'jpg', 'png'];
+export const imageTypes: string[] = ['gif', 'jpg', 'png'];

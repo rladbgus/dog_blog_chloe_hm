@@ -7,10 +7,14 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
+interface SelectedFile {
+  size: number;
+  name: string;
+}
+
 // *usecallback
 function Register() {
   const [selectedFile, setSelectedFile] = useState({});
-  console.log('🚀 ~ selectedFile', selectedFile);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
   const [isProgress, setIsProgress] = useState(false);
@@ -18,13 +22,16 @@ function Register() {
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
 
   // 파일 선택
-  const onFileSelected = (e) => {
+  const onFileSelected = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+
     if (selectedFile.size > 1000000) {
       alert('이미지의 최대 크기는 1MB입니다.');
       return;
     }
-    setSelectedFile(e.target.files[0]);
-    setSelectedImageUrl(URL.createObjectURL(e.target.files[0]));
+    setSelectedFile(file);
+    setSelectedImageUrl(URL.createObjectURL(file));
   };
 
   // 파일 등록
@@ -70,7 +77,6 @@ function Register() {
       }
     }
   };
-  console.log('dssdsssss');
 
   return (
     <RegisterLayoutS>

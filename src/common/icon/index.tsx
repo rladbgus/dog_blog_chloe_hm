@@ -1,7 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function IconLayout(props) {
+interface IconLayoutProps {
+  ImageUrl: string;
+  isVisible?: boolean;
+  alt: string;
+  className?: string;
+  onClick: any;
+}
+
+function IconLayout(props: IconLayoutProps) {
   const { ImageUrl, isVisible, alt, onClick, className } = props;
 
   return (

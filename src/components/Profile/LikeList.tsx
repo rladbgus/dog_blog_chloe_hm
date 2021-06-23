@@ -7,6 +7,12 @@ interface LikeListProps {
   likeList?: object[];
 }
 
+interface likeDog {
+  breeds: object;
+  id: number;
+  url: string;
+}
+
 function LikeList(props: LikeListProps) {
   const { likeList } = props;
   const [likeDogs, setLikeDogs] = useState([]);
@@ -17,7 +23,7 @@ function LikeList(props: LikeListProps) {
     const dogsInfo = likeList?.map(async (likeDog: any) => {
       return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
     });
-    console.log('🚀 ~ dogsInfo', dogsInfo);
+    //  ???
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);
   };
@@ -28,7 +34,7 @@ function LikeList(props: LikeListProps) {
 
   return (
     <S.DogCardList>
-      {likeDogs?.map((likeDog: any) => {
+      {likeDogs?.map((likeDog: likeDog) => {
         const likeDogDetail = likeDog.breeds[0];
         return (
           <DogCard
