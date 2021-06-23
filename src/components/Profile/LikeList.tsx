@@ -3,7 +3,7 @@ import DogCard from 'components/Home/DogCard';
 import React, { useEffect, useState } from 'react';
 import * as S from 'styles/styled';
 
-const LikeList = (props: any) => {
+function LikeList(props: any) {
   const { likeList } = props;
   const [likeDogs, setLikeDogs] = useState([]);
 
@@ -35,6 +35,6 @@ const LikeList = (props: any) => {
       })}
     </S.DogCardList>
   );
-};
+}
 
 export default LikeList;

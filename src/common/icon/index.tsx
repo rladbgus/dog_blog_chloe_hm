@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const IconLayout = (props) => {
+function IconLayout(props) {
   const { ImageUrl, isVisible, alt, onClick, className } = props;
 
   return (
@@ -16,7 +16,7 @@ const IconLayout = (props) => {
       )}
     </>
   );
-};
+}
 
 const IconS = styled.img`
   width: 30px;

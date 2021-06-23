@@ -1,5 +1,5 @@
 import * as Api from 'api/index';
-import * as ImagePath from 'common/utils/imagePath';
+import * as ImagePath from 'common/imagePath';
 import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -8,7 +8,7 @@ import * as S from 'styles/styled';
 import them from 'styles/them';
 
 // *usecallback
-const Register = () => {
+function Register() {
   const [selectedFile, setSelectedFile] = useState('');
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
@@ -109,7 +109,7 @@ const Register = () => {
       )}
     </RegisterLayoutS>
   );
-};
+}
 
 const RegisterLayoutS = styled.div`
   text-align: center;

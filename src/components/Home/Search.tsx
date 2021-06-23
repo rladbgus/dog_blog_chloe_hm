@@ -1,5 +1,4 @@
-// import { useRouter } from 'next/router';
-import { imageTypes } from 'common/utils/dummyData';
+import { imageTypes } from 'common/dummyData';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterDogData } from 'store/modules/dogsData';

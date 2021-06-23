@@ -10,7 +10,7 @@ import * as S from 'styles/styled';
 import them from 'styles/them';
 
 Modal.setAppElement('*');
-const Profile = (props) => {
+function Profile(props) {
   const { likeList, uploadList } = props;
   const [userAgent, setUserAgent] = useState('');
   const [userIp, setUserIp] = useState('');
@@ -56,7 +56,7 @@ const Profile = (props) => {
       </ModalLayout>
     </ProfileLayoutS>
   );
-};
+}
 
 const ProfileLayoutS = styled.div`
   text-align: center;

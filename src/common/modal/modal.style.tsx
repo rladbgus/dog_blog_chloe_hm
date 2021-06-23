@@ -12,7 +12,7 @@ export const modalStyles = {
   }
 };
 
-export const CloseButton = styled(S.Button)`
+export const CloseButtonS = styled(S.Button)`
   color: #a2ce49;
   float: right;
 `;

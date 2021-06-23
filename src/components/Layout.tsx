@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-const Layout = ({ children }: Props) => {
+function Layout({ children }: Props) {
   return (
     <div>
       <header>
@@ -15,7 +15,7 @@ const Layout = ({ children }: Props) => {
       <ComponentS>{children}</ComponentS>
     </div>
   );
-};
+}
 const ComponentS = styled.section`
   margin-top: 100px;
 `;

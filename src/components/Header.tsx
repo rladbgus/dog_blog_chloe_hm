@@ -1,11 +1,11 @@
-import * as ImagePath from 'common/utils/imagePath';
+import * as ImagePath from 'common/imagePath';
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
-const Header = () => {
+function Header() {
   return (
     <>
       <TitleS>
@@ -26,7 +26,7 @@ const Header = () => {
       </SectionS>
     </>
   );
-};
+}
 
 const TitleS = styled.div`
   font-size: 35px;
