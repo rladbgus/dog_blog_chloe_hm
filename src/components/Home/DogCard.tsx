@@ -1,6 +1,6 @@
 import * as Api from 'api';
 import Icon from 'common/icon';
-import * as ImagePath from 'common/utils/imagePath';
+import * as ImagePath from 'common/imagePath';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';

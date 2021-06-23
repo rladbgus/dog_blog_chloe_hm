@@ -1,5 +1,5 @@
 import * as Api from 'api/index';
-import * as ImagePath from 'common/utils/imagePath';
+import * as ImagePath from 'common/imagePath';
 import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';

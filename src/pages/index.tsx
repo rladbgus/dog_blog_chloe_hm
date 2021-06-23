@@ -1,4 +1,4 @@
-import useScrollMove from 'common/scroll';
+import useScrollMove from 'common/hooks/useScroll';
 import Home from 'components/Home';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';

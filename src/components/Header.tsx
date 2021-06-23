@@ -1,4 +1,4 @@
-import * as ImagePath from 'common/utils/imagePath';
+import * as ImagePath from 'common/imagePath';
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
