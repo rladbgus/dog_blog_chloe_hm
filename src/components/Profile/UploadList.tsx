@@ -1,4 +1,4 @@
-import * as Api from 'api';
+import * as Api from 'api/image';
 import DogCard, { DogData } from 'components/Home/DogCard';
 import React, { useState } from 'react';
 import * as S from 'styles/styled';

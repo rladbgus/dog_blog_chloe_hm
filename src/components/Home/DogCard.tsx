@@ -1,4 +1,4 @@
-import * as Api from 'api';
+import * as Api from 'api/bookmark';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import React, { useState } from 'react';

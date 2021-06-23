@@ -1,4 +1,4 @@
-import * as Api from 'api';
+import * as Api from 'api/like';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import dynamic from 'next/dynamic';
