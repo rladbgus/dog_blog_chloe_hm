@@ -1,11 +1,17 @@
-import * as Api from 'api';
+import * as ApiImage from 'api/image';
+import * as Api from 'api/like';
 import Profile from 'components/Profile';
 import Likes from 'components/Profile/LikeList';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 
-function ProfilePage(props) {
+interface ProfileProps {
+  likeList: object[];
+  uploadList: object[];
+}
+
+function ProfilePage(props: ProfileProps) {
   const { likeList, uploadList } = props;
   return (
     <>
@@ -25,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     // 좋아요한 목록
     const likeListRes = await Api.getLikeList(query);
     // 업로드한 파일 목록
-    const uploadListRes = await Api.getUploadImage();
+    const uploadListRes = await ApiImage.getUploadImage();
 
     if (likeListRes.status === 200 && uploadListRes.status === 200) {
       const likeList = likeListRes.data;

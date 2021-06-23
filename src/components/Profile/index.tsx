@@ -1,5 +1,6 @@
 import * as Api from 'api/user';
 import ModalLayout from 'common/modal';
+import { DogData } from 'components/Home/DogCard';
 import LikeList from 'components/Profile/LikeList';
 import UploadList from 'components/Profile/UploadList';
 import Link from 'next/link';
@@ -9,8 +10,13 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
+interface ProfileProps {
+  likeList: object[];
+  uploadList: DogData[];
+}
+
 Modal.setAppElement('*');
-function Profile(props) {
+function Profile(props: ProfileProps) {
   const { likeList, uploadList } = props;
   const [userAgent, setUserAgent] = useState('');
   const [userIp, setUserIp] = useState('');

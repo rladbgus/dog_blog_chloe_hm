@@ -1,13 +1,17 @@
-import * as Api from 'api';
-import DogCard from 'components/Home/DogCard';
+import * as Api from 'api/image';
+import DogCard, { DogData } from 'components/Home/DogCard';
 import React, { useState } from 'react';
 import * as S from 'styles/styled';
 
-function UploadList(props) {
+interface UploadListProps {
+  uploadList: DogData[];
+}
+
+function UploadList(props: UploadListProps) {
   const { uploadList } = props;
   const [uploadedList, setUploadedList] = useState([...uploadList]);
 
-  const deleteImage = (id, index) => {
+  const deleteImage = (id: number, index: number) => {
     Api.deleteUploadImage(id)
       .then((res) => {
         if (res.status === 204) {
@@ -23,7 +27,7 @@ function UploadList(props) {
 
   return (
     <S.DogCardList>
-      {uploadedList?.map((likeDog: any, index: any) => {
+      {uploadedList?.map((likeDog, index) => {
         return (
           <DogCard
             key={likeDog.id}

@@ -1,3 +1,19 @@
-//
-//
-//
+import axios from 'api/axios';
+import querystring from 'querystring';
+
+// 이미지 등록
+export function postImage(formData: any, options: any) {
+  return axios.post(`/images/upload`, formData, options);
+}
+
+// 등록한 이미지 호출
+export function getUploadImage() {
+  const query = { limit: 50 };
+  const queryData = querystring.stringify(query);
+  return axios.get(`/images?${queryData}`);
+}
+
+// 이미지 삭제
+export function deleteUploadImage(query: any) {
+  return axios.delete(`/images/${query}`);
+}

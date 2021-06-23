@@ -1,11 +1,33 @@
-import * as Api from 'api';
+import * as Api from 'api/bookmark';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 
-function DogCard(props) {
+interface DogCardProps {
+  dogData: DogData;
+  imageUrl: string;
+  isHome?: boolean;
+  isButton?: boolean;
+  onClickButton?: any;
+  buttonName?: string;
+  index?: number;
+}
+
+export interface DogData {
+  image: Image;
+  id: number;
+  name: string;
+  life_span: string;
+  url: string;
+}
+
+export interface Image {
+  id: number;
+}
+
+function DogCard(props: DogCardProps) {
   const {
     isHome,
     dogData,
@@ -47,7 +69,7 @@ function DogCard(props) {
       });
   };
 
-  const handleBookmark = (e) => {
+  const handleBookmark = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (isBookmark) {
       // 즐겨찾기 취소

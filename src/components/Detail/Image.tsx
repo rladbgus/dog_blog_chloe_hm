@@ -1,13 +1,18 @@
-import * as Api from 'api';
+import * as Api from 'api/like';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { DogData } from '.';
 
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
-function Image(props) {
+interface ImageProps {
+  dogData: DogData;
+}
+
+function Image(props: ImageProps) {
   const { dogData } = props;
   const [isUnlike, setIsUnlike] = useState(false);
   const [likedId, setLikedId] = useState('');
@@ -49,7 +54,7 @@ function Image(props) {
       });
   };
 
-  const handleHeart = (type) => {
+  const handleHeart = (type: string) => {
     if (type === 'like') {
       return onLikeApi();
     }

@@ -4,14 +4,25 @@ import SimilarList from 'components/Detail/SimilarList';
 import React from 'react';
 import styled from 'styled-components';
 
-function Detail({ dogData }) {
+interface DetailProps {
+  dogData: DogData;
+}
+
+export interface DogData {
+  breeds?: object[];
+  id?: number;
+  url?: string;
+}
+
+function Detail({ dogData }: DetailProps) {
   const dogDetail = dogData.breeds && dogData.breeds[0];
 
   return (
     <>
       <DetailSectionS>
         <Image dogData={dogData} />
-        <Information dogData={dogDetail} />
+        {/* ??? */}
+        <Information dogDetail={dogDetail} />
       </DetailSectionS>
       <SimilarList />
     </>

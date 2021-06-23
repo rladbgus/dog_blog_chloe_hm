@@ -379,6 +379,126 @@ TDD를 적용해야할 대표적인 상황들
 
 ### interface vs type
 
+interface에서 할 수 있는 대부분의 기능들은 type에서 가능하다.
 컴포넌트의 props에 대한 타입을 선언 할 때에는 type 을 써도 되고, interface 를 사용해도 상관없다.
+단, 프로젝트에서 일관성만 유지하면 충분하다.
 
-단, 프로젝트에서 일관성만 유지하면 충분하다
+```js
+interface PeopleInterface {
+  name: string
+  age: number
+}
+
+const me1: PeopleInterface = {
+  name: 'yc',
+  age: 34,
+}
+
+type PeopleType = {
+  name: string
+  age: number
+}
+
+const me2: PeopleType = {
+  name: 'yc',
+  age: 31,
+}
+```
+
+- 차이점
+  1. 확장하는 방법
+
+```js
+interface PeopleInterface {
+  name: string
+  age: number
+}
+
+interface StudentInterface extends PeopleInterface {
+  school: string
+}
+type PeopleType = {
+  name: string
+  age: number
+}
+
+type StudentType = PeopleType & {
+  school: string
+}
+```
+
+2. 선언적 확장
+   type은 새로운 속성을 추가하기 위해서 다시 같은 이름으로 선언할 수 없지만, interface는 항상 선언적 확장이 가능하다는 것이다.
+   즉, 같은 변수명으로 선언의 가능 여부 -> type은 불가 / interface는 확장
+
+```js
+interface Window {
+  title: string;
+}
+
+interface Window {
+  ts: TypeScriptAPI;
+}
+
+// 같은 interface 명으로 Window를 다시 만든다면, 자동으로 확장이 된다.
+
+const src = 'const a = "Hello World"';
+window.ts.transpileModule(src, {});
+```
+
+```js
+type Window = {
+  title: string
+};
+
+type Window = {
+  ts: TypeScriptAPI
+};
+
+// Error: Duplicate identifier 'Window'.
+// 타입은 안된다.
+```
+
+3. computed value의 사용
+   type은 가능하지만 interface는 불가능하다.
+
+```js
+type names = 'firstName' | 'lastName'
+
+type NameTypes = {
+  [key in names]: string
+}
+
+const yc: NameTypes = { firstName: 'hi', lastName: 'yc' }
+
+interface NameInterface {
+  // error
+  [key in names]: string
+}
+```
+
+- 성능을 위해서는 interface를 사용하는 것이 좋다?
+  여러 type 혹은 interface를 &하거나 extends할 때를 생각해보자. interface는 속성간 충돌을 해결하기 위해 단순한 객체 타입을 만든다. 왜냐하면 interface는 객체의 타입을 만들기 위한 것이고, 어차피 객체 만 오기 때문에 단순히 합치기만 하면 되기 때문이다. 그러나 타입의 경우, 재귀적으로 순회하면서 속성을 머지하는데, 이 경우에 일부 never가 나오면서 제대로 머지가 안될 수 있다.
+
+```js
+type type2 = { a: 1 } & { b: 2 }; // 잘 머지됨
+type type3 = { a: 1, b: 2 } & { b: 3 }; // resolved to `never`
+
+const t2: type2 = { a: 1, b: 2 }; // good
+const t3: type3 = { a: 1, b: 3 }; // Type 'number' is not assignable to type 'never'.(2322)
+const t3: type3 = { a: 1, b: 2 }; // Type 'number' is not assignable to type 'never'.(2322)
+```
+
+그러나 위의 명제는 이제 더 이상 사실이 아니다. 이제 type의 경우에도 어디에서 에러가 났는지 잘 알려준다.
+
+-> 무엇이 되었건 간에, 프로젝트 전반에서 type을 쓸지 interface를 쓸지 통일시 하는것이 중요해 보인다. 그러나 객체, 그리고 타입간의 합성등을 고려해 보았을 때 interface를 쓰는 것이 더 나을지 않을까 싶다.
+
+### Generic
+
+데이터의 타입을 일반화한다(generalize)를 뜻한다.
+Generic은 자료형을 정하지 않고 여러 타입을 사용할 수 있게 해준다.
+즉, 선언 시점이 아니라 생성 시점에 타입을 명시하여 하나의 타입만이 아닌 다양한 타입을 사용할 수 있도록 하는 기법이다. 한번의 선언으로 다양한 타입에 '재사용'이 가능하다는 장점이 있다.
+
+제네릭을 쓰지 않을 경우, 불필요한 타입 변환을 하기 때문에 프로그램의 성능에 악영향을 미치기도 하는데, 제네릭을 사용하게되면 따로 타입 변환을 할 필요가 없어서 프로그램의 성능이 향상되는 장점이 있다.
+
+Generic은 어떤 클래스 혹은 함수에서 사용할 타입을 그 함수나 클래스를 사용할 때 결정하는 프로그래밍 기법을 말한다.

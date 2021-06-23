@@ -3,7 +3,17 @@ import DogCard from 'components/Home/DogCard';
 import React, { useEffect, useState } from 'react';
 import * as S from 'styles/styled';
 
-function LikeList(props: any) {
+interface LikeListProps {
+  likeList?: object[];
+}
+
+interface likeDog {
+  breeds: object;
+  id: number;
+  url: string;
+}
+
+function LikeList(props: LikeListProps) {
   const { likeList } = props;
   const [likeDogs, setLikeDogs] = useState([]);
 
@@ -13,6 +23,7 @@ function LikeList(props: any) {
     const dogsInfo = likeList?.map(async (likeDog: any) => {
       return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
     });
+    //  ???
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);
   };
@@ -23,7 +34,7 @@ function LikeList(props: any) {
 
   return (
     <S.DogCardList>
-      {likeDogs?.map((likeDog: any) => {
+      {likeDogs?.map((likeDog: likeDog) => {
         const likeDogDetail = likeDog.breeds[0];
         return (
           <DogCard

@@ -2,11 +2,11 @@ import Header from 'components/Header';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-type Props = {
+interface LayoutProps {
   children: ReactNode;
-};
+}
 
-function Layout({ children }: Props) {
+function Layout({ children }: LayoutProps) {
   return (
     <div>
       <header>

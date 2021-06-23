@@ -1,9 +1,13 @@
-import * as Api from 'api';
+import * as Api from 'api/bookmark';
 import Bookmarks from 'components/Bookmarks';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
-function BookmarksPage(props) {
+interface BookmarkProps {
+  bookmarkList: object[];
+}
+
+function BookmarksPage(props: BookmarkProps) {
   const { bookmarkList } = props;
   return (
     <>

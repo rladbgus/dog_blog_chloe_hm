@@ -1,5 +1,5 @@
 import { imageTypes } from 'common/dummyData';
-import React, { useState } from 'react';
+import React, { KeyboardEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterDogData } from 'store/modules/dogsData';
 import styled from 'styled-components';
@@ -8,11 +8,11 @@ function Search() {
   const dispatch = useDispatch();
   const [searchBreed, setSearchBreed] = useState('');
 
-  const onBreedId = (value) => {
+  const onBreedId = (value: string) => {
     setSearchBreed(value);
   };
   // 품종으로 검색
-  const onSearchBreed = (e) => {
+  const onSearchBreed = (e: KeyboardEvent) => {
     const query = { breed_ids: searchBreed };
     if (e.key === 'Enter') {
       dispatch(filterDogData(query));
@@ -21,7 +21,7 @@ function Search() {
   };
 
   // 이미지타입으로 검색
-  const onSearchImageType = (value) => {
+  const onSearchImageType = (value: string) => {
     const query = { mime_types: value };
     dispatch(filterDogData(query));
   };
@@ -37,7 +37,7 @@ function Search() {
       />
       <select onChange={(e) => onSearchImageType(e.target.value)}>
         <option value="">image type</option>
-        {imageTypes.map((data, index) => {
+        {imageTypes.map((data: string, index: string) => {
           return (
             <option key={index} value={data}>
               {data}

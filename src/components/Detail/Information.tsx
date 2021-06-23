@@ -1,15 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Information({ dogData }) {
+interface InformationProps {
+  dogDetail: DogDetail;
+}
+
+export interface DogDetail {
+  name: string;
+  breed_group: string;
+  life_span: string;
+  temperament: string;
+}
+
+function Information({ dogDetail }: InformationProps) {
   return (
     <>
-      {dogData && (
+      {dogDetail && (
         <InformationSectionS>
-          <NameS> {dogData.nameS}</NameS>
-          <div>breed: {dogData.breed_group}</div>
-          <div>life: {dogData.life_span}</div>
-          <div>temperament: {dogData.temperament}</div>
+          <NameS> {dogDetail.name}</NameS>
+          <div>breed: {dogDetail.breed_group}</div>
+          <div>life: {dogDetail.life_span}</div>
+          <div>temperament: {dogDetail.temperament}</div>
         </InformationSectionS>
       )}
     </>
