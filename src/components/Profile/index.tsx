@@ -10,8 +10,8 @@ import * as S from 'styles/styled';
 import them from 'styles/them';
 
 interface ProfileProps {
-  likeList: object;
-  uploadList: object;
+  likeList: object[];
+  uploadList: object[];
 }
 
 Modal.setAppElement('*');

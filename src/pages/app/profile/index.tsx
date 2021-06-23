@@ -6,8 +6,8 @@ import Head from 'next/head';
 import React from 'react';
 
 interface ProfileProps {
-  likeList: object;
-  uploadList: object;
+  likeList: object[];
+  uploadList: object[];
 }
 
 function ProfilePage(props: ProfileProps) {

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 interface BookMarksProps {
-  bookmarkList: object;
+  bookmarkList: object[];
 }
 
 function BookMarks(props: BookMarksProps) {

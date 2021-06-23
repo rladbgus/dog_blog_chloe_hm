@@ -10,6 +10,7 @@ import them from 'styles/them';
 // *usecallback
 function Register() {
   const [selectedFile, setSelectedFile] = useState({});
+  console.log('🚀 ~ selectedFile', selectedFile);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
   const [isProgress, setIsProgress] = useState(false);

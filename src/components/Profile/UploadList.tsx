@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import * as S from 'styles/styled';
 
 interface UploadListProps {
-  uploadList: [];
+  uploadList: object[];
 }
 
 function UploadList(props: UploadListProps) {

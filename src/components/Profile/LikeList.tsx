@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from 'styles/styled';
 
 interface LikeListProps {
-  likeList?: [];
+  likeList?: object[];
 }
 
 function LikeList(props: LikeListProps) {
@@ -17,6 +17,7 @@ function LikeList(props: LikeListProps) {
     const dogsInfo = likeList?.map(async (likeDog: any) => {
       return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
     });
+    console.log('🚀 ~ dogsInfo', dogsInfo);
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);
   };

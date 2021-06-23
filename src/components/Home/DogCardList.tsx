@@ -7,16 +7,16 @@ import { moreDogsData } from 'store/modules/dogsData';
 import * as S from 'styles/styled';
 
 interface DogCardListProps {
-  unUseInfinite: boolean;
+  unUseInfinite?: boolean;
 }
 
 function DogCardList(props: DogCardListProps) {
   const { unUseInfinite } = props;
   const dispatch = useDispatch();
-  const storeData = useSelector((state: any) => state.dogsData);
+  const storeData = useSelector((state: object): object[] => state.dogsData);
   const storeDogsData = storeData.dogsData;
 
-  const [dogsData, setDogsData] = useState<object>(storeDogsData);
+  const [dogsData, setDogsData] = useState<object[]>(storeDogsData);
   const [hasMore, setHasMore] = useState<boolean>(!unUseInfinite);
   const [page, setPage] = useState<number>(2);
 

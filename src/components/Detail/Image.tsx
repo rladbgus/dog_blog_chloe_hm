@@ -4,11 +4,12 @@ import * as ImagePath from 'common/imagePath';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { DogData } from '.';
 
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 interface ImageProps {
-  dogData: object;
+  dogData: DogData;
 }
 
 function Image(props: ImageProps) {
@@ -53,7 +54,7 @@ function Image(props: ImageProps) {
       });
   };
 
-  const handleHeart = (type) => {
+  const handleHeart = (type: string) => {
     if (type === 'like') {
       return onLikeApi();
     }

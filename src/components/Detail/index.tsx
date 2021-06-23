@@ -5,7 +5,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface DetailProps {
-  dogData: object;
+  dogData: DogData;
+}
+
+export interface DogData {
+  breeds: object[];
+  id: number;
+  url: string;
 }
 
 function Detail({ dogData }: DetailProps) {
@@ -15,7 +21,7 @@ function Detail({ dogData }: DetailProps) {
     <>
       <DetailSectionS>
         <Image dogData={dogData} />
-        <Information dogData={dogDetail} />
+        <Information dogDetail={dogDetail} />
       </DetailSectionS>
       <SimilarList />
     </>
