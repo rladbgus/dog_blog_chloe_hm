@@ -8,7 +8,7 @@ import * as S from 'styles/styled';
 import them from 'styles/them';
 
 // *usecallback
-const Register = () => {
+function Register() {
   const [selectedFile, setSelectedFile] = useState('');
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
@@ -109,7 +109,7 @@ const Register = () => {
       )}
     </RegisterLayoutS>
   );
-};
+}
 
 const RegisterLayoutS = styled.div`
   text-align: center;

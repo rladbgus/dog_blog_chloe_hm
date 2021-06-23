@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { moreDogsData } from 'store/modules/dogsData';
 import * as S from 'styles/styled';
 
-const DogCardList = (props) => {
+function DogCardList(props) {
   const { unUseInfinite } = props;
   const dispatch = useDispatch();
   const storeData = useSelector((state: any) => state.dogsData);
@@ -62,6 +62,6 @@ const DogCardList = (props) => {
       </S.DogCardList>
     </InfiniteScroll>
   );
-};
+}
 
 export default DogCardList;

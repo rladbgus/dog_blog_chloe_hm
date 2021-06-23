@@ -3,14 +3,14 @@ import Bookmarks from 'components/Bookmarks';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
-const BookmarksPage = (props) => {
+function BookmarksPage(props) {
   const { bookmarkList } = props;
   return (
     <>
       <Bookmarks bookmarkList={bookmarkList} />
     </>
   );
-};
+}
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const query = { sub_id: 'chloe' };

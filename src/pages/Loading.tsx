@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LoadingPage = () => {
+function LoadingPage() {
   return (
     <LoadingBoxS>
       <div id="loading">
@@ -10,7 +10,7 @@ const LoadingPage = () => {
       </div>
     </LoadingBoxS>
   );
-};
+}
 
 const LoadingBoxS = styled.div`
   #loading {

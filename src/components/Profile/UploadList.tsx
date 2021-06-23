@@ -3,7 +3,7 @@ import DogCard from 'components/Home/DogCard';
 import React, { useState } from 'react';
 import * as S from 'styles/styled';
 
-const UploadList = (props) => {
+function UploadList(props) {
   const { uploadList } = props;
   const [uploadedList, setUploadedList] = useState([...uploadList]);
 
@@ -38,6 +38,6 @@ const UploadList = (props) => {
       })}
     </S.DogCardList>
   );
-};
+}
 
 export default UploadList;

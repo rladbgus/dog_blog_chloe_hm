@@ -1,4 +1,3 @@
-// import { useRouter } from 'next/router';
 import { imageTypes } from 'common/utils/dummyData';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';

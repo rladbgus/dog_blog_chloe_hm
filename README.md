@@ -161,6 +161,10 @@ next.js에서 생성한 redux store와 client에서 생성한 redux store는 다
 
 action.payload에는 서버에서 생성한 스토어의 상태가 담겨있다. 이 둘을 합쳐 새로운 클라이언트의 리덕스 스토어의 상태를 만든다.
 
+## dynamic import
+
+Next.js는 ES2020의 dynamic import 문법을 지원한다. dynamic import를 사용하면 모듈을 빌드 타임이 아닌 런타임에 불러오도록 한다. 이를 통해 번들 파일을 분리하고 퍼포먼스 향상을 기대할 수 있다. 앱에는 초기 로딩부터 사용하지 않는 부분이 존재할 수 있으며, 또 그 부분의 사이즈가 생각보다 클 수 있기 때문이다. 그리고 사용자 언어 등 런타임에서만 알 수 있는 정보에 기반해서 모듈을 선택해야 하는 케이스도 생길 수 있다.
+
 ## .env환경변수 사용하기
 
 npm install dotenv-webpack
@@ -370,3 +374,11 @@ TDD를 적용해야할 대표적인 상황들
 2. jest는 CommonJS 모듈 시스템을 사용한다.
    때문에 ES6문법인 import-export를 적용하면 에러가 발생한다.
 ```
+
+## TypeScript
+
+### interface vs type
+
+컴포넌트의 props에 대한 타입을 선언 할 때에는 type 을 써도 되고, interface 를 사용해도 상관없다.
+
+단, 프로젝트에서 일관성만 유지하면 충분하다
