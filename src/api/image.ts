@@ -2,7 +2,7 @@ import axios from 'api/axios';
 import querystring from 'querystring';
 
 // 이미지 등록
-export function postImage(formData: any, options: any) {
+export function postImage(formData: object, options: object) {
   return axios.post(`/images/upload`, formData, options);
 }
 
@@ -14,6 +14,6 @@ export function getUploadImage() {
 }
 
 // 이미지 삭제
-export function deleteUploadImage(query: any) {
+export function deleteUploadImage(query: string) {
   return axios.delete(`/images/${query}`);
 }

@@ -1,4 +1,4 @@
-import * as Api from 'api/bookmark';
+import * as Api from 'api';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import React, { useState } from 'react';
@@ -6,25 +6,23 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 interface DogCardProps {
-  dogData: DogData;
-  imageUrl: string;
+  dogData?: DogData;
+  imageUrl?: string;
   isHome?: boolean;
   isButton?: boolean;
-  onClickButton?: any;
+  onClickButton?: (id: string, index: number) => void;
   buttonName?: string;
   index?: number;
+  key?: number;
 }
 
 export interface DogData {
-  image: Image;
-  id: number;
-  name: string;
-  life_span: string;
-  url: string;
-}
-
-export interface Image {
-  id: number;
+  image?: { id: string };
+  url?: string;
+  breed_group?: string;
+  id?: string;
+  life_span?: string;
+  name?: string;
 }
 
 function DogCard(props: DogCardProps) {
@@ -46,7 +44,8 @@ function DogCard(props: DogCardProps) {
       image_id: dogData.image.id,
       sub_id: 'chloe'
     };
-    Api.postBookmark(query)
+    Api.bookmark
+      .postBookmark(query)
       .then((res) => {
         if (res.status === 200) {
           setBookmarkId(res.data.id);
@@ -58,7 +57,8 @@ function DogCard(props: DogCardProps) {
 
   // 즐겨찾기 취소
   const cancelBookmarkApi = () => {
-    Api.deleteBookmark(bookmarkId)
+    Api.bookmark
+      .deleteBookmark(bookmarkId)
       .then((res) => {
         if (res.status === 200) {
           setIsBookmark(false);
@@ -69,16 +69,16 @@ function DogCard(props: DogCardProps) {
       });
   };
 
-  const handleBookmark = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleBookmark = (e: React.MouseEvent<HTMLElement>): void => {
     e.preventDefault();
     if (isBookmark) {
       // 즐겨찾기 취소
-      return cancelBookmarkApi();
+      cancelBookmarkApi();
+      return;
     }
     // 즐겨찾기
-    return onBookmarkApi();
+    onBookmarkApi();
   };
-
   return (
     <DogCardS>
       <img src={`${imageUrl}`} alt="강아지 이미지" />
@@ -130,7 +130,6 @@ const DogCardS = styled.div`
 const BookmarkSectionS = styled.div`
   position: absolute;
   top: 8px;
-  right: -43px;
   img {
     width: 20px;
     height: 20px;

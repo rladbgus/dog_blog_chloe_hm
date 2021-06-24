@@ -1,8 +1,18 @@
-import { combineReducers } from '@reduxjs/toolkit';
+import { combineReducers, PayloadAction } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 import dogsData from 'store/modules/dogsData';
 
-const rootReducer = (state, action) => {
+interface DogsData {
+  dogsData: [];
+  filterData: {
+    id: number;
+    image: { url: string };
+    life_span: string;
+    name: string;
+  };
+  isLoading: boolean;
+}
+function rootReducer(state, action: PayloadAction<DogsData>) {
   switch (action.type) {
     case HYDRATE:
       return { ...state, ...action.payload };
@@ -13,7 +23,7 @@ const rootReducer = (state, action) => {
       return combineReducer(state, action);
     }
   }
-};
+}
 
-export type RootState = ReturnType<typeof rootReducer>; //이게 모지?!
+export type RootState = ReturnType<typeof rootReducer>;
 export default rootReducer;

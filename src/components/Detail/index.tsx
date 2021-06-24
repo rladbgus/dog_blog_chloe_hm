@@ -21,7 +21,6 @@ function Detail({ dogData }: DetailProps) {
     <>
       <DetailSectionS>
         <Image dogData={dogData} />
-        {/* ??? */}
         <Information dogDetail={dogDetail} />
       </DetailSectionS>
       <SimilarList />

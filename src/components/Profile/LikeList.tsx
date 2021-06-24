@@ -8,7 +8,7 @@ interface LikeListProps {
 }
 
 interface likeDog {
-  breeds: object;
+  breeds: [{ id: number }];
   id: number;
   url: string;
 }
@@ -20,10 +20,11 @@ function LikeList(props: LikeListProps) {
   // 강아지의 세부정보 조회 및 저장
   const getDetailData = async () => {
     let totalLikeDogs: any = [];
-    const dogsInfo = likeList?.map(async (likeDog: any) => {
-      return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
+    const dogsInfo: any = likeList?.map(async (likeDog: any) => {
+      return await Api.dogList
+        .searchDogData(likeDog.image_id)
+        .then((res) => res.data);
     });
-    //  ???
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);
   };

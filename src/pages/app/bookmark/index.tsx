@@ -1,4 +1,4 @@
-import * as Api from 'api/bookmark';
+import * as Api from 'api';
 import Bookmarks from 'components/Bookmarks';
 import { GetServerSideProps } from 'next';
 import React from 'react';
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const query = { sub_id: 'chloe' };
 
   try {
-    const res = await Api.getBookmarkList(query);
+    const res = await Api.bookmark.getBookmarkList(query);
 
     if (res.status === 200) {
       const bookmarkList = res.data;

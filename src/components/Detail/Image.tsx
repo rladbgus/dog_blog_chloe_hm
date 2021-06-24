@@ -1,4 +1,4 @@
-import * as Api from 'api/like';
+import * as Api from 'api';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import dynamic from 'next/dynamic';
@@ -12,12 +12,17 @@ interface ImageProps {
   dogData: DogData;
 }
 
+interface imagesI {
+  src: string;
+}
+
 function Image(props: ImageProps) {
   const { dogData } = props;
   const [isUnlike, setIsUnlike] = useState(false);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const images = [{ src: dogData.url }];
+  // ???
+  const images: imagesI[] = [{ src: dogData.url }];
 
   const handleImageViewer = () => {
     setIsViewerOpen(!isViewerOpen);
@@ -31,7 +36,8 @@ function Image(props: ImageProps) {
       value: 1
     };
 
-    Api.postLike(query)
+    Api.like
+      .postLike(query)
       .then((res) => {
         if (res.status === 200) {
           setLikedId(res.data.id);
@@ -43,7 +49,8 @@ function Image(props: ImageProps) {
 
   // 싫어요 기능 호출
   const onUnLikeApi = () => {
-    Api.deleteLike(likedId)
+    Api.like
+      .deleteLike(likedId)
       .then((res) => {
         if (res.status === 200) {
           setIsUnlike(false);

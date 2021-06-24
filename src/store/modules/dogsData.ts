@@ -1,5 +1,5 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { DogsDataType } from 'store/interface';
+import * as I from 'store/interface';
 
 // Actions
 export const GET_DOGS_DATA = 'GET_DOGS_DATA';
@@ -16,8 +16,7 @@ export const getDogsData = createAction(
   function prepare(queryData) {
     return {
       payload: {
-        page: 1,
-        limit: 50,
+        ...queryData,
         order: queryData ? queryData.order : 'Asc'
       }
     };
@@ -72,7 +71,7 @@ export const filterDogData = createAction(
 export const filterDogsDataSuccess = createAction(FILTER_DOGS_DATA_SUCCESS);
 
 // 초기값
-const initialState: DogsDataType = {
+const initialState: I.initialStateProps = {
   isLoading: false,
   dogsData: [],
   filterData: { name: '', life_span: '', id: -1, image: { url: '' } }

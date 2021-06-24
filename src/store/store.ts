@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createWrapper, MakeStore } from 'next-redux-wrapper';
+import { createWrapper } from 'next-redux-wrapper';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from 'store/modules/rootReducer';
 import rootSaga from 'store/sagas/index';
 
 // create store
-const makeStore: MakeStore = () => {
+const makeStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware];
 

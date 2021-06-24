@@ -18,7 +18,7 @@ function DogCardList(props: DogCardListProps) {
 
   const [dogsData, setDogsData] = useState<object[]>(storeDogsData);
   const [hasMore, setHasMore] = useState<boolean>(!unUseInfinite);
-  const [page, setPage] = useState<number>(2);
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     setDogsData(storeDogsData);

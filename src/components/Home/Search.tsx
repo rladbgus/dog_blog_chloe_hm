@@ -37,7 +37,7 @@ function Search() {
       />
       <select onChange={(e) => onSearchImageType(e.target.value)}>
         <option value="">image type</option>
-        {imageTypes.map((data: string, index: string) => {
+        {imageTypes.map((data, index) => {
           return (
             <option key={index} value={data}>
               {data}
