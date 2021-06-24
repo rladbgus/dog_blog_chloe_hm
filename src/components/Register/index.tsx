@@ -1,4 +1,4 @@
-import * as Api from 'api/image';
+import * as Api from 'api';
 import * as ImagePath from 'common/imagePath';
 import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
@@ -36,7 +36,8 @@ function Register() {
     const formData = new FormData();
     formData.append('file', selectedFile);
     //api
-    Api.postImage(formData, progressOptions)
+    Api.image
+      .postImage(formData, progressOptions)
       .then((res) => {
         if (res.status === 201) {
           setProgressBar(100);

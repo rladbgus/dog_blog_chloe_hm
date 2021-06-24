@@ -1,5 +1,4 @@
-import * as ApiImage from 'api/image';
-import * as Api from 'api/like';
+import * as Api from 'api';
 import Profile from 'components/Profile';
 import Likes from 'components/Profile/LikeList';
 import { GetServerSideProps } from 'next';
@@ -29,9 +28,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   try {
     // 좋아요한 목록
-    const likeListRes = await Api.getLikeList(query);
+    const likeListRes = await Api.like.getLikeList(query);
     // 업로드한 파일 목록
-    const uploadListRes = await ApiImage.getUploadImage();
+    const uploadListRes = await Api.image.getUploadImage();
 
     if (likeListRes.status === 200 && uploadListRes.status === 200) {
       const likeList = likeListRes.data;

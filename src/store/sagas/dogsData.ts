@@ -9,7 +9,7 @@ function* getDogsData(query) {
 
   try {
     const response: AxiosResponse = yield call(
-      Api.getDogsData.bind(null, queryData)
+      Api.dogList.getDogsData.bind(null, queryData)
     );
     yield put(Action.getDogsDataSuccess(response));
   } catch (err) {
@@ -23,7 +23,7 @@ function* moreDogsData(query) {
 
   try {
     const response: AxiosResponse = yield call(
-      Api.getDogsData.bind(null, queryData)
+      Api.dogList.getDogsData.bind(null, queryData)
     );
     yield put(Action.getDogsDataSuccess(response));
   } catch (err) {
@@ -37,7 +37,7 @@ function* getSortedDogsData(query) {
 
   try {
     const response: AxiosResponse = yield call(
-      Api.getDogsData.bind(null, queryData)
+      Api.dogList.getDogsData.bind(null, queryData)
     );
     yield put(Action.sortedDogsDataSuccess(response));
   } catch (err) {
@@ -51,7 +51,7 @@ function* filterDogData(query) {
 
   try {
     const response: AxiosResponse = yield call(
-      Api.filterDogData.bind(null, queryData)
+      Api.dogList.filterDogData.bind(null, queryData)
     );
     yield put(Action.filterDogsDataSuccess(response));
   } catch (err) {

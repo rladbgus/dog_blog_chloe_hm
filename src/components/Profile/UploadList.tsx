@@ -1,4 +1,4 @@
-import * as Api from 'api/image';
+import * as Api from 'api';
 import DogCard, { DogData } from 'components/Home/DogCard';
 import React, { useState } from 'react';
 import * as S from 'styles/styled';
@@ -12,7 +12,8 @@ function UploadList(props: UploadListProps) {
   const [uploadedList, setUploadedList] = useState([...uploadList]);
 
   const deleteImage = (id: string, index: number) => {
-    Api.deleteUploadImage(id)
+    Api.image
+      .deleteUploadImage(id)
       .then((res) => {
         if (res.status === 204) {
           alert('삭제되었습니다.');

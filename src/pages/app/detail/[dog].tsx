@@ -15,7 +15,8 @@ function DetailPage() {
   // 해당 강아지 데이터 호출
   useEffect(() => {
     if (!router.isReady) return;
-    Api.searchDogData(query)
+    Api.dogList
+      .searchDogData(query)
       .then((res) => {
         if (res.status === 200) {
           setDogData(res.data);

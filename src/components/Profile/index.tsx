@@ -1,4 +1,4 @@
-import * as Api from 'api/user';
+import * as Api from 'api';
 import ModalLayout from 'common/modal';
 import { DogData } from 'components/Home/DogCard';
 import LikeList from 'components/Profile/LikeList';
@@ -27,7 +27,8 @@ function Profile(props: ProfileProps) {
     setUserAgent(UserAgent);
 
     // Ip저장
-    Api.getUserIp()
+    Api.user
+      .getUserIp()
       .then((res) => {
         setUserIp(res.data.ip);
       })

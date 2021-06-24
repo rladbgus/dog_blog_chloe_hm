@@ -21,7 +21,9 @@ function LikeList(props: LikeListProps) {
   const getDetailData = async () => {
     let totalLikeDogs: any = [];
     const dogsInfo: any = likeList?.map(async (likeDog: any) => {
-      return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
+      return await Api.dogList
+        .searchDogData(likeDog.image_id)
+        .then((res) => res.data);
     });
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);
