@@ -20,7 +20,7 @@ function LikeList(props: LikeListProps) {
   // 강아지의 세부정보 조회 및 저장
   const getDetailData = async () => {
     let totalLikeDogs: any = [];
-    const dogsInfo = likeList?.map(async (likeDog: any) => {
+    const dogsInfo: any = likeList?.map(async (likeDog: any) => {
       return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
     });
     //  ???

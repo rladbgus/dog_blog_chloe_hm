@@ -502,3 +502,24 @@ Generic은 자료형을 정하지 않고 여러 타입을 사용할 수 있게 �
 제네릭을 쓰지 않을 경우, 불필요한 타입 변환을 하기 때문에 프로그램의 성능에 악영향을 미치기도 하는데, 제네릭을 사용하게되면 따로 타입 변환을 할 필요가 없어서 프로그램의 성능이 향상되는 장점이 있다.
 
 Generic은 어떤 클래스 혹은 함수에서 사용할 타입을 그 함수나 클래스를 사용할 때 결정하는 프로그래밍 기법을 말한다.
+
+## querystring.stringify 에러
+
+```js
+//에러
+interface  QueryProps  {
+  readonly  bar : string ;
+}
+
+//됨
+type QueryProps = {
+ sub_id: string
+}
+
+//됨
+interface QueryProps extends querystring.ParsedUrlQueryInput {
+  sub_id: string;
+}
+```
+
+- 참고: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/38414

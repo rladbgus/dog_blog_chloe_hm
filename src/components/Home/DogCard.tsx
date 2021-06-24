@@ -10,7 +10,7 @@ interface DogCardProps {
   imageUrl: string;
   isHome?: boolean;
   isButton?: boolean;
-  onClickButton?: any;
+  onClickButton: (id: number, index: number) => void;
   buttonName?: string;
   index?: number;
 }
@@ -69,7 +69,7 @@ function DogCard(props: DogCardProps) {
       });
   };
 
-  const handleBookmark = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleBookmark = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isBookmark) {
       // 즐겨찾기 취소

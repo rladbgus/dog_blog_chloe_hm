@@ -6,7 +6,7 @@ interface IconLayoutProps {
   isVisible?: boolean;
   alt: string;
   className?: string;
-  onClick: any;
+  onClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function IconLayout(props: IconLayoutProps) {
