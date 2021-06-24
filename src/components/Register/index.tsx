@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
-// *usecallback
 function Register() {
   const [selectedFile, setSelectedFile] = useState<File>({} as File);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
@@ -17,9 +16,8 @@ function Register() {
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
 
   // 파일 선택
-  const onFileSelected = (e: Event) => {
-    const target = e.target as HTMLInputElement;
-    const file: File = (target.files as FileList)[0];
+  const onFileSelected = (e: { target: HTMLInputElement }) => {
+    const file: File = (e.target.files as FileList)[0];
 
     if (selectedFile.size > 1000000) {
       alert('이미지의 최대 크기는 1MB입니다.');

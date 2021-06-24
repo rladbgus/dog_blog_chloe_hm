@@ -3,7 +3,7 @@ import * as T from 'api/type';
 import querystring from 'querystring';
 
 // 강아지들의 데이터 호출
-export function getDogsData(query: any) {
+export function getDogsData(query: T.DogListProps) {
   const queryData = querystring.stringify(query);
   return axios.get(`/breeds?${queryData}`);
 }

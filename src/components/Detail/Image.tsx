@@ -21,7 +21,6 @@ function Image(props: ImageProps) {
   const [isUnlike, setIsUnlike] = useState(false);
   const [likedId, setLikedId] = useState('');
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  // ???
   const images: imagesI[] = [{ src: dogData.url }];
 
   const handleImageViewer = () => {

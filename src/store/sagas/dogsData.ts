@@ -39,6 +39,7 @@ function* getSortedDogsData(query) {
     const response: AxiosResponse = yield call(
       Api.dogList.getDogsData.bind(null, queryData)
     );
+    // ???
     yield put(Action.sortedDogsDataSuccess(response));
   } catch (err) {
     console.error(err);

@@ -10,7 +10,7 @@ interface DogCardProps {
   imageUrl?: string;
   isHome?: boolean;
   isButton?: boolean;
-  onClickButton?: (id: string, index: number) => void;
+  onClickButton?(id: number | string, index: number): void;
   buttonName?: string;
   index?: number;
   key?: number;
@@ -20,7 +20,7 @@ export interface DogData {
   image?: { id: string };
   url?: string;
   breed_group?: string;
-  id?: string;
+  id?: number;
   life_span?: string;
   name?: string;
 }

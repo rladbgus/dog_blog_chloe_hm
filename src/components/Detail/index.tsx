@@ -15,6 +15,7 @@ export interface DogData {
 }
 
 function Detail({ dogData }: DetailProps) {
+  console.log('🚀 ~ 22222', dogData);
   const dogDetail = dogData.breeds && dogData.breeds[0];
 
   return (
