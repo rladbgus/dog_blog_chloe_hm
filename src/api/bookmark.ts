@@ -3,7 +3,7 @@ import * as T from 'api/type';
 import querystring from 'querystring';
 
 // 즐겨찾기
-export function postBookmark(query: string) {
+export function postBookmark(query: object) {
   return axios.post(`/favourites`, query);
 }
 

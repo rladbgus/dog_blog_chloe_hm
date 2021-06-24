@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface InformationProps {
-  dogDetail: DogDetail;
+  dogDetail?: DogDetail;
 }
 
 export interface DogDetail {
-  name: string;
-  breed_group: string;
-  life_span: string;
-  temperament: string;
+  breed_group?: string;
+  life_span?: string;
+  name?: string;
+  temperament?: string;
 }
 
 function Information({ dogDetail }: InformationProps) {

@@ -8,7 +8,7 @@ interface LikeListProps {
 }
 
 interface likeDog {
-  breeds: object;
+  breeds: [{ id: number }];
   id: number;
   url: string;
 }
@@ -23,7 +23,6 @@ function LikeList(props: LikeListProps) {
     const dogsInfo: any = likeList?.map(async (likeDog: any) => {
       return await Api.searchDogData(likeDog.image_id).then((res) => res.data);
     });
-    //  ???
     totalLikeDogs = likeList && (await Promise.all(dogsInfo));
     setLikeDogs(totalLikeDogs);
   };

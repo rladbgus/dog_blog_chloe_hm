@@ -7,14 +7,9 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 
-interface SelectedFile {
-  size: number;
-  name: string;
-}
-
 // *usecallback
 function Register() {
-  const [selectedFile, setSelectedFile] = useState({});
+  const [selectedFile, setSelectedFile] = useState<File>({} as File);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
   const [isProgress, setIsProgress] = useState(false);
@@ -30,6 +25,7 @@ function Register() {
       alert('이미지의 최대 크기는 1MB입니다.');
       return;
     }
+
     setSelectedFile(file);
     setSelectedImageUrl(URL.createObjectURL(file));
   };
@@ -60,7 +56,7 @@ function Register() {
 
   // 미리보기 이미지 삭제
   const deletePreview = () => {
-    setSelectedFile('');
+    setSelectedFile(null);
     setSelectedImageUrl('');
   };
 

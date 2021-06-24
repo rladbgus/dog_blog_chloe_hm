@@ -8,9 +8,7 @@ interface FilterData {
   name: string;
   life_span: string;
   id: number;
-  image: Image;
-}
-
-interface Image {
-  url: string;
+  image: {
+    url: string;
+  };
 }

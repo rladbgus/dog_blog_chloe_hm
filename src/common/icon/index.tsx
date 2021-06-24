@@ -6,11 +6,11 @@ interface IconLayoutProps {
   isVisible?: boolean;
   alt: string;
   className?: string;
-  onClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick(e: React.MouseEvent<HTMLElement>): void;
 }
 
 function IconLayout(props: IconLayoutProps) {
-  const { ImageUrl, isVisible, alt, onClick, className } = props;
+  const { ImageUrl, isVisible, alt, className, onClick } = props;
 
   return (
     <>
@@ -19,6 +19,7 @@ function IconLayout(props: IconLayoutProps) {
           src={ImageUrl}
           alt={alt}
           onClick={onClick}
+          // onClick={onClick()}
           className={className}
         />
       )}

@@ -11,12 +11,13 @@ function UploadList(props: UploadListProps) {
   const { uploadList } = props;
   const [uploadedList, setUploadedList] = useState([...uploadList]);
 
-  const deleteImage = (id: number, index: number) => {
+  const deleteImage = (id: string, index: number) => {
     Api.deleteUploadImage(id)
       .then((res) => {
         if (res.status === 204) {
           alert('삭제되었습니다.');
           uploadList.splice(index, 1);
+
           setUploadedList(uploadedList.filter((data, idx) => idx !== index));
         }
       })
@@ -30,7 +31,7 @@ function UploadList(props: UploadListProps) {
       {uploadedList?.map((likeDog, index) => {
         return (
           <DogCard
-            key={likeDog.id}
+            key={index}
             index={index}
             dogData={likeDog}
             imageUrl={likeDog.url}
