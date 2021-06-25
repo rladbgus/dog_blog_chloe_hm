@@ -27,7 +27,6 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
       limit: 50
     };
     store.dispatch(getDogsData(query));
-    //???
     store.dispatch(END);
     await store.sagaTask.toPromise();
 

@@ -11,13 +11,11 @@ function DetailPage() {
   const router = useRouter();
   const query = router.query.dog;
   const [dogData, setDogData] = useState([]);
-  console.log('🚀 ~ 1111', dogData);
 
   // 해당 강아지 데이터 호출
   useEffect(() => {
     if (!router.isReady) return;
     Api.dogList
-      // ???
       .searchDogData(query)
       .then((res) => {
         if (res.status === 200) {
@@ -39,7 +37,8 @@ function DetailPage() {
 // 상세페이지에서 새로고침시 store날아갔을시 새로 dispatch
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(async ({ store }) => {
-    store.dispatch(getDogsData());
+    const query = { limit: 50 };
+    store.dispatch(getDogsData(query));
     store.dispatch(END);
     await store.sagaTask.toPromise();
 

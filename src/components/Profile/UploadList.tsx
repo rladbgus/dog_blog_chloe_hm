@@ -1,10 +1,10 @@
 import * as Api from 'api';
-import DogCard, { DogData } from 'components/Home/DogCard';
+import DogCard, { DogDetail } from 'components/Home/DogCard';
 import React, { useState } from 'react';
 import * as S from 'styles/styled';
 
 interface UploadListProps {
-  uploadList: DogData[];
+  uploadList: DogDetail[];
 }
 
 function UploadList(props: UploadListProps) {

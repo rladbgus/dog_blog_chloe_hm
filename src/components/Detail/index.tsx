@@ -12,10 +12,12 @@ export interface DogData {
   breeds?: object[];
   id?: number;
   url?: string;
+  length?: number;
+  height?: number;
+  width?: number;
 }
 
 function Detail({ dogData }: DetailProps) {
-  console.log('🚀 ~ 22222', dogData);
   const dogDetail = dogData.breeds && dogData.breeds[0];
 
   return (

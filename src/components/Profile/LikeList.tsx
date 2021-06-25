@@ -4,7 +4,16 @@ import React, { useEffect, useState } from 'react';
 import * as S from 'styles/styled';
 
 interface LikeListProps {
-  likeList?: object[];
+  likeList?: LikeList[];
+}
+
+interface LikeList {
+  // country_code: string;
+  // created_at: string;
+  // id: number;
+  image_id?: string;
+  // sub_id: string;
+  // value: number;
 }
 
 interface likeDog {
@@ -19,8 +28,8 @@ function LikeList(props: LikeListProps) {
 
   // 강아지의 세부정보 조회 및 저장
   const getDetailData = async () => {
-    let totalLikeDogs: any = [];
-    const dogsInfo: any = likeList?.map(async (likeDog: any) => {
+    let totalLikeDogs = [];
+    const dogsInfo = likeList?.map(async (likeDog) => {
       return await Api.dogList
         .searchDogData(likeDog.image_id)
         .then((res) => res.data);

@@ -9,7 +9,7 @@ export function getDogsData(query: T.DogListProps) {
 }
 
 // 강아지 상세 데이터 호출
-export function searchDogData(query: string) {
+export function searchDogData(query: string | string[]) {
   return axios.get(`/images/${query}`);
 }
 

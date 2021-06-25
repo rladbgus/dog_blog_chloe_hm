@@ -89,7 +89,7 @@ export const filterDogsDataSuccess = createAction(
 );
 
 // 초기값
-const initialState: I.initialStateProps = {
+const initialState: I.InitialDogsData = {
   isLoading: false,
   dogsData: [],
   filterData: { name: '', life_span: '', id: -1, image: { url: '' } }
