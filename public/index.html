@@ -104,7 +104,7 @@
       >
     </div>
     <p id="load">Firebase SDK Loading&hellip;</p>
-    <!-- <script>
+    <script>
       document.addEventListener('DOMContentLoaded', function () {
         var firebaseConfig = {
           apiKey: 'AIzaSyBY_9DQLLZWkBu07LRXhRc9j2Ox4Wvrx6o',
@@ -117,9 +117,11 @@
           measurementId: 'G-NY64PXGRL7'
         };
         // Initialize Firebase
-        // firebase.initializeApp(firebaseConfig);
+        if (!firebase.apps.length) {
+          firebase.initializeApp(firebaseConfig);
+        }
         firebase.analytics();
-        
+
         // Firebase Messaging 객체 획득
         const messaging = firebase.messaging();
         messaging.usePublicVapidKey(
@@ -218,6 +220,6 @@
             'Error loading the Firebase SDK, check the console.';
         }
       });
-    </script> -->
+    </script>
   </body>
 </html>
