@@ -19,7 +19,6 @@ function IconLayout(props: IconLayoutProps) {
           src={ImageUrl}
           alt={alt}
           onClick={onClick}
-          // onClick={onClick()}
           className={className}
         />
       )}
