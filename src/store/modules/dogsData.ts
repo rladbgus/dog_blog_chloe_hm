@@ -55,7 +55,16 @@ export const sortedDogsData = createAction(
   }
 );
 
-export const sortedDogsDataSuccess = createAction(SORTED_DOGS_DATA_SUCCESS);
+export const sortedDogsDataSuccess = createAction(
+  SORTED_DOGS_DATA_SUCCESS,
+  function prepare(DogsData) {
+    return {
+      payload: {
+        DogsData
+      }
+    };
+  }
+);
 
 export const filterDogData = createAction(
   FILTER_DOGS_DATA,
@@ -68,7 +77,16 @@ export const filterDogData = createAction(
   }
 );
 
-export const filterDogsDataSuccess = createAction(FILTER_DOGS_DATA_SUCCESS);
+export const filterDogsDataSuccess = createAction(
+  FILTER_DOGS_DATA_SUCCESS,
+  function prepare(DogsData) {
+    return {
+      payload: {
+        DogsData
+      }
+    };
+  }
+);
 
 // 초기값
 const initialState: I.initialStateProps = {

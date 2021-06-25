@@ -13,6 +13,7 @@ interface DogsData {
   isLoading: boolean;
 }
 function rootReducer(state, action: PayloadAction<DogsData>) {
+  console.log('🚀 ~ action', action);
   switch (action.type) {
     case HYDRATE:
       return { ...state, ...action.payload };
