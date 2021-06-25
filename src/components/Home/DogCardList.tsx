@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
+import { InitialDogsData } from 'store/interface';
 import { moreDogsData } from 'store/modules/dogsData';
 import * as S from 'styles/styled';
 
@@ -13,14 +14,17 @@ interface DogCardListProps {
 function DogCardList(props: DogCardListProps) {
   const { unUseInfinite } = props;
   const dispatch = useDispatch();
-  const storeData = useSelector((state: object): object[] => state.dogsData);
+  const storeData = useSelector((state: InitialDogsData) => state.dogsData);
+  console.log('🚀 ~ storeData', storeData);
+  // ???
   const storeDogsData = storeData.dogsData;
 
-  const [dogsData, setDogsData] = useState<object[]>(storeDogsData);
-  const [hasMore, setHasMore] = useState<boolean>(!unUseInfinite);
-  const [page, setPage] = useState<number>(1);
+  const [dogsData, setDogsData] = useState(storeDogsData);
+  const [hasMore, setHasMore] = useState(!unUseInfinite);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
+    dogsData.l;
     setDogsData(storeDogsData);
   }, [storeDogsData]);
 
@@ -45,7 +49,7 @@ function DogCardList(props: DogCardListProps) {
       loader={<h3>Loading...</h3>}
       style={{ overflowY: 'auto', overflowX: 'hidden' }}>
       <S.DogCardList>
-        {dogsData.map((dogData: any) => {
+        {dogsData.map((dogData) => {
           return (
             <Link
               href={`/app/detail/${dogData.reference_image_id}`}

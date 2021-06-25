@@ -1,18 +1,8 @@
-import { combineReducers, PayloadAction } from '@reduxjs/toolkit';
+import { combineReducers } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 import dogsData from 'store/modules/dogsData';
 
-interface DogsData {
-  dogsData: [];
-  filterData: {
-    id: number;
-    image: { url: string };
-    life_span: string;
-    name: string;
-  };
-  isLoading: boolean;
-}
-function rootReducer(state, action: PayloadAction<DogsData>) {
+function rootReducer(state, action) {
   switch (action.type) {
     case HYDRATE:
       return { ...state, ...action.payload };

@@ -37,7 +37,8 @@ function DetailPage() {
 // 상세페이지에서 새로고침시 store날아갔을시 새로 dispatch
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(async ({ store }) => {
-    store.dispatch(getDogsData());
+    const query = { limit: 50 };
+    store.dispatch(getDogsData(query));
     store.dispatch(END);
     await store.sagaTask.toPromise();
 

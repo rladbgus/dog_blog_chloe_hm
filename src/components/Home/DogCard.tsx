@@ -6,21 +6,21 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 interface DogCardProps {
-  dogData?: DogData;
+  dogData?: DogDetail;
   imageUrl?: string;
   isHome?: boolean;
   isButton?: boolean;
-  onClickButton?: (id: string, index: number) => void;
+  onClickButton?(id: number | string, index: number): void;
   buttonName?: string;
   index?: number;
   key?: number;
 }
 
-export interface DogData {
+export interface DogDetail {
   image?: { id: string };
   url?: string;
   breed_group?: string;
-  id?: string;
+  id?: number;
   life_span?: string;
   name?: string;
 }

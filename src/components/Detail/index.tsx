@@ -12,6 +12,9 @@ export interface DogData {
   breeds?: object[];
   id?: number;
   url?: string;
+  length?: number;
+  height?: number;
+  width?: number;
 }
 
 function Detail({ dogData }: DetailProps) {

@@ -5,7 +5,16 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 interface BookMarksProps {
-  bookmarkList: object[];
+  bookmarkList: BookmarkList[];
+}
+
+interface BookmarkList {
+  // created_at: string;
+  id?: number;
+  image?: { id: string; url: string };
+  image_id?: string;
+  // sub_id: string;
+  // user_id: string;
 }
 
 function BookMarks(props: BookMarksProps) {
@@ -18,7 +27,7 @@ function BookMarks(props: BookMarksProps) {
         <div className="info"> 클릭시 자세한 정보를 알 수 있습니다.</div>
       </TitleS>
       <S.DogCardList>
-        {bookmarkList.map((dogData: any) => {
+        {bookmarkList.map((dogData) => {
           return (
             <Link
               href={`/app/detail/${dogData.image_id}`}
