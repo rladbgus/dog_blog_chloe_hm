@@ -123,6 +123,7 @@ const DogCardS = styled.div`
   &:hover {
     .bookmark_icon {
       display: inline;
+      margin-left: 155px;
     }
   }
 `;
