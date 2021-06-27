@@ -22,6 +22,7 @@ function Register() {
     const messaging = firebase.messaging();
     onMessageListener(messaging)
       .then((payload) => {
+        console.log('🚀 ~ payload', payload);
         setNotification({
           title: payload.notification.title,
           body: payload.notification.body
@@ -79,7 +80,7 @@ function Register() {
   const progressOptions = {
     onUploadProgress: (progressEvent: ProgressEvent) => {
       const { loaded, total } = progressEvent;
-      let percentage = Math.floor((loaded * 100) / total);
+      const percentage = Math.floor((loaded * 100) / total);
 
       console.log(`${loaded}kb of ${total}kb | ${percentage}%`);
 
