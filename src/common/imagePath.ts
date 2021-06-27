@@ -1,5 +1,5 @@
 // 강아지 로고
-export const Logo = '/favicon.ico';
+export const Logo = '/icons/favicon.ico';
 
 // 하트
 export const fullHeart = '/icons/heart.png';
@@ -10,4 +10,4 @@ export const like = '/icons/like.png';
 export const unLike = '/icons/dislike.png';
 
 // 이미지 등록 (default)
-export const register = '/register.png';
+export const register = '/icons/register.png';

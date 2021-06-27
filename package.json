@@ -19,6 +19,7 @@
     "axios": "^0.21.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "dotenv-webpack": "^7.0.3",
+    "firebase": "^8.6.8",
     "identity-obj-proxy": "^3.0.0",
     "next": "latest",
     "next-redux-wrapper": "^6.0.2",
