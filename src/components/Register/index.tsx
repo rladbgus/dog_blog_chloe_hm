@@ -1,19 +1,35 @@
 import * as Api from 'api';
 import * as ImagePath from 'common/imagePath';
-import React, { useState } from 'react';
+import firebase from 'firebase';
+import React, { useEffect, useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
+import { onMessageListener } from '../../../firebase/firebase';
 
 function Register() {
   const [selectedFile, setSelectedFile] = useState<File>({} as File);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
   const [isProgress, setIsProgress] = useState(false);
+  const [notification, setNotification] = useState({ title: '', body: '' });
 
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
+
+  useEffect(() => {
+    const messaging = firebase.messaging();
+    onMessageListener(messaging)
+      .then((payload) => {
+        setNotification({
+          title: payload.notification.title,
+          body: payload.notification.body
+        });
+        console.log('🚀 ~ notification', notification);
+      })
+      .catch((err) => console.error('failed: ', err));
+  }, []);
 
   // 파일 선택
   const onFileSelected = (e: { target: HTMLInputElement }) => {
@@ -40,7 +56,7 @@ function Register() {
         if (res.status === 201) {
           setProgressBar(100);
           setTimeout(() => {
-            alert('업로드 완료!');
+            alert(notification.body);
             setProgressBar(0);
             setIsProgress(false);
             setSelectedImageUrl('');

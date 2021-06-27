@@ -9,11 +9,7 @@ import { wrapper } from 'store/store';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'styles/global';
 import theme from 'styles/them';
-import {
-  firebaseConfig,
-  onMessageListener,
-  requestFirebaseNotificationPermission
-} from '../../firebase/firebase';
+import { firebaseConfig } from '../../firebase/firebase';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,54 +28,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     router.events.on('routeChangeError', handleComplete);
   }, [router]);
 
+  // firebase 세팅
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
 
-  const [show, setShow] = useState(false);
-  const [notification, setNotification] = useState({ title: '', body: '' });
-  const [token, setToken] = useState('');
-
   useEffect(() => {
     const messaging = firebase.messaging();
-
-    requestFirebaseNotificationPermission(messaging)
-      .then((payload) => {
-        console.log('get token', payload);
-        setToken(payload);
+    Notification.requestPermission()
+      .then(function () {
+        return messaging.getToken();
       })
-      .catch((err) => console.error('failed: ', err));
-
-    onMessageListener(messaging)
-      .then((payload) => {
-        console.log('res', payload);
-        setNotification({
-          title: payload.notification.title,
-          body: payload.notification.body
-        });
+      .then(function (token) {
+        console.log('token', token);
       })
-      .catch((err) => console.error('failed: ', err));
-  });
-
-  // useEffect(() => {
-  //   const messaging = firebase.messaging();
-
-  //   Notification.requestPermission()
-  //     .then(function () {
-  //       return messaging.getToken();
-  //     })
-  //     .then(function (token) {
-  //       console.log('token', token);
-  //     })
-  //     .catch(function (err) {
-  //       console.error('fcm error : ', err);
-  //     });
-
-  //   messaging.onMessage(function (payload) {
-  //     console.log('title:', payload.notification.title);
-  //     console.log('body:', payload.notification.body);
-  //   });
-  // });
+      .catch(function (err) {
+        console.error('fcm error : ', err);
+      });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
