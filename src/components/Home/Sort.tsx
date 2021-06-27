@@ -18,10 +18,14 @@ function Sort() {
 
   return (
     <>
-      <S.Button color={them.color.yellowGreen} onClick={() => handleSort('Asc')}>
+      <S.Button
+        color={them.color.yellowGreen}
+        onClick={() => handleSort('Asc')}>
         asc
       </S.Button>
-      <S.Button color={them.color.yellowGreen} onClick={() => handleSort('Desc')}>
+      <S.Button
+        color={them.color.yellowGreen}
+        onClick={() => handleSort('Desc')}>
         desc
       </S.Button>
     </>
