@@ -22,6 +22,7 @@
     "dotenv-webpack": "^7.0.3",
     "express": "^4.17.1",
     "firebase": "^8.6.8",
+    "firebase-admin": "^9.10.0",
     "identity-obj-proxy": "^3.0.0",
     "next": "latest",
     "next-redux-wrapper": "^6.0.2",

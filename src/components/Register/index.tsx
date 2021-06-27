@@ -1,4 +1,5 @@
 import * as Api from 'api';
+import axios from 'axios';
 import * as ImagePath from 'common/imagePath';
 import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
@@ -8,7 +9,6 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
 import { onMessageListener } from '../../../firebase/firebase';
-
 function Register() {
   const [selectedFile, setSelectedFile] = useState<File>({} as File);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
@@ -19,6 +19,7 @@ function Register() {
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
 
   useEffect(() => {
+    postNotice();
     const messaging = firebase.messaging();
     onMessageListener(messaging)
       .then((payload) => {
@@ -27,10 +28,14 @@ function Register() {
           title: payload.notification.title,
           body: payload.notification.body
         });
-        console.log('🚀 ~ notification', notification);
       })
       .catch((err) => console.error('failed: ', err));
   }, []);
+
+  const postNotice = () => {
+    console.log('오케이');
+    axios.post('/notice');
+  };
 
   // 파일 선택
   const onFileSelected = (e: { target: HTMLInputElement }) => {
@@ -50,14 +55,14 @@ function Register() {
     setIsProgress(true);
     const formData = new FormData();
     formData.append('file', selectedFile);
-    //api
     Api.image
       .postImage(formData, progressOptions)
       .then((res) => {
         if (res.status === 201) {
           setProgressBar(100);
+          postNotice();
           setTimeout(() => {
-            alert(notification.body);
+            // alert(notification.body);
             setProgressBar(0);
             setIsProgress(false);
             setSelectedImageUrl('');
