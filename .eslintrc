@@ -8,7 +8,7 @@
     "extends": [ "plugin:prettier/recommended", "plugin:react/recommended"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 2018,
+      "ecmaVersion": 6,
       "ecmaFeatures": {
         "jsx": true
       },
@@ -38,23 +38,6 @@
       //     },
       //   }
       // ]
-    },
-  //   "settings": {
-  //     "import/resolver": {
-  //       "node": {
-  //         "extensions": [".ts", ".tsx"],
-  //         "moduleDirectory": [
-  //           "node_modules",
-  //           "src/"
-  //         ]
-  //       },
-  //       "typescript": {
-  //         "alwaysTryTypes": true
-  //       }
-  //     },
-  //     "react": {
-  //       "version": "detect"
-  //     }
-  //   }
+    }
   }
   
