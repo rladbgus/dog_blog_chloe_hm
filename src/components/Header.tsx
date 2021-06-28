@@ -6,11 +6,17 @@ import * as S from 'styles/styled';
 import them from 'styles/them';
 
 function Header() {
+  // 로고클릭 라우팅시 스크롤 상단고정
+  const removeScroll = () => {
+    // 스토리지 삭제
+    sessionStorage.removeItem('home_scroll_pos');
+  };
+
   return (
     <>
       <TitleS>
         <Link href="/">
-          <a>
+          <a onClick={removeScroll}>
             <img src={ImagePath.Logo} />
             <span>Dog Blog</span>
           </a>

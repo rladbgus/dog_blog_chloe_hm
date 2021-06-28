@@ -15,8 +15,6 @@ function DogCardList(props: DogCardListProps) {
   const { unUseInfinite } = props;
   const dispatch = useDispatch();
   const storeData = useSelector((state: InitialDogsData) => state.dogsData);
-  // console.log('🚀 ~ storeData', storeData);
-  // ???
   const storeDogsData = storeData.dogsData;
 
   const [dogsData, setDogsData] = useState(storeDogsData);

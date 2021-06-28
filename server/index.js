@@ -7,6 +7,7 @@ const port = 3000;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+// Firebase Admin SDK
 var serviceAccount = require('./serviceAccountKey.json');
 
 admin.initializeApp({

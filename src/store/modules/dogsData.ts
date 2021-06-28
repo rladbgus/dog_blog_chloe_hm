@@ -107,13 +107,14 @@ const reducer = createReducer(initialState, {
     state.isLoading = true;
   },
   [sortedDogsDataSuccess.type]: (state, action) => {
-    state.dogsData = action.payload.data;
+    state.dogsData = action.payload.DogsData.data;
   },
   [filterDogsDataSuccess.type]: (state, action) => {
-    state.filterData.name = action.payload.data[0].breeds[0].name;
-    state.filterData.life_span = action.payload.data[0].breeds[0].life_span;
-    state.filterData.id = action.payload.data[0].id;
-    state.filterData.image.url = action.payload.data[0].url;
+    state.filterData.name = action.payload.DogsData.data[0].breeds[0].name;
+    state.filterData.life_span =
+      action.payload.DogsData.data[0].breeds[0].life_span;
+    state.filterData.id = action.payload.DogsData.data[0].id;
+    state.filterData.image.url = action.payload.DogsData.data[0].url;
     state.dogsData = [state.filterData];
   }
 });
