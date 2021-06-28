@@ -1,15 +1,15 @@
 import * as Api from 'api';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
+import * as I from 'common/interface';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { DogData } from '.';
 
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 interface ImageProps {
-  dogData: DogData;
+  dogData: I.DogData;
 }
 
 interface imagesI {

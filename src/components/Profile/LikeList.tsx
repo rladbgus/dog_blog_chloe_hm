@@ -1,19 +1,11 @@
 import * as Api from 'api';
+import * as I from 'common/interface';
 import DogCard from 'components/Home/DogCard';
 import React, { useEffect, useState } from 'react';
 import * as S from 'styles/styled';
 
 interface LikeListProps {
-  likeList?: LikeList[];
-}
-
-interface LikeList {
-  // country_code: string;
-  // created_at: string;
-  // id: number;
-  image_id?: string;
-  // sub_id: string;
-  // value: number;
+  likeList?: I.DogDetailData[];
 }
 
 interface likeDog {
