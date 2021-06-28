@@ -1,22 +1,11 @@
 import * as Api from 'api';
 import Bookmarks from 'components/Bookmarks';
+import { DogDetailI } from 'components/Home/DogCard';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
 interface BookmarkProps {
-  bookmarkList: BookmarkList[];
-}
-
-interface BookmarkList {
-  created_at: string;
-  id: number;
-  image: {
-    id: string;
-    url: string;
-  };
-  image_id: string;
-  sub_id: string;
-  user_id: string;
+  bookmarkList: DogDetailI[];
 }
 
 function BookmarksPage(props: BookmarkProps) {

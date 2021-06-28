@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 interface DogCardProps {
-  dogData?: DogDetail;
+  dogData?: DogDetailI;
   imageUrl?: string;
   isHome?: boolean;
   isButton?: boolean;
@@ -16,13 +16,15 @@ interface DogCardProps {
   key?: number;
 }
 
-export interface DogDetail {
-  image?: { id: string };
+export interface DogDetailI {
+  image?: { id: string; url: string };
+  image_id?: string;
   url?: string;
   breed_group?: string;
   id?: number;
   life_span?: string;
   name?: string;
+  temperament?: string;
 }
 
 function DogCard(props: DogCardProps) {

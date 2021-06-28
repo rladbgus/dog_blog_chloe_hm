@@ -4,12 +4,12 @@ import * as ImagePath from 'common/imagePath';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { DogData } from '.';
+import { DogDataI } from '.';
 
 const ReactViewer = dynamic(() => import('react-viewer'), { ssr: false });
 
 interface ImageProps {
-  dogData: DogData;
+  dogData: DogDataI;
 }
 
 interface imagesI {

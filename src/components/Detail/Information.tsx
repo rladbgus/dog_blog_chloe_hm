@@ -1,15 +1,9 @@
+import { DogDetailI } from 'components/Home/DogCard';
 import React from 'react';
 import styled from 'styled-components';
 
 interface InformationProps {
-  dogDetail?: DogDetail;
-}
-
-export interface DogDetail {
-  breed_group?: string;
-  life_span?: string;
-  name?: string;
-  temperament?: string;
+  dogDetail?: DogDetailI;
 }
 
 function Information({ dogDetail }: InformationProps) {
@@ -18,8 +12,8 @@ function Information({ dogDetail }: InformationProps) {
       {dogDetail && (
         <InformationSectionS>
           <NameS> {dogDetail.name}</NameS>
-          <div>breed: {dogDetail.breed_group}</div>
           <div>life: {dogDetail.life_span}</div>
+          <div>breed: {dogDetail.breed_group}</div>
           <div>temperament: {dogDetail.temperament}</div>
         </InformationSectionS>
       )}

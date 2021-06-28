@@ -22,7 +22,6 @@ function DogCardList(props: DogCardListProps) {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dogsData.l;
     setDogsData(storeDogsData);
   }, [storeDogsData]);
 

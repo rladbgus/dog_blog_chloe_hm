@@ -5,16 +5,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface DetailProps {
-  dogData: DogData;
+  dogData: DogDataI;
 }
 
-export interface DogData {
+export interface DogDataI {
   breeds?: object[];
   id?: number;
   url?: string;
   length?: number;
-  height?: number;
-  width?: number;
 }
 
 function Detail({ dogData }: DetailProps) {
