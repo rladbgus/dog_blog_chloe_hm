@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
-    "server": "node server",
+    "server": "nodemon server",
     "build": "next build",
     "start": "next start",
     "test": "jest"

@@ -37,3 +37,7 @@ yarn-error.log*
 .env
 
 /firebase
+/firebase-messaging-sw.js
+
+
+/server
