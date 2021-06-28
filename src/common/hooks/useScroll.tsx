@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 function useScrollMove(sessionStorageKey: string, isScroll: boolean): void {
+  console.log('🚀 ~ sessionStorageKey', sessionStorageKey);
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
