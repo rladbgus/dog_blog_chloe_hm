@@ -7,6 +7,8 @@ const port = 3000;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+// prodution모드로 서버 실핼: sudo NODE_ENV=production nodemon server/index.js
+
 // Firebase Admin SDK
 var serviceAccount = require('./serviceAccountKey.json');
 
@@ -20,7 +22,7 @@ app.prepare().then(() => {
 
   server.post('/notice', (req, res) => {
     const registrationToken =
-      'dxLBq8v6nJ01SdrpcqOsoz:APA91bEBvF3qZFT7pjY-X9ioAHl0cokaXxH7OwyRhApboigmrnJbUveThn2PcjaJh7wLwKecUy46-HZkWNJy1ANwhG7vsqQtbLzMV5GJUX1N2ikuS7r6uYQmmg0F6MmC8f9qWAhxTx3H';
+      'dxLBq8v6nJ01SdrpcqOsoz:APA91bHIYeM7ealSl9ecJd7aWX-AMIoZHt4pTXI-xI_ULCj82qFTSd7U3NA9D_NXXhNnAHFcxTd3yAl0kBReZWz7TNr-NsCuHDiC9iGoUDEioCswC7YZs4DmmB7Yks_7TyWN_-ioYnE0';
 
     const messages = [
       {
