@@ -1,6 +1,6 @@
 import * as Api from 'api';
+import * as I from 'common/interface';
 import ModalLayout from 'common/modal';
-import { DogDetailI } from 'components/Home/DogCard';
 import LikeList from 'components/Profile/LikeList';
 import UploadList from 'components/Profile/UploadList';
 import Link from 'next/link';
@@ -11,8 +11,8 @@ import * as S from 'styles/styled';
 import them from 'styles/them';
 
 interface ProfileProps {
-  likeList: DogDetailI[];
-  uploadList: DogDetailI[];
+  likeList: I.DogDetailData[];
+  uploadList: I.DogDetailData[];
 }
 
 Modal.setAppElement('*');

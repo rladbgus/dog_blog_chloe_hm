@@ -12,8 +12,8 @@ interface DogCardListProps {
 }
 
 function DogCardList(props: DogCardListProps) {
-  const { unUseInfinite } = props;
   const dispatch = useDispatch();
+  const { unUseInfinite } = props;
   const storeData = useSelector((state: InitialDogsData) => state.dogsData);
   const storeDogsData = storeData.dogsData;
 

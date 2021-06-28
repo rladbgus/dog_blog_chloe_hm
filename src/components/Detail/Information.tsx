@@ -1,9 +1,9 @@
-import { DogDetailI } from 'components/Home/DogCard';
+import * as I from 'common/interface';
 import React from 'react';
 import styled from 'styled-components';
 
 interface InformationProps {
-  dogDetail?: DogDetailI;
+  dogDetail?: I.DogDetailData;
 }
 
 function Information({ dogDetail }: InformationProps) {

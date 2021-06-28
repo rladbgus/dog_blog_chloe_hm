@@ -1,11 +1,11 @@
 import * as Api from 'api';
+import * as I from 'common/interface';
 import Bookmarks from 'components/Bookmarks';
-import { DogDetailI } from 'components/Home/DogCard';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
 interface BookmarkProps {
-  bookmarkList: DogDetailI[];
+  bookmarkList: I.DogDetailData[];
 }
 
 function BookmarksPage(props: BookmarkProps) {

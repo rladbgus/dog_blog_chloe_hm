@@ -1,5 +1,5 @@
 import * as Api from 'api';
-import { DogDetailI } from 'components/Home/DogCard';
+import * as I from 'common/interface';
 import Profile from 'components/Profile';
 import Likes from 'components/Profile/LikeList';
 import { GetServerSideProps } from 'next';
@@ -7,8 +7,8 @@ import Head from 'next/head';
 import React from 'react';
 
 interface ProfileProps {
-  likeList: DogDetailI[];
-  uploadList: DogDetailI[];
+  likeList: I.DogDetailData[];
+  uploadList: I.DogDetailData[];
 }
 
 function ProfilePage(props: ProfileProps) {

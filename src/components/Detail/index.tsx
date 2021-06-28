@@ -1,3 +1,4 @@
+import * as I from 'common/interface';
 import Image from 'components/Detail/Image';
 import Information from 'components/Detail/Information';
 import SimilarList from 'components/Detail/SimilarList';
@@ -5,14 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface DetailProps {
-  dogData: DogDataI;
-}
-
-export interface DogDataI {
-  breeds?: object[];
-  id?: number;
-  url?: string;
-  length?: number;
+  dogData: I.DogData;
 }
 
 function Detail({ dogData }: DetailProps) {

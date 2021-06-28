@@ -1,11 +1,12 @@
-import DogCard, { DogDetailI } from 'components/Home/DogCard';
+import * as I from 'common/interface';
+import DogCard from 'components/Home/DogCard';
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 interface BookMarksProps {
-  bookmarkList: DogDetailI[];
+  bookmarkList: I.DogDetailData[];
 }
 
 function BookMarks(props: BookMarksProps) {
@@ -25,7 +26,11 @@ function BookMarks(props: BookMarksProps) {
               as={`/app/detail/${dogData.image_id}`}
               key={dogData.id}>
               <a>
-                <DogCard dogData={dogData} imageUrl={dogData.image.url} />
+                <DogCard
+                  key={dogData.id}
+                  dogData={dogData}
+                  imageUrl={dogData.image.url}
+                />
               </a>
             </Link>
           );

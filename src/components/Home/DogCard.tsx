@@ -1,30 +1,20 @@
 import * as Api from 'api';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
+import * as I from 'common/interface';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 
 interface DogCardProps {
-  dogData?: DogDetailI;
-  imageUrl?: string;
+  key: number;
+  dogData: I.DogDetailData;
+  imageUrl: string;
+  index?: number;
   isHome?: boolean;
   isButton?: boolean;
-  onClickButton?(id: number | string, index: number): void;
   buttonName?: string;
-  index?: number;
-  key?: number;
-}
-
-export interface DogDetailI {
-  image?: { id: string; url: string };
-  image_id?: string;
-  url?: string;
-  breed_group?: string;
-  id?: number;
-  life_span?: string;
-  name?: string;
-  temperament?: string;
+  onClickButton?(id: number | string, index: number): void;
 }
 
 function DogCard(props: DogCardProps) {
