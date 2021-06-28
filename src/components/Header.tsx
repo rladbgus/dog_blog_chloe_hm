@@ -1,3 +1,4 @@
+import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import Link from 'next/link';
 import React from 'react';
@@ -16,8 +17,13 @@ function Header() {
     <>
       <TitleS>
         <Link href="/">
-          <a onClick={removeScroll}>
-            <img src={ImagePath.Logo} />
+          <a>
+            <Icon
+              ImageUrl={ImagePath.Logo}
+              onClick={removeScroll}
+              isVisible
+              alt="강아지 발바닥 로고"
+            />
             <span>Dog Blog</span>
           </a>
         </Link>
