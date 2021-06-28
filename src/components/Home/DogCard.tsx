@@ -71,6 +71,7 @@ function DogCard(props: DogCardProps) {
     // 즐겨찾기
     onBookmarkApi();
   };
+
   return (
     <DogCardS>
       <img src={`${imageUrl}`} alt="강아지 이미지" />

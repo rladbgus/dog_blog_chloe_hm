@@ -107,11 +107,7 @@ function Register() {
         multiple
       />
       <PreviewImageS>
-        <img
-          src={previewImage}
-          alt={selectedFile.name}
-          onClick={deletePreview}
-        />
+        <img src={previewImage} alt="미리보기 이미지" onClick={deletePreview} />
       </PreviewImageS>
 
       {isProgress ? (

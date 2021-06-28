@@ -55,13 +55,25 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <Head>
         <meta charSet="utf-8" />
-        <meta name="description" content="" />
+        <title key="title">강아지 블로그</title>
+        <meta
+          name="description"
+          content="다양한 강아지들의 정보를 볼 수 있는 블로그입니다."
+        />
+        <meta
+          key="keywords"
+          name="keywords"
+          content="강아지 블로그, 강아지 정보, 다양한 품종, 강아지 수명, 강아지 특징"
+        />
+        <meta key="ogType" property="og:type" content="website" />
         <link
           rel="shortcut icon"
           href="/public/favicon.ico"
           key="shortcutIcon"
         />
       </Head>
+
+      {/* <SeoHead /> */}
       <CookiesProvider>
         <Layout>
           {isLoading ? <Loading /> : <Component {...pageProps} />}
