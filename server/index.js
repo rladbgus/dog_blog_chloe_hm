@@ -40,18 +40,6 @@ app.prepare().then(() => {
       .catch((error) => {
         console.error('Error sending message:', error);
       });
-
-    // Send a message to the device corresponding to the provided
-    // registration token.
-    // admin
-    //   .messaging()
-    //   .send(message)
-    //   .then((response) => {
-    //     console.log('Successfully sent message:', response);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error sending message:', error);
-    //   });
   });
 
   server.get('/', (req, res) => {
