@@ -2,52 +2,66 @@ import * as Api from 'api';
 import axios from 'axios';
 import * as ImagePath from 'common/imagePath';
 import firebase from 'firebase';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
 import them from 'styles/them';
-import { onMessageListener } from '../../../firebase/firebase';
+import onMessageListener from '../../../firebase/onMessageListener';
+
 function Register() {
   const [selectedFile, setSelectedFile] = useState<File>({} as File);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
   const [isProgress, setIsProgress] = useState(false);
   const [notification, setNotification] = useState({ title: '', body: '' });
-
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
 
-  useEffect(() => {
-    postNotice();
+  // 파일 선택
+  const onFileSelected = (e: { target: HTMLInputElement }) => {
+    const file: File = (e.target.files as FileList)[0];
+    if (selectedFile.size > 1000000) {
+      alert('이미지의 최대 크기는 1MB입니다.');
+      return;
+    }
+    setSelectedFile(file);
+    setSelectedImageUrl(URL.createObjectURL(file));
+  };
+
+  // 미리보기 이미지 삭제
+  const deletePreview = () => {
+    setSelectedFile(null);
+    setSelectedImageUrl('');
+  };
+
+  // 백그라운드 노티스 알람
+  const postNotice = () => {
+    console.log('노티스 Post 완료!');
+    axios.post('/notice');
+
+    // 앱 노티스 알람
     const messaging = firebase.messaging();
     onMessageListener(messaging)
       .then((payload) => {
-        console.log('🚀 ~ payload', payload);
         setNotification({
           title: payload.notification.title,
           body: payload.notification.body
         });
       })
       .catch((err) => console.error('failed: ', err));
-  }, []);
-
-  const postNotice = () => {
-    console.log('오케이');
-    axios.post('/notice');
   };
 
-  // 파일 선택
-  const onFileSelected = (e: { target: HTMLInputElement }) => {
-    const file: File = (e.target.files as FileList)[0];
-
-    if (selectedFile.size > 1000000) {
-      alert('이미지의 최대 크기는 1MB입니다.');
-      return;
-    }
-
-    setSelectedFile(file);
-    setSelectedImageUrl(URL.createObjectURL(file));
+  // 파일등록 성공
+  const onCompleteSubmit = () => {
+    setProgressBar(100);
+    postNotice();
+    setTimeout(() => {
+      alert(notification.body);
+      setProgressBar(0);
+      setIsProgress(false);
+      setSelectedImageUrl('');
+    }, 1000);
   };
 
   // 파일 등록
@@ -59,26 +73,13 @@ function Register() {
       .postImage(formData, progressOptions)
       .then((res) => {
         if (res.status === 201) {
-          setProgressBar(100);
-          postNotice();
-          setTimeout(() => {
-            // alert(notification.body);
-            setProgressBar(0);
-            setIsProgress(false);
-            setSelectedImageUrl('');
-          }, 1000);
+          onCompleteSubmit();
         }
       })
       .catch((err) => {
         //*에러처리
         console.error(err);
       });
-  };
-
-  // 미리보기 이미지 삭제
-  const deletePreview = () => {
-    setSelectedFile(null);
-    setSelectedImageUrl('');
   };
 
   // 프로그래스바 설정
