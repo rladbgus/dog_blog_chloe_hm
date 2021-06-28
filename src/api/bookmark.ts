@@ -13,7 +13,7 @@ export function deleteBookmark(query: string) {
 }
 
 // 즐겨찾기한 목록 호출
-export function getBookmarkList(query: T.BookmarkProps) {
+export function getBookmarkList(query: T.BookmarkQuery) {
   const queryData = querystring.stringify(query);
   return axios.get(`/favourites?${queryData}`);
 }
