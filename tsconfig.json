@@ -37,7 +37,8 @@
       "store/*",
       "styles/*",
       "utils/*",
-      "server/*"
+      "server/*",
+      "firebase/*"
     ]
   },
 }
