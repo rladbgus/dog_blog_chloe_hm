@@ -13,7 +13,7 @@ export function deleteLike(query: string) {
 }
 
 // 좋이요한 목록 호출
-export function getLikeList(query: T.LikeProps) {
+export function getLikeList(query: T.LikeQuery) {
   const queryData = querystring.stringify(query);
   return axios.get(`/votes?${queryData}`);
 }

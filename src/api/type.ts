@@ -1,13 +1,13 @@
-export type DogListProps = {
+export type DogListQuery = {
   breed_ids?: string;
   mime_types?: string;
   order?: string;
 };
 
-export type LikeProps = {
+export type LikeQuery = {
   sub_id: string;
 };
 
-export type BookmarkProps = {
+export type BookmarkQuery = {
   sub_id: string;
 };

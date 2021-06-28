@@ -3,7 +3,7 @@ import * as T from 'api/type';
 import querystring from 'querystring';
 
 // 강아지들의 데이터 호출
-export function getDogsData(query: T.DogListProps) {
+export function getDogsData(query: T.DogListQuery) {
   const queryData = querystring.stringify(query);
   return axios.get(`/breeds?${queryData}`);
 }
@@ -14,7 +14,7 @@ export function searchDogData(query: string | string[]) {
 }
 
 // 필터링된 데이터 호출
-export function filterDogData(query: T.DogListProps) {
+export function filterDogData(query: T.DogListQuery) {
   const queryData = querystring.stringify(query);
   return axios.get(`/images/search?${queryData}`);
 }

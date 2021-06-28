@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface IconLayoutProps {
+  alt: string;
   ImageUrl: string;
   isVisible?: boolean;
-  alt: string;
   className?: string;
   onClick(e: React.MouseEvent<HTMLElement>): void;
 }
