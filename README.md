@@ -523,3 +523,39 @@ interface QueryProps extends querystring.ParsedUrlQueryInput {
 ```
 
 - 참고: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/38414
+
+- useNotice
+  흠..... 왜 안되징;
+
+```js
+import * as Api from 'api';
+import firebase from 'firebase';
+import { useEffect } from 'react';
+import onMessageListener from '../../../firebase/onMessageListener';
+
+function useNotice(): void {
+  //   const [notification, setNotification] = useState({ title: '', body: '' });
+
+  useEffect(() => {
+    Api.image.postNotice();
+
+    // 앱 노티스 알람
+    const messaging = firebase.messaging();
+    onMessageListener(messaging)
+      .then((payload) => {
+        console.log('🚀 ~ payload', payload);
+        // setNotification({
+        //   title: payload.notification.title,
+        //   body: payload.notification.body
+        // });
+      })
+      .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
+        console.error('failed: ', err);
+      });
+    //   return notification;
+  }, []);
+}
+
+export default useNotice;
+```

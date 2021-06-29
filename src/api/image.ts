@@ -1,4 +1,5 @@
 import axios from 'api/axios';
+import Axios from 'axios';
 import querystring from 'querystring';
 
 // 이미지 등록
@@ -20,5 +21,5 @@ export function deleteUploadImage(query: string) {
 
 // 이미지 업로드 노티스
 export function postNotice() {
-  return axios.post('/notice');
+  return Axios.post('/notice');
 }
