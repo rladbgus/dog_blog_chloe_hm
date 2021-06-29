@@ -1,5 +1,4 @@
 import * as Api from 'api';
-import axios from 'axios';
 import * as ImagePath from 'common/imagePath';
 import firebase from 'firebase';
 import React, { useState } from 'react';
@@ -38,7 +37,7 @@ function Register() {
   // 백그라운드 노티스 알람
   const postNotice = () => {
     console.log('노티스 Post 완료!');
-    axios.post('/notice');
+    Api.image.postNotice();
 
     // 앱 노티스 알람
     const messaging = firebase.messaging();
