@@ -16,3 +16,8 @@ describe('simple test', () => {
     expect([1, 2, 3]).toEqual([1, 2, 3]);
   });
 });
+
+const mockFn = jest.fn;
+
+mockFn();
+mockFn(1);

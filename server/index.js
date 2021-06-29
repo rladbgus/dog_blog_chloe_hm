@@ -18,7 +18,6 @@ admin.initializeApp({
 
 app.prepare().then(() => {
   const server = express();
-  const router = express.Router;
 
   // 알람 기능
   server.post('/notice', (req, res) => {

@@ -1,3 +1,4 @@
+import * as Api from 'api';
 import Layout from 'components/Layout';
 import firebase from 'firebase';
 import type { AppProps } from 'next/app';
@@ -43,11 +44,27 @@ function MyApp({ Component, pageProps }: AppProps) {
       })
       .then(function (token) {
         console.log('🚀 ~ token', token);
-        // 토큰 저장
-        setCookie('registrationToken', token, { maxAge: 500 });
       })
       .catch(function (err) {
         console.error('fcm error : ', err);
+      });
+  }, []);
+
+  // 사용자 정보 저장
+  useEffect(() => {
+    // Agent저장
+    const UserAgent = navigator.userAgent;
+    setCookie('UserAgent', UserAgent, { maxAge: 500 });
+
+    // Ip저장
+    Api.user
+      .getUserIp()
+      .then((res) => {
+        const UserIp = res.data.ip;
+        setCookie('UserIp', UserIp, { maxAge: 500 });
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 

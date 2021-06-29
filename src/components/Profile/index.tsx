@@ -1,10 +1,10 @@
-import * as Api from 'api';
 import * as I from 'common/interface';
 import ModalLayout from 'common/modal';
 import LikeList from 'components/Profile/LikeList';
 import UploadList from 'components/Profile/UploadList';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
@@ -20,21 +20,13 @@ function Profile(props: ProfileProps) {
   const { likeList, uploadList } = props;
   const [userAgent, setUserAgent] = useState('');
   const [userIp, setUserIp] = useState('');
+  const [cookies] = useCookies(['UserAgent']);
 
   useEffect(() => {
-    // Agent저장
-    const UserAgent = navigator.userAgent;
-    setUserAgent(UserAgent);
-
-    // Ip저장
-    Api.user
-      .getUserIp()
-      .then((res) => {
-        setUserIp(res.data.ip);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // Agent세팅
+    setUserAgent(cookies.UserAgent);
+    // Ip세팅
+    setUserIp(cookies.UserIp);
   }, []);
 
   return (
