@@ -9,7 +9,6 @@ import them from 'styles/them';
 function Header() {
   // 로고클릭 라우팅시 스크롤 상단고정
   const removeScroll = () => {
-    // 스토리지 삭제
     sessionStorage.removeItem('home_scroll_pos');
   };
 
