@@ -4,6 +4,7 @@ import * as I from 'store/interface';
 // Actions
 export const GET_DOGS_DATA = 'GET_DOGS_DATA';
 export const GET_DOGS_DATA_SUCCESS = 'GET_DOGS_DATA_SUCCESS';
+export const GET_DOGS_DATA_FAIL = 'GET_DOGS_DATA_FAIL';
 export const MORE_DOGS_DATA = 'MORE_DOGS_DATA';
 export const SORTED_DOGS_DATA = 'SORTED_DOGS_DATA';
 export const SORTED_DOGS_DATA_SUCCESS = 'SORTED_DOGS_DATA_SUCCESS';
@@ -32,6 +33,8 @@ export const getDogsDataSuccess = createAction(
     };
   }
 );
+
+export const getDogsDataFail = createAction(GET_DOGS_DATA_FAIL);
 
 export const moreDogsData = createAction(
   MORE_DOGS_DATA,
@@ -90,7 +93,7 @@ export const filterDogsDataSuccess = createAction(
 
 // 초기값
 const initialState: I.InitialDogsData = {
-  isLoading: false,
+  isError: false,
   dogsData: [],
   filterData: { name: '', life_span: '', id: -1, image: { url: '' } }
 };
@@ -98,13 +101,16 @@ const initialState: I.InitialDogsData = {
 // Reducer
 const reducer = createReducer(initialState, {
   [getDogsData.type]: (state) => {
-    state.isLoading = true;
+    state.isError = false;
   },
   [getDogsDataSuccess.type]: (state, action) => {
     state.dogsData = state.dogsData.concat(action.payload.DogsData.data);
   },
+  [getDogsDataFail.type]: (state, action) => {
+    state.isError = true;
+  },
   [sortedDogsData.type]: (state) => {
-    state.isLoading = true;
+    state.isError = false;
   },
   [sortedDogsDataSuccess.type]: (state, action) => {
     state.dogsData = action.payload.DogsData.data;

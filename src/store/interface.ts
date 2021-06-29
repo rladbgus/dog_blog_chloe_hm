@@ -1,5 +1,5 @@
 export interface InitialDogsData {
-  isLoading: boolean;
+  isError: boolean;
   dogsData: any;
   filterData: FilterData;
 }

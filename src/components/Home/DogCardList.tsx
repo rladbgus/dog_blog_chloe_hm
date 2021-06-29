@@ -16,6 +16,7 @@ function DogCardList(props: DogCardListProps) {
   const { unUseInfinite } = props;
   const storeData = useSelector((state: InitialDogsData) => state.dogsData);
   const storeDogsData = storeData.dogsData;
+  const isError = storeData.isError;
 
   const [dogsData, setDogsData] = useState(storeDogsData);
   const [hasMore, setHasMore] = useState(!unUseInfinite);
@@ -24,6 +25,13 @@ function DogCardList(props: DogCardListProps) {
   useEffect(() => {
     setDogsData(storeDogsData);
   }, [storeDogsData]);
+
+  // 리덕스 에러시 처리
+  useEffect(() => {
+    if (isError) {
+      alert('존재하지 않는 강아지입니다.');
+    }
+  }, [isError]);
 
   // 스크롤시 강아지데이터 호출
   const handleMoreDogsData = () => {

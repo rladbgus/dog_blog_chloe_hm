@@ -1,6 +1,7 @@
 export {
   filterDogData,
   getDogsData,
+  getDogsDataFail,
   getDogsDataSuccess,
   moreDogsData,
   sortedDogsData,
