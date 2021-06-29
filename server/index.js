@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 var admin = require('firebase-admin');
+const introductionData = require('./introduction.json');
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = 3000;
@@ -17,7 +18,9 @@ admin.initializeApp({
 
 app.prepare().then(() => {
   const server = express();
+  const router = express.Router;
 
+  // 알람 기능
   server.post('/notice', (req, res) => {
     const registrationToken =
       'eFbHEFEcs2Z4TOX52Dm8a:APA91bHxQ2WlBw_ChYL0EM1gzgrV1KJjcwcJEshW8PPuV4bAdm2S8if1szhukAMMqgKYAr6R4EVEqMIpN3KfKv4_NhUjeagy_xkM-lcNZo3H0UxHTO6aWi7Byu5XSDcRRow1E3tXtSRe';
@@ -41,6 +44,11 @@ app.prepare().then(() => {
       .catch((error) => {
         console.error('Error sending message:', error);
       });
+  });
+
+  // 서비스 소개화면 데이터
+  server.get('/introduction', (req, res) => {
+    return res.json(introductionData);
   });
 
   server.get('/', (req, res) => {

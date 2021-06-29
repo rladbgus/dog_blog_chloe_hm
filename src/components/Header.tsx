@@ -35,6 +35,16 @@ function Header() {
         <Link href="/app/profile">
           <S.Button color={them.color.yellow}>profile</S.Button>
         </Link>
+        <Link href="/app/Introduction">
+          <a>
+            <Icon
+              ImageUrl={ImagePath.questionMark}
+              isVisible
+              alt="소개 페이지"
+              className="questionMark"
+            />
+          </a>
+        </Link>
       </SectionS>
     </>
   );
@@ -55,6 +65,9 @@ const TitleS = styled.div`
 const SectionS = styled.div`
   display: inline;
   float: right;
+  .questionMark {
+    margin: 10px 5px 0 160px;
+  }
 `;
 
 export default Header;

@@ -6,12 +6,12 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 
-interface ProfileProps {
+interface ProfileI {
   likeList: I.DogDetailData[];
   uploadList: I.DogDetailData[];
 }
 
-function ProfilePage(props: ProfileProps) {
+function ProfilePage(props: ProfileI) {
   const { likeList, uploadList } = props;
   return (
     <>

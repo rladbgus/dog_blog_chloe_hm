@@ -11,3 +11,6 @@ export const unLike = '/icons/dislike.png';
 
 // 이미지 등록 (default)
 export const register = '/icons/register.png';
+
+// 물음표
+export const questionMark = '/icons/question.png';
