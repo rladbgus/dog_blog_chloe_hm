@@ -1,23 +1,13 @@
-let temp;
-describe('simple test', () => {
-  beforeEach(() => {
-    temp = 1;
-  });
+export {};
 
-  afterEach(() => {
-    temp = 0;
-  });
+const fn = {
+  add: (num1, num2) => num1 + num2
+};
 
-  test('1 is 1', () => {
-    expect(1).toBe(1);
-  });
-
-  test('[1,2,3] is [1,2,3]', () => {
-    expect([1, 2, 3]).toEqual([1, 2, 3]);
-  });
+test('1은 1이야.', () => {
+  expect(1).toBe(1);
 });
 
-const mockFn = jest.fn;
-
-mockFn();
-mockFn(1);
+test('2 더하기 3은 5이야', () => {
+  expect(fn.add(2, 3).toBe(5));
+});

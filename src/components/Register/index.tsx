@@ -44,6 +44,7 @@ function Register() {
     const messaging = firebase.messaging();
     onMessageListener(messaging)
       .then((payload) => {
+        console.log('🚀 ~ payload', payload);
         setNotification({
           title: payload.notification.title,
           body: payload.notification.body

@@ -20,7 +20,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
-    "baseUrl": "src",
+    "baseUrl": "src"
   },
   "exclude": [
     "node_modules"
@@ -28,8 +28,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "firebase/firebase.js"  ],
+    "**/*.tsx",
+    "firebase/firebase.js"
+  ],
   "paths": {
     "components/*": [
       "components/*",
@@ -40,5 +41,5 @@
       "server/*",
       "firebase/*"
     ]
-  },
+  }
 }
