@@ -19,6 +19,8 @@ function Register() {
 
   // 파일 선택
   const onFileSelected = (e: { target: HTMLInputElement }) => {
+    postNotice();
+
     const file: File = (e.target.files as FileList)[0];
     if (selectedFile.size > 1000000) {
       alert('이미지의 최대 크기는 1MB입니다.');
