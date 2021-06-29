@@ -20,7 +20,7 @@ app.prepare().then(() => {
 
   server.post('/notice', (req, res) => {
     const registrationToken =
-      'dxLBq8v6nJ01SdrpcqOsoz:APA91bEBvF3qZFT7pjY-X9ioAHl0cokaXxH7OwyRhApboigmrnJbUveThn2PcjaJh7wLwKecUy46-HZkWNJy1ANwhG7vsqQtbLzMV5GJUX1N2ikuS7r6uYQmmg0F6MmC8f9qWAhxTx3H';
+      'eFbHEFEcs2Z4TOX52Dm8a:APA91bHxQ2WlBw_ChYL0EM1gzgrV1KJjcwcJEshW8PPuV4bAdm2S8if1szhukAMMqgKYAr6R4EVEqMIpN3KfKv4_NhUjeagy_xkM-lcNZo3H0UxHTO6aWi7Byu5XSDcRRow1E3tXtSRe';
 
     const messages = [
       {
