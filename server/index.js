@@ -17,6 +17,7 @@ admin.initializeApp({
 
 app.prepare().then(() => {
   const server = express();
+  const router = express.Router;
 
   // 알람 기능
   server.post('/notice', (req, res) => {
@@ -44,9 +45,17 @@ app.prepare().then(() => {
       });
   });
 
+  const user = [
+    { id: 1, name: 'van' },
+    { id: 2, name: 'tony' },
+    { id: 3, name: 'jinny' },
+    { id: 4, name: 'kevin' },
+    { id: 5, name: 'chloe' }
+  ];
+
   // 서비스 소개화면 데이터
   server.get('/introduction', (req, res) => {
-    console.log('가져가라~~');
+    return res.json(user);
   });
 
   server.get('/', (req, res) => {
