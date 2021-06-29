@@ -43,7 +43,10 @@ function Image(props: ImageProps) {
           setIsUnlike(true);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
+        console.error(err);
+      });
   };
 
   // 싫어요 기능 호출
@@ -56,6 +59,7 @@ function Image(props: ImageProps) {
         }
       })
       .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
         console.error(err);
       });
   };

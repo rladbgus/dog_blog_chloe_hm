@@ -17,3 +17,8 @@ export function getUploadImage() {
 export function deleteUploadImage(query: string) {
   return axios.delete(`/images/${query}`);
 }
+
+// 이미지 업로드 노티스
+export function postNotice() {
+  return axios.post('/notice');
+}
