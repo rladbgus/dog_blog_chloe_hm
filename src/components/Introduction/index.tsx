@@ -1,7 +1,13 @@
 import React from 'react';
 
-function Introduction() {
-  return <>서비스 소개 페이지</>;
+function Introduction({ introductionData }: any) {
+  return (
+    <>
+      <h1>{introductionData.title}</h1>
+      <div>{introductionData.name}</div>
+      <div>{introductionData.description}</div>
+    </>
+  );
 }
 
 export default Introduction;

@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 var admin = require('firebase-admin');
+const introductionData = require('./introduction.json');
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = 3000;
@@ -45,17 +46,9 @@ app.prepare().then(() => {
       });
   });
 
-  const user = [
-    { id: 1, name: 'van' },
-    { id: 2, name: 'tony' },
-    { id: 3, name: 'jinny' },
-    { id: 4, name: 'kevin' },
-    { id: 5, name: 'chloe' }
-  ];
-
   // 서비스 소개화면 데이터
   server.get('/introduction', (req, res) => {
-    return res.json(user);
+    return res.json(introductionData);
   });
 
   server.get('/', (req, res) => {
