@@ -23,6 +23,7 @@ function DetailPage() {
         }
       })
       .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
         console.error(err);
       });
   }, [router.isReady]);

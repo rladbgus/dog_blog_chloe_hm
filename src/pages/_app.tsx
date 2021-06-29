@@ -46,6 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         console.log('🚀 ~ token', token);
       })
       .catch(function (err) {
+        alert('잠시후 다시 이용 바랍니다 :<');
         console.error('fcm error : ', err);
       });
   }, []);
@@ -64,6 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         setCookie('UserIp', UserIp, { maxAge: 500 });
       })
       .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
         console.error(err);
       });
   }, []);

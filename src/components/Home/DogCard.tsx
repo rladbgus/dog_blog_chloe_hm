@@ -44,7 +44,10 @@ function DogCard(props: DogCardProps) {
           setIsBookmark(true);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
+        console.error(err);
+      });
   };
 
   // 즐겨찾기 취소
@@ -57,6 +60,7 @@ function DogCard(props: DogCardProps) {
         }
       })
       .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
         console.error(err);
       });
   };

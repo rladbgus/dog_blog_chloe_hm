@@ -49,7 +49,10 @@ function Register() {
           body: payload.notification.body
         });
       })
-      .catch((err) => console.error('failed: ', err));
+      .catch((err) => {
+        alert('잠시후 다시 이용 바랍니다 :<');
+        console.error('failed: ', err);
+      });
   };
 
   // 파일등록 성공
@@ -77,7 +80,7 @@ function Register() {
         }
       })
       .catch((err) => {
-        //*에러처리
+        alert('잠시후 다시 이용 바랍니다 :<');
         console.error(err);
       });
   };
