@@ -1,12 +1,11 @@
-import * as Api from 'api';
 import Introduction from 'components/Introduction';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { wrapper } from 'store/store';
 
-function IntroductionPage({ introductionInfo }: any) {
-  console.log('🚀 ~ 받는', introductionInfo);
+function IntroductionPage({ introductionData }: any) {
+  console.log('🚀 ~ 받는', introductionData);
 
   return (
     <>
@@ -20,11 +19,11 @@ function IntroductionPage({ introductionInfo }: any) {
 
 export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
   async () => {
-    const introductionInfo = await Api.introduction.getIntroduction();
-    console.log('🚀 ~ introductionInfo', introductionInfo);
+    // const introductionData = await Api.introduction.getIntroduction();
+    // console.log('🚀 ~ introductionData', introductionData);
 
     return {
-      props: { introductionInfo }
+      // props: { introductionData }
     };
   }
 );

@@ -66,8 +66,7 @@ const SectionS = styled.div`
   display: inline;
   float: right;
   .questionMark {
-    float: right;
-    margin: 10px 5px 0 0;
+    margin: 10px 5px 0 160px;
   }
 `;
 
