@@ -4,11 +4,11 @@ import Bookmarks from 'components/Bookmarks';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
-interface BookmarkProps {
+interface BookmarkI {
   bookmarkList: I.DogDetailData[];
 }
 
-function BookmarksPage(props: BookmarkProps) {
+function BookmarksPage(props: BookmarkI) {
   const { bookmarkList } = props;
   return (
     <>

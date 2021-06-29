@@ -6,7 +6,7 @@ interface IconLayoutI {
   ImageUrl: string;
   isVisible: boolean;
   className?: string;
-  onClick(e: React.MouseEvent<HTMLElement>): void;
+  onClick?(e: React.MouseEvent<HTMLElement>): void;
 }
 
 function IconLayout(props: IconLayoutI) {
