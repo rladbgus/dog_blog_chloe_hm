@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         console.log('🚀 ~ token', token);
       })
       .catch(function (err) {
-        alert('잠시후 다시 이용 바랍니다 :<');
+        alert('잠시후 다시 이용 바랍니다.');
         console.error('fcm error : ', err);
       });
   }, []);
@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         setCookie('UserIp', UserIp, { maxAge: 500 });
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다 :<');
+        alert('잠시후 다시 이용 바랍니다.');
         console.error(err);
       });
   }, []);
@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <Head>
         <meta charSet="utf-8" />
-        <title key="title">강아지 블로그</title>
+        <title key="title">Dog Blog</title>
         <meta
           name="description"
           content="다양한 강아지들의 정보를 볼 수 있는 블로그입니다."
@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta
           key="keywords"
           name="keywords"
-          content="강아지 블로그, 강아지 정보, 다양한 품종, 강아지 수명, 강아지 특징"
+          content="Dog, Dog Blog, 강아지 블로그, 강아지 정보, 다양한 품종, 강아지 수명, 강아지 특징"
         />
         <meta key="ogType" property="og:type" content="website" />
         <link
@@ -91,7 +91,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           key="shortcutIcon"
         />
       </Head>
-
       {/* <SeoHead /> */}
       <CookiesProvider>
         <Layout>

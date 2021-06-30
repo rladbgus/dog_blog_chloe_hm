@@ -550,7 +550,7 @@ function useNotice(): void {
         // });
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다 :<');
+        alert('잠시후 다시 이용 바랍니다.');
         console.error('failed: ', err);
       });
     //   return notification;

@@ -44,7 +44,7 @@ function Image(props: ImageProps) {
         }
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다 :<');
+        alert('잠시후 다시 이용 바랍니다.');
         console.error(err);
       });
   };
@@ -59,7 +59,7 @@ function Image(props: ImageProps) {
         }
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다 :<');
+        alert('잠시후 다시 이용 바랍니다.');
         console.error(err);
       });
   };

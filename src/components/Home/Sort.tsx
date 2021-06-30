@@ -10,7 +10,6 @@ function Sort() {
   const handleSort = (type: string) => {
     let queryData = {
       limit: 50,
-      page: 1,
       order: type
     };
     dispatch(sortedDogsData(queryData));
