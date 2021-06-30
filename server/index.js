@@ -22,7 +22,7 @@ app.prepare().then(() => {
   // 알람 기능
   server.post('/notice', (req, res) => {
     const registrationToken =
-      'eeFbHEFEcs2Z4TOX52Dm8a:APA91bGrWjkfqebZwbSOVpeJMMde4BPRczUIZH_4y10iDHx3B4ylg1JxVTBLfXvHHNVAJTIx9swOGJ1I99CyqLdodJYj37C7qUUHGyXD9_kO5I5RHt-alNr9q8liB72BZkbAOmwZP_Dt';
+      'eeFbHEFEcs2Z4TOX52Dm8a:APA91bF5QLdoSezd_CFvpbNtZM-pc4wLRzchxK7ndre8X1hLt8pWC4f-7osgc_yQ0BZtwgBb52XA8nKAXKxsKulToax0tARLeozXjKX15AFkZAr6vELFeFdyIwlQVUIqpeQ7B_Ri9Mjf';
 
     const messages = [
       {

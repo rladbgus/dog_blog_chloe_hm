@@ -14,6 +14,7 @@ function* getDogsData(query) {
     yield put(Action.getDogsDataSuccess(response));
   } catch (err) {
     yield put(Action.getDogsDataFail());
+    console.error(err);
   }
 }
 
@@ -28,6 +29,7 @@ function* moreDogsData(query) {
     yield put(Action.getDogsDataSuccess(response));
   } catch (err) {
     yield put(Action.getDogsDataFail());
+    console.error(err);
   }
 }
 
@@ -42,6 +44,7 @@ function* getSortedDogsData(query) {
     yield put(Action.sortedDogsDataSuccess(response));
   } catch (err) {
     yield put(Action.getDogsDataFail());
+    console.error(err);
   }
 }
 
@@ -56,6 +59,7 @@ function* filterDogData(query) {
     yield put(Action.filterDogsDataSuccess(response));
   } catch (err) {
     yield put(Action.getDogsDataFail());
+    console.error(err);
   }
 }
 
