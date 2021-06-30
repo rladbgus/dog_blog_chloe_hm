@@ -1,5 +1,6 @@
 import * as Api from 'api';
 import * as ImagePath from 'common/imagePath';
+import message from 'common/message.json';
 import firebase from 'firebase';
 import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
@@ -14,7 +15,10 @@ function Register() {
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
   const [progressBar, setProgressBar] = useState(0);
   const [isProgress, setIsProgress] = useState(false);
-  const [notification, setNotification] = useState({ title: '', body: '' });
+  const [notification, setNotification] = useState({
+    title: '',
+    body: ''
+  });
   const previewImage = selectedImageUrl ? selectedImageUrl : ImagePath.register;
 
   // 파일 선택
@@ -49,7 +53,7 @@ function Register() {
         });
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error('failed: ', err);
       });
   };
@@ -79,7 +83,7 @@ function Register() {
         }
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error(err);
       });
   };

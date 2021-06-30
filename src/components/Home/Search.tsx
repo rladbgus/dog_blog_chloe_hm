@@ -11,6 +11,7 @@ function Search() {
   const onBreedId = (value: string) => {
     setSearchBreed(value);
   };
+
   // 품종으로 검색
   const onSearchBreed = (e: KeyboardEvent) => {
     const query = { breed_ids: searchBreed };

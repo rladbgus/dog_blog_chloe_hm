@@ -2,6 +2,7 @@ import * as Api from 'api';
 import Icon from 'common/icon';
 import * as ImagePath from 'common/imagePath';
 import * as I from 'common/interface';
+import message from 'common/message.json';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as S from 'styles/styled';
@@ -45,7 +46,7 @@ function DogCard(props: DogCardProps) {
         }
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error(err);
       });
   };
@@ -60,7 +61,7 @@ function DogCard(props: DogCardProps) {
         }
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error(err);
       });
   };

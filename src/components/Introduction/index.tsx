@@ -1,7 +1,8 @@
+import { IntroductionDataI } from 'pages/app/Introduction';
 import React from 'react';
 import styled from 'styled-components';
 
-function Introduction({ introductionData }: any) {
+function Introduction({ introductionData }: IntroductionDataI) {
   return (
     <IntroductionLayout>
       <h1>{introductionData.title}</h1>
@@ -17,7 +18,6 @@ const IntroductionLayout = styled.div`
   font-size: 20px;
   line-height: 30px;
   color: #454c53;
-
   h1 {
     font-size: 30px;
     margin-bottom: 15px;

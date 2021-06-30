@@ -1,5 +1,6 @@
 import * as Api from 'api';
 import * as I from 'common/interface';
+import message from 'common/message.json';
 import DogCard from 'components/Home/DogCard';
 import React, { useState } from 'react';
 import * as S from 'styles/styled';
@@ -24,7 +25,7 @@ function UploadList(props: UploadListProps) {
         }
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error(err);
       });
   };

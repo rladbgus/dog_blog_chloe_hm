@@ -13,7 +13,7 @@ function Header() {
   };
 
   return (
-    <>
+    <HeaderLayoutS>
       <TitleS>
         <Link href="/">
           <a>
@@ -45,9 +45,13 @@ function Header() {
           </a>
         </Link>
       </SectionS>
-    </>
+    </HeaderLayoutS>
   );
 }
+
+const HeaderLayoutS = styled.div`
+  margin-bottom: 100px;
+`;
 
 const TitleS = styled.div`
   font-size: 35px;

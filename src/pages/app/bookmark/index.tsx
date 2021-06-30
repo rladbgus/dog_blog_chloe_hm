@@ -1,5 +1,6 @@
 import * as Api from 'api';
 import * as I from 'common/interface';
+import message from 'common/message.json';
 import Bookmarks from 'components/Bookmarks';
 import { GetServerSideProps } from 'next';
 import React from 'react';
@@ -30,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     }
   } catch (err) {
-    alert('잠시후 다시 이용 바랍니다.');
+    alert(message.error);
     console.error(err);
   }
   return {

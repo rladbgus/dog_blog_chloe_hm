@@ -1,4 +1,5 @@
 import * as Api from 'api';
+import message from 'common/message.json';
 import Layout from 'components/Layout';
 import firebase from 'firebase';
 import type { AppProps } from 'next/app';
@@ -46,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         console.log('🚀 ~ token', token);
       })
       .catch(function (err) {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error('fcm error : ', err);
       });
   }, []);
@@ -65,7 +66,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         setCookie('UserIp', UserIp, { maxAge: 500 });
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error(err);
       });
   }, []);

@@ -1,4 +1,5 @@
 import * as Api from 'api';
+import message from 'common/message.json';
 import Detail from 'components/Detail';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
@@ -23,7 +24,7 @@ function DetailPage() {
         }
       })
       .catch((err) => {
-        alert('잠시후 다시 이용 바랍니다.');
+        alert(message.error);
         console.error(err);
       });
   }, [router.isReady]);

@@ -6,10 +6,10 @@ import React from 'react';
 import { wrapper } from 'store/store';
 
 export interface IntroductionDataI {
-  //
+  introductionData: { title: string; name: string; description: string };
 }
 
-function IntroductionPage({ introductionData }: any) {
+function IntroductionPage({ introductionData }: IntroductionDataI) {
   return (
     <>
       <Head>
