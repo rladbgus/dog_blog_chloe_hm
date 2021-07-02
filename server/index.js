@@ -22,9 +22,9 @@ app.prepare().then(() => {
   // 알람 기능
   server.post('/notice', (req, res) => {
     const registrationToken =
-      'eeFbHEFEcs2Z4TOX52Dm8a:APA91bE5iRiP2KDdO_MCPE96nEcmuJSrdVG21OSVU7l9nagx4FLXHoHgbnyOorI87IXXtVOb-8PUslxydEtdYsUNAGGJ_Awp4yM-i6-02CIDyWIEvGsYOvLoVaKOrqdV_lZXba5kJtle';
+      'eeFbHEFEcs2Z4TOX52Dm8a:APA91bFknnsHf2yCi6ZP6ebLzWmuzxEA8W9p8Tb_LI-1Tal47bshW-o1I3WAbhiF0eK3ZhVfAZListqf9h2HnXbIST6o_cSRu4eq528g2B84FGNsHXynYbVgv0GEI3ARxDCNjVdXDJjH';
 
-    const messages = [
+    const uploadMessages = [
       {
         notification: {
           title: '업로드 완료',
@@ -36,7 +36,7 @@ app.prepare().then(() => {
 
     admin
       .messaging()
-      .sendAll(messages)
+      .sendAll(uploadMessages)
       .then((res) => {
         console.log(res.successCount + ' messages were sent successfully');
       })

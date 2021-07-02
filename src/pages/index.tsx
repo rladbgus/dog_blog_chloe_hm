@@ -1,4 +1,4 @@
-import useScrollMove from 'common/hooks/useScroll';
+import useScroll from 'common/hooks/useScroll';
 import Home from 'components/Home';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -9,7 +9,7 @@ import { wrapper } from 'store/store';
 
 function HomePage() {
   // 스크롤유지기능
-  useScrollMove('home_scroll_pos', true);
+  useScroll('home_scroll_pos', true);
 
   return (
     <>

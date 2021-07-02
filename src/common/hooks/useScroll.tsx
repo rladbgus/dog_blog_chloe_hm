@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function useScrollMove(sessionStorageKey: string, isScroll: boolean): void {
+function useScroll(sessionStorageKey: string, isScroll: boolean): void {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -16,4 +16,4 @@ function useScrollMove(sessionStorageKey: string, isScroll: boolean): void {
   }, []);
 }
 
-export default useScrollMove;
+export default useScroll;
