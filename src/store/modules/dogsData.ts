@@ -1,7 +1,7 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 import * as I from 'store/interface';
 
-// Actions
+// Action Types
 export const GET_DOGS_DATA = 'GET_DOGS_DATA';
 export const GET_DOGS_DATA_SUCCESS = 'GET_DOGS_DATA_SUCCESS';
 export const GET_DOGS_DATA_FAIL = 'GET_DOGS_DATA_FAIL';
@@ -11,7 +11,7 @@ export const SORTED_DOGS_DATA_SUCCESS = 'SORTED_DOGS_DATA_SUCCESS';
 export const FILTER_DOGS_DATA = 'FILTER_DOGS_DATA';
 export const FILTER_DOGS_DATA_SUCCESS = 'FILTER_DOGS_DATA_SUCCESS';
 
-// Action 생성자
+// Action Creators
 export const getDogsData = createAction(
   GET_DOGS_DATA,
   function prepare(queryData) {
@@ -91,14 +91,14 @@ export const filterDogsDataSuccess = createAction(
   }
 );
 
-// 초기값
+// Initial State
 const initialState: I.InitialDogsData = {
   isError: false,
   dogsData: [],
   filterData: { name: '', life_span: '', id: -1, image: { url: '' } }
 };
 
-// Reducer
+// Reducers
 const reducer = createReducer(initialState, {
   [getDogsData.type]: (state) => {
     state.isError = false;
