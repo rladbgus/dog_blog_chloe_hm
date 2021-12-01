@@ -7,7 +7,7 @@ export function postLike(query: object) {
   return axios.post(`/votes`, query);
 }
 
-// 좋아요 취소
+// 좋아요취소
 export function deleteLike(query: string) {
   return axios.delete(`/votes/${query}`);
 }
